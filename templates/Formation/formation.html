@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block formation %}
+
+<div class="max-w-7xl mx-auto py-12 px-4">
+
+  <h1 class="text-3xl font-bold text-blue-900 mb-8">
+    Nos Formations
+  </h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    {% for formation in object_list %}
+      <div class="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden rounded-2xl">
+
+        <!-- Image -->
+        {% if formation.affiche %}
+          <img src="{{ formation.affiche.url }}" 
+               alt="{{ formation.nom }}"
+               class="w-full h-56 object-cover">
+        {% else %}
+          <div class="w-full h-56 bg-white/10 flex items-center justify-center">
+            <span class="text-blue-900 font-medium">Pas d'image</span>
+          </div>
+        {% endif %}
+
+        <!-- Contenu -->
+        <div class="p-5">
+
+          <h2 class="text-xl font-semibold text-blue-900 mb-2">
+            {{ formation.nom }}
+          </h2>
+
+          <p class="text-blue-900 text-sm mb-3">
+            {{ formation.objectifs|truncatechars:80 }}
+          </p>
+
+          <p class="text-blue-900 font-medium mb-3">
+            Durée : {{ formation.duree }}
+          </p>
+
+          <p class="text-blue-900 font-bold text-lg mb-4">
+            {{ formation.prix }} $
+          </p>
+
+          <!-- Boutons -->
+          <div class="flex gap-3">
+
+            <!-- S’inscrire -->
+            <a href="{% url 'formation_inscription' formation.slug %}"
+               class="flex-1 text-center px-4 py-2
+                      bg-blue-900 text-white
+                      rounded-2xl font-semibold shadow
+                      hover:bg-blue-800 transition duration-300">
+              S'inscrire
+            </a>
+
+            <!-- Voir plus -->
+            <a href="{{ formation.get_absolute_url }}"
+               class="flex-1 text-center px-4 py-2
+                      bg-white/20 backdrop-blur-md border border-white/30
+                      text-blue-900
+                      rounded-2xl font-semibold shadow
+                      hover:bg-blue-900 hover:text-white
+                      transition duration-300">
+              Voir plus
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    {% empty %}
+      <p class="col-span-3 text-center text-blue-900 text-lg">
+        Aucune formation disponible pour le moment.
+      </p>
+    {% endfor %}
+
+  </div>
+</div>
+
+<!-- Pagination -->
+{% if is_paginated %}
+<div class="flex justify-center mt-8 gap-2">
+
+  <!-- Précédent -->
+  {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}"
+       class="flex items-center justify-center w-10 h-10 bg-white/20 backdrop-blur-md text-blue-900
+              hover:bg-blue-900 hover:text-white transition font-semibold rounded-full"
+       title="Page précédente">
+      <i class="fa-solid fa-chevron-left"></i>
+    </a>
+  {% else %}
+    <span class="flex items-center justify-center w-10 h-10 bg-gray-200 text-gray-400 cursor-not-allowed rounded-full">
+      <i class="fa-solid fa-chevron-left"></i>
+    </span>
+  {% endif %}
+
+  <!-- Numéros de page -->
+  {% for num in paginator.page_range %}
+    {% if page_obj.number == num %}
+      <span class="flex items-center justify-center w-10 h-10 bg-blue-900 text-white font-bold rounded-full">
+        {{ num }}
+      </span>
+    {% elif num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+      <a href="?page={{ num }}"
+         class="flex items-center justify-center w-10 h-10 bg-white/20 backdrop-blur-md text-blue-900
+                hover:bg-blue-900 hover:text-white transition font-semibold rounded-full">
+        {{ num }}
+      </a>
+    {% endif %}
+  {% endfor %}
+
+  <!-- Suivant -->
+  {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}"
+       class="flex items-center justify-center w-10 h-10 bg-white/20 backdrop-blur-md text-blue-900
+              hover:bg-blue-900 hover:text-white transition font-semibold rounded-full"
+       title="Page suivante">
+      <i class="fa-solid fa-chevron-right"></i>
+    </a>
+  {% else %}
+    <span class="flex items-center justify-center w-10 h-10 bg-gray-200 text-gray-400 cursor-not-allowed rounded-full">
+      <i class="fa-solid fa-chevron-right"></i>
+    </span>
+  {% endif %}
+
+</div>
+{% endif %}
+
+{% endblock formation %}

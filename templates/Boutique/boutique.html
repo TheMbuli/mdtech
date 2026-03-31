@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block boutique %}
+
+<section class="max-w-7xl mx-auto px-4 py-16">
+
+  <!-- TITRE -->
+  <div class="mb-12">
+    <h1 class="relative inline-block text-3xl md:text-4xl font-extrabold text-blue-900">
+      Nos articles
+      <span class="absolute -bottom-2 left-0 w-16 h-[4px] bg-yellow-400 rounded-full"></span>
+    </h1>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+    {% for article in object_list %}
+    <div class="group relative rounded-3xl
+                bg-white/30 backdrop-blur-xl border border-white/30
+                shadow-xl hover:shadow-2xl
+                transition-all duration-500
+                flex flex-col">
+
+      <!-- IMAGE -->
+      {% with article.photoarticle_set.first as photo %}
+        {% if photo %}
+          <div class="overflow-hidden rounded-t-3xl">
+            <img src="{{ photo.image.url }}"
+                 alt="{{ article.nom }}"
+                 class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-700">
+          </div>
+        {% else %}
+          <div class="w-full h-60 bg-yellow-400 flex items-center justify-center rounded-t-3xl">
+            <span class="text-blue-900 font-semibold">Aucune image</span>
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <!-- CONTENU -->
+      <div class="p-6 flex flex-col flex-1">
+
+        <h2 class="text-xl font-bold text-blue-900 mb-2">
+          {{ article.nom }}
+        </h2>
+
+        <p class="text-gray-800 text-sm leading-relaxed mb-4">
+          {{ article.description|truncatechars:90 }}
+        </p>
+
+        <!-- PRIX -->
+        <div class="mb-6">
+          {% if article.reduction > 0 %}
+            <span class="text-sm line-through text-gray-500">
+              {{ article.prix }} $
+            </span>
+            <span class="ml-2 text-xl font-extrabold text-red-600">
+              {{ article.prix }} $
+            </span>
+          {% else %}
+            <span class="text-xl font-extrabold text-blue-900">
+              {{ article.prix }} $
+            </span>
+          {% endif %}
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="flex gap-4 mt-auto">
+          <a href="https://wa.me/243812345678?text=Bonjour,%20je%20souhaite%20commander%20l'article%20{{ article.nom }}%20:%20{{ request.scheme }}://{{ request.get_host }}{% url 'details-article' article.id %}"
+            target="_blank"
+            class="flex-1 flex items-center justify-center gap-2
+                    bg-blue-900 text-white px-4 py-3 rounded-full
+                    font-semibold hover:bg-yellow-500 hover:text-blue-900
+                    transition-all duration-300">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Commander
+          </a>
+
+          <a href="{% url 'details-article' article.id %}"
+            class="flex-1 flex items-center justify-center
+                    border-2 border-blue-900 text-blue-900
+                    px-4 py-3 rounded-full font-semibold
+                    hover:bg-blue-900 hover:text-white
+                    transition-all duration-300">
+            Voir plus
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+    {% empty %}
+      <p class="col-span-full text-center text-gray-600">
+        Aucun article disponible
+      </p>
+    {% endfor %}
+
+  </div>
+
+</section>
+
+{% endblock boutique %}

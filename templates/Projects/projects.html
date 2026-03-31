@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block projets %}  {# ou une autre block si tu veux #}
+
+<div class="max-w-7xl mx-auto py-12 px-4">
+
+  <h1 class="text-3xl font-bold text-blue-900 mb-8">Nos Projets</h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for projet in projets %}
+      <div class="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg rounded-2xl overflow-hidden">
+        
+        {% if projet.photos.first %}
+          <img src="{{ projet.photos.first.image.url }}" 
+               alt="{{ projet.titre }}"
+               class="w-full h-56 object-cover">
+        {% else %}
+          <div class="w-full h-56 bg-gray-200 flex items-center justify-center">
+            <span class="text-gray-700">Aucune image</span>
+          </div>
+        {% endif %}
+
+        <div class="p-5">
+          <h2 class="text-xl font-semibold text-blue-900 mb-2">{{ projet.titre }}</h2>
+          <p class="text-gray-800 mb-4">{{ projet.description|truncatechars:90 }}</p>
+
+          <a href="{{ projet.get_absolute_url }}"
+             class="block text-center bg-blue-900 text-white px-4 py-2 rounded-xl
+                    hover:bg-white/20 hover:text-blue-900 transition font-semibold">
+            Voir le projet
+          </a>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-gray-600 col-span-3">Aucun projet disponible pour le moment.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

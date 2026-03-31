@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block workspace %}
+
+<div class="max-w-7xl mx-auto py-12 px-4 space-y-8">
+
+  <!-- Image principale -->
+  <div class="overflow-hidden rounded-2xl shadow-lg">
+    <img src="{% static 'workspace/images/heos-cormo.webp' %}"
+         alt="Espace de travail"
+         class="w-full h-[420px] object-cover">
+  </div>
+
+  <!-- Présentation -->
+  <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg space-y-6">
+
+    <h1 class="text-3xl font-bold text-blue-900 mb-4">
+      ESPACE DE TRAVAIL
+    </h1>
+
+    <p class="text-blue-900 leading-relaxed mb-6">
+      Cet espace de travail moderne est conçu pour offrir un environnement
+      calme, professionnel et parfaitement équipé pour vos réunions,
+      formations et sessions de coworking.
+    </p>
+
+    <!-- Avantages -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-blue-900 mb-6">
+      <div class="p-4 flex flex-col items-center gap-2">
+        <i class="fas fa-bolt text-2xl"></i>
+        <span class="text-lg font-medium">Disponible</span>
+      </div>
+      <div class="p-4 flex flex-col items-center gap-2">
+        <i class="fa-solid fa-wifi text-2xl"></i>
+        <span class="text-lg font-medium">Haut débit</span>
+      </div>
+      <div class="p-4 flex flex-col items-center gap-2">
+        <i class="fas fa-dollar-sign text-2xl"></i>
+        <span class="text-lg font-medium">{{ prix_heure }} / heure</span>
+      </div>
+    </div>
+
+    <!-- Bouton Réservation -->
+    <button onclick="toggleReservation()"
+            class="bg-blue-900 text-white/90 px-6 py-3 rounded-xl shadow-lg
+                   hover:bg-white/20 hover:text-blue-900
+                   transition font-semibold flex items-center gap-2">
+      <i class="fa-solid fa-calendar-check"></i>
+      Réserver un espace
+    </button>
+
+  </div>
+
+  <!-- Formulaire / Confirmation -->
+
+    {% if reservation_reussie %}
+      <!-- DIV DE CONFIRMATION -->
+      <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg">
+        <div class="text-center py-12">
+          <i class="fa-solid fa-check-circle text-blue-900 text-4xl mb-4"></i>
+          <h2 class="text-2xl font-bold text-blue-900 mb-2">Réservation réussie !</h2>
+          <p class="text-blue-900 mb-4">Merci pour votre réservation.</p>
+          <a href="{% url 'workspace' %}"
+            class="inline-block bg-blue-900 text-white px-6 py-3 rounded-xl shadow-lg
+                    hover:bg-white/20 hover:text-blue-900 transition font-semibold">
+            Faire une autre réservation
+          </a>
+        </div>
+      </div>
+    {% else %}
+      <!-- Formulaire -->
+      <div class="bg-white/20 backdrop-blur-md border hidden border-white/30 rounded-2xl p-8 shadow-lg " id="reservationForm">
+        <form method="post" class="space-y-6" >
+          {% csrf_token %}
+
+          <h2 class="text-2xl font-bold text-blue-900 mb-6">
+            Réserver cet espace
+          </h2>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-blue-900 font-medium mb-1">Heure de début</label>
+              <input type="time" id="heureDebut" name="heure_debut"
+                    class="w-full px-3 py-2 rounded-lg border border-white/30 bg-white/10
+                            text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div>
+              <label class="block text-blue-900 font-medium mb-1">Heure de fin</label>
+              <input type="time" id="heureFin" name="heure_fin"
+                    class="w-full px-3 py-2 rounded-lg border border-white/30 bg-white/10
+                            text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-blue-900 font-medium mb-1">{{ form.date.label }}</label>
+            {{ form.date }}
+            {% if form.date.errors %}
+              <p class="text-red-600 text-sm">{{ form.date.errors }}</p>
+            {% endif %}
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-blue-900 font-medium mb-1">{{ form.nom.label }}</label>
+            {{ form.nom }}
+            {% if form.nom.errors %}
+              <p class="text-red-600 text-sm">{{ form.nom.errors }}</p>
+            {% endif %}
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-blue-900 font-medium mb-1">{{ form.email.label }}</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+              <p class="text-red-600 text-sm">{{ form.email.errors }}</p>
+            {% endif %}
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-blue-900 font-medium mb-1">{{ form.telephone.label }}</label>
+            {{ form.telephone }}
+            {% if form.telephone.errors %}
+              <p class="text-red-600 text-sm">{{ form.telephone.errors }}</p>
+            {% endif %}
+          </div>
+
+          <div class="bg-blue-900 text-white/90 p-6 mb-6 w-full max-w-md mx-auto
+              rounded-xl shadow-lg flex justify-between">
+            <p class="text-lg">
+              Durée : <span id="duree" class="font-bold">0 h</span>
+            </p>
+            <p class="text-lg">
+              Total : <span id="total" class="font-bold">0 $</span>
+            </p>
+          </div>
+
+          <button type="submit"
+                  class="w-full bg-blue-900 text-white/90 px-6 py-3 rounded-xl shadow-lg
+                        hover:bg-white/20 hover:text-blue-900 transition font-semibold">
+            Réserver maintenant
+          </button>
+
+        </form>
+      </div>
+    {% endif %}
+</div>
+
+<script>
+function toggleReservation() {
+    const form = document.getElementById("reservationForm");
+    form.classList.toggle("hidden");
+    form.scrollIntoView({ behavior: "smooth" });
+}
+
+const prixParHeure = parseFloat("{{ prix_heure }}");
+const heureDebut = document.getElementById("heureDebut");
+const heureFin = document.getElementById("heureFin");
+const dureeEl = document.getElementById("duree");
+const totalEl = document.getElementById("total");
+
+function calculerPrix() {
+    if (!heureDebut?.value || !heureFin?.value) return;
+
+    const [h1, m1] = heureDebut.value.split(":").map(Number);
+    const [h2, m2] = heureFin.value.split(":").map(Number);
+
+    const diff = (h2*60 + m2) - (h1*60 + m1);
+    if (diff <= 0) {
+        dureeEl.textContent = "Heure invalide";
+        totalEl.textContent = "0 $";
+        return;
+    }
+
+    const heures = diff / 60;
+    dureeEl.textContent = heures.toFixed(2) + " h";
+    totalEl.textContent = (heures * prixParHeure).toFixed(2) + " $";
+}
+
+heureDebut?.addEventListener("input", calculerPrix);
+heureFin?.addEventListener("input", calculerPrix);
+</script>
+
+{% endblock workspace %}

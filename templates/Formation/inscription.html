@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block inscription %}
+
+<div class="max-w-2xl mx-auto py-12 px-4">
+
+  <!-- Bouton Retour -->
+  <a href="{% url 'formation' %}"
+     class="inline-flex items-center gap-2 mb-6
+            bg-white/20 backdrop-blur-md border border-white/30
+            text-blue-900 px-4 py-2 rounded-xl
+            hover:bg-blue-900 hover:text-white
+            transition font-semibold">
+
+    <i class="fa-solid fa-arrow-left"></i>
+    Retour aux formations
+  </a>
+  
+  <h1 class="text-3xl font-bold text-blue-900 mb-6 text-center">
+    Inscription à la formation : {{ formation.nom }}
+  </h1>
+
+  {% if inscription_reussie %}
+    <!-- Message de validation -->
+    <div class="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg p-6 text-center rounded-2xl">
+      <i class="fa-solid fa-check-circle text-blue-900 text-4xl mb-4"></i>
+      <h2 class="text-2xl font-bold text-blue-900 mb-2">Inscription réussie !</h2>
+      <p class="text-blue-900">Merci pour votre inscription à la formation "{{ formation.nom }}".
+        Vous allez recevoir la suite des instructions dans le plus bref délai.</p>
+    </div>
+  {% else %}
+    <!-- Formulaire -->
+    <form method="post" class="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg p-6 rounded-2xl space-y-4">
+      {% csrf_token %}
+      
+      <div>
+        <label class="block text-blue-900 font-medium mb-1">{{ form.nom.label }}</label>
+        {{ form.nom }}
+        {% if form.nom.errors %}
+          <p class="text-red-600 text-sm">{{ form.nom.errors }}</p>
+        {% endif %}
+      </div>
+
+      <div>
+        <label class="block text-blue-900 font-medium mb-1">{{ form.prenom.label }}</label>
+        {{ form.prenom }}
+        {% if form.prenom.errors %}
+          <p class="text-red-600 text-sm">{{ form.prenom.errors }}</p>
+        {% endif %}
+      </div>
+
+      <div>
+        <label class="block text-blue-900 font-medium mb-1">{{ form.email.label }}</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+          <p class="text-red-600 text-sm">{{ form.email.errors }}</p>
+        {% endif %}
+      </div>
+
+      <div>
+        <label class="block text-blue-900 font-medium mb-1">{{ form.telephone.label }}</label>
+        {{ form.telephone }}
+        {% if form.telephone.errors %}
+          <p class="text-red-600 text-sm">{{ form.telephone.errors }}</p>
+        {% endif %}
+      </div>
+
+      <button type="submit"
+              class="w-full bg-blue-900 text-white px-6 py-3 border border-white/30
+                     hover:bg-white/20 hover:text-blue-900 transition font-semibold rounded-xl shadow">
+        S'inscrire
+      </button>
+
+    </form>
+  {% endif %}
+
+</div>
+
+{% endblock inscription %}

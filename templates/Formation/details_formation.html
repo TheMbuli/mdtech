@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block details_formation %}
+
+<div class="max-w-6xl mx-auto py-12 px-4">
+
+  <!-- Bouton Retour -->
+  <a href="{% url 'formation' %}"
+     class="inline-flex items-center gap-2 mb-6
+            bg-white/20 backdrop-blur-md border border-white/30
+            text-blue-900 px-4 py-2 rounded-xl
+            hover:bg-blue-900 hover:text-white
+            transition font-semibold">
+
+    <i class="fa-solid fa-arrow-left"></i>
+    Retour aux formations
+  </a>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+    <!-- Image -->
+    <div class="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg rounded-2xl overflow-hidden h-64">
+      {% if formation.affiche %}
+        <img src="{{ formation.affiche.url }}"
+            alt="{{ formation.nom }}"
+            class="w-full h-full object-cover">
+      {% else %}
+        <div class="w-full h-full flex items-center justify-center">
+          <span class="text-blue-900 font-medium">Pas d'image</span>
+        </div>
+      {% endif %}
+    </div>
+
+
+    <!-- Détails -->
+    <div class="flex flex-col justify-between bg-white/20 backdrop-blur-md border border-white/30 shadow-lg rounded-2xl p-6 space-y-6">
+
+      <div>
+        <h1 class="text-3xl font-bold text-blue-900 mb-4">
+          {{ formation.nom }}
+        </h1>
+
+        <p class="text-blue-900 mb-4">
+          {{ formation.description }}
+        </p>
+
+        <p class="text-blue-900 mb-4 font-medium">
+          Objectifs : {{ formation.objectifs }}
+        </p>
+
+        <p class="text-blue-900 mb-4 font-medium">
+          Durée : {{ formation.duree }}
+        </p>
+
+        <p class="text-blue-900 text-2xl font-bold mb-6">
+          {{ formation.prix }} $
+        </p>
+      </div>
+
+      <!-- Boutons -->
+      <div class="flex gap-4">
+
+        <!-- S’inscrire -->
+        <a href="{% url 'formation_inscription' formation.slug %}"
+           class="flex-1 bg-blue-900 text-white px-6 py-3
+                  hover:bg-white/20 hover:text-blue-900
+                  border border-white/30 rounded-xl
+                  transition font-semibold text-center shadow">
+          S'inscrire
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock details_formation %}

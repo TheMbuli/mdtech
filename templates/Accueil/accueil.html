@@ -1,0 +1,672 @@
+{% extends "base.html" %}
+{% load static %}
+{% block accueil %}
+<section class="min-h-[75vh] flex items-center px-6 md:px-20 mt-6">
+
+    <div class="relative max-w-4xl space-y-10" data-aos="fade-up">
+
+        <!-- MINI BADGE -->
+        <div class="inline-flex items-center gap-3
+                    px-5 py-2 rounded-full
+                    border border-blue-900/20
+                    backdrop-blur-md
+                    shadow-sm">
+
+            <span class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
+
+            <span class="text-xs uppercase tracking-widest font-bold text-blue-900">
+                Innovation & Architecture
+            </span>
+        </div>
+
+        <!-- TITRE -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-blue-900">
+            Modern Technology
+            <span class="block text-transparent bg-clip-text
+                         bg-gradient-to-r from-yellow-400 to-yellow-600">
+                of Building
+            </span>
+        </h1>
+
+        <!-- TEXTE -->
+        <p class="text-gray-700 text-lg max-w-2xl leading-relaxed">
+            Nous concevons et réalisons des solutions de construction intelligentes,
+            durables et adaptées aux exigences du monde moderne.
+        </p>
+
+        <!-- ACTIONS -->
+        <div class="flex flex-wrap items-center gap-6 pt-4">
+
+            <!-- ACTION PRINCIPALE -->
+            <a href="#activites"
+               class="group relative inline-flex items-center gap-3
+                      px-7 py-3 rounded-full
+                      bg-blue-900 text-white font-semibold
+                      overflow-hidden shadow-xl">
+
+                <!-- halo animé -->
+                <span class="absolute inset-0 bg-gradient-to-r
+                             from-yellow-400 to-yellow-500
+                             opacity-0 group-hover:opacity-100
+                             transition duration-500"></span>
+
+                <span class="relative z-10">
+                    Découvrir nos services
+                </span>
+
+                <i class="fas fa-arrow-right relative z-10
+                          transform group-hover:translate-x-1 transition"></i>
+            </a>
+
+            <!-- ACTION SECONDAIRE -->
+            <a href="#contacter"
+               class="group inline-flex items-center gap-3
+                      px-7 py-3 rounded-full
+                      border border-blue-900/30
+                      text-blue-900 font-semibold
+                      backdrop-blur-md
+                      hover:bg-blue-900/5 transition">
+
+                <i class="fas fa-paper-plane text-yellow-500"></i>
+                <span>Nous contacter</span>
+            </a>
+
+        </div>
+
+        <!-- LIGNE DECORATIVE -->
+        <div class="flex items-center gap-4 pt-6">
+            <span class="w-12 h-[2px] bg-blue-900"></span>
+            <span class="text-xs uppercase tracking-widest text-blue-900/60">
+                Construire le futur
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+
+{% load static %}    
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true
+      });
+    </script>
+
+
+<div class="mt-14 flex flex-col items-center gap-10 px-4 md:px-0">
+
+    {% comment %} ITEM 1 {% endcomment %}
+    <div data-aos="fade-right" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
+        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
+                <span class="text-xl md:text-2xl font-bold text-blue-900">1</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
+                <img src="{% static 'accueil/images/AI.png' %}" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h2 class="font-extrabold text-black">Adobe Illustrator</h2>
+                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                    Adobe Illustrator est un logiciel de dessin vectoriel utilisé pour créer des illustrations, des logos et des graphiques.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} ITEM 2 {% endcomment %}
+    <div data-aos="fade-right" data-aos-delay="100" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
+        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
+                <span class="text-xl md:text-2xl font-bold text-blue-900">2</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
+                <img src="{% static 'accueil/images/Archicad.png' %}" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h2 class="font-extrabold text-black">Archicad</h2>
+                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                    Archicad est un logiciel BIM utilisé pour la conception architecturale.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} ITEM 3 {% endcomment %}
+    <div data-aos="fade-right" data-aos-delay="200" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
+        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
+                <span class="text-xl md:text-2xl font-bold text-blue-900">3</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
+                <img src="{% static 'accueil/images/Autocad.png' %}" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h2 class="font-extrabold text-black">AutoCAD</h2>
+                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                    AutoCAD est un logiciel de CAO pour dessins techniques 2D et 3D.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} ITEM 4 {% endcomment %}
+    <div data-aos="fade-right" data-aos-delay="300" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
+        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
+                <span class="text-xl md:text-2xl font-bold text-blue-900">4</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
+                <img src="{% static 'accueil/images/Lumion.png' %}" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h2 class="font-extrabold text-black">Lumion</h2>
+                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                    Lumion est un logiciel de rendu 3D en temps réel.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} ITEM 5 {% endcomment %}
+    <div data-aos="fade-right" data-aos-delay="400" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
+        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
+                <span class="text-xl md:text-2xl font-bold text-blue-900">5</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
+                <img src="{% static 'accueil/images/Photoshop.png' %}" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h2 class="font-extrabold text-black">Photoshop</h2>
+                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                    Photoshop est un logiciel de retouche et création graphique.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} ITEM 6 {% endcomment %}
+    <div data-aos="fade-right" data-aos-delay="500" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
+        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
+                <span class="text-xl md:text-2xl font-bold text-blue-900">6</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
+                <img src="{% static 'accueil/images/Revit.png' %}" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h2 class="font-extrabold text-black">Revit</h2>
+                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                    Revit est un logiciel BIM pour concevoir des bâtiments en 3D.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} ITEM 7 {% endcomment %}
+    <div data-aos="fade-right" data-aos-delay="600" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
+        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
+                <span class="text-xl md:text-2xl font-bold text-blue-900">7</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
+                <img src="{% static 'accueil/images/Sketchup.png' %}" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h2 class="font-extrabold text-black">SketchUp</h2>
+                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                    SketchUp est un logiciel de modélisation 3D simple et intuitif.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} ITEM 8 {% endcomment %}
+    <div data-aos="fade-right" data-aos-delay="700" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
+        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
+            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
+                <span class="text-xl md:text-2xl font-bold text-blue-900">8</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
+                <img src="{% static 'accueil/images/V-ray.png' %}" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h2 class="font-extrabold text-black">V-Ray</h2>
+                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                    V-Ray est un moteur de rendu réaliste pour l’architecture et l’animation.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+<!-- SECTION -->
+<div class="mt-24 px-4">
+
+    <!-- TITRE -->
+    <div class="text-center mb-12" data-aos="fade-down">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900">
+            Pourquoi <span class="text-yellow-500">nous choisir</span>
+        </h2>
+        <p class="mt-3 text-gray-700 max-w-2xl mx-auto">
+            Des atouts solides pour vous accompagner vers la réussite professionnelle.
+        </p>
+    </div>
+
+    <!-- CARTES -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+        <!-- CARTE 1 -->
+        <div data-aos="fade-up"
+             class="flex flex-col items-center text-center gap-4 
+                    p-6 rounded-2xl 
+                    bg-white/20 backdrop-blur-md 
+                    border border-white/30 shadow-lg
+                    transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
+
+            <i class="fa-solid fa-users text-4xl text-blue-900"></i>
+
+            <h3 class="font-extrabold text-black text-lg">
+                Communauté active
+            </h3>
+
+            <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                Intégrez une communauté d'apprenants et de formateurs passionnés :
+                partagez, échangez et progressez ensemble.
+            </p>
+        </div>
+
+        <!-- CARTE 2 -->
+        <div data-aos="fade-up" data-aos-delay="150"
+             class="flex flex-col items-center text-center gap-4 
+                    p-6 rounded-2xl 
+                    bg-white/20 backdrop-blur-md 
+                    border border-white/30 shadow-lg
+                    transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
+
+            <i class="fa-solid fa-award text-4xl text-blue-900"></i>
+
+            <h3 class="font-extrabold text-black text-lg">
+                Certification
+            </h3>
+
+            <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                Obtenez une certification reconnue, valorisant vos compétences
+                et attestant officiellement de votre réussite.
+            </p>
+        </div>
+
+        <!-- CARTE 3 -->
+        <div data-aos="fade-up" data-aos-delay="300"
+             class="flex flex-col items-center text-center gap-4 
+                    p-6 rounded-2xl 
+                    bg-white/20 backdrop-blur-md 
+                    border border-white/30 shadow-lg
+                    transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
+
+            <i class="fa-solid fa-briefcase text-4xl text-blue-900"></i>
+
+            <h3 class="font-extrabold text-black text-lg">
+                Emplois
+            </h3>
+
+            <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
+                Sélection des candidats prometteurs ayant brillamment réussi
+                leur formation au sein de l'entreprise.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<div class="mt-24 px-4">
+
+    <div class="flex justify-center mb-6">
+        <span class="inline-block text-xs font-bold uppercase tracking-widest
+                     text-blue-800 bg-white/30 backdrop-blur-md
+                     px-4 py-2 rounded-full border border-white/40 shadow">
+            En chiffres
+        </span>
+    </div>
+
+    <div class="max-w-5xl mx-auto
+                bg-white/20 backdrop-blur-md
+                border border-white/30
+                rounded-3xl shadow-xl
+                p-6 md:p-10">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-blue-900">
+
+            <!-- ITEM -->
+            <div data-aos="fade-up" class="space-y-3">
+                <p class="text-sm font-medium">Apprenants</p>
+                <h3 class="text-4xl font-black">
+                    100<span class="text-yellow-500">+</span>
+                </h3>
+                <p class="text-sm">Chaque année</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="150" class="space-y-3">
+                <p class="text-sm font-medium">Années d’existence</p>
+                <h3 class="text-4xl font-black">
+                    3<span class="text-yellow-500">+</span>
+                </h3>
+                <p class="text-sm">D'expérience</p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="300" class="space-y-3">
+                <p class="text-sm font-medium">Antennes</p>
+                <h3 class="text-4xl font-black">
+                    01
+                </h3>
+                <p class="text-sm">Goma</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<section class="mt-24 px-4">
+
+    <!-- TITRE -->
+    <div class="flex justify-between items-center max-w-5xl mx-auto mb-8">
+        <h2 class="text-3xl font-extrabold text-blue-800">
+            Nos <span class="text-yellow-500">projets</span>
+        </h2>
+
+        <a href="{% url 'projets-list' %}" 
+           class="px-5 py-2 rounded-full
+                  bg-white/30 backdrop-blur-md
+                  border border-white/40 shadow
+                  hover:bg-white/50 transition">
+            Voir plus
+        </a>
+    </div>
+
+    <!-- CARTE -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+        {% for projet in projets_recents %}
+        <div data-aos="fade-up"
+             class="relative rounded-3xl overflow-hidden
+                    bg-white/20 backdrop-blur-md
+                    border border-white/30 shadow-xl">
+
+            {% if projet.photos.first %}
+            <img src="{{ projet.photos.first.image.url }}"
+                 class="w-full h-[420px] object-cover">
+            {% else %}
+            <div class="w-full h-[420px] bg-gray-200 flex items-center justify-center">
+                <span class="text-gray-700">Pas d'image</span>
+            </div>
+            {% endif %}
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div class="p-6 text-white max-w-lg">
+                    <h3 class="text-2xl font-bold mb-2">{{ projet.titre }}</h3>
+                    <p class="text-sm mb-4">{{ projet.description|truncatechars:90 }}</p>
+
+                    <a href="{{ projet.get_absolute_url }}"
+                       class="px-4 py-2 rounded-full
+                              bg-white/20 backdrop-blur-md
+                              border border-white/40
+                              hover:bg-white/40 transition inline-block">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="col-span-3 text-center text-gray-600">Aucun projet disponible.</p>
+        {% endfor %}
+
+    </div>
+</section>
+
+
+
+<section id="activites" class="mt-24 px-4">
+
+    <h2 class="text-3xl font-extrabold text-blue-800 text-center mb-12">
+        Nos <span class="text-yellow-500">activités</span>
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+
+        <!-- CARTE -->
+        <div data-aos="fade-up"
+             class="flex flex-col items-center text-center gap-4
+                    p-6 rounded-2xl
+                    bg-white/20 backdrop-blur-md
+                    border border-white/30 shadow-lg
+                    hover:-translate-y-2 transition">
+
+            <i class="fas fa-pencil text-3xl text-blue-800"></i>
+            <h3 class="font-bold text-blue-900">Conception & DAO</h3>
+            <p class="text-sm text-gray-700">
+                Des idées modernes et innovantes adaptées à vos projets.
+            </p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100" class="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
+            <i class="fas fa-building text-3xl text-blue-800"></i>
+            <h3 class="font-bold text-blue-900">Espace de travail</h3>
+            <p class="text-sm text-gray-700">Un environnement moderne et professionnel.</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200" class="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
+            <i class="fas fa-graduation-cap text-3xl text-blue-800"></i>
+            <h3 class="font-bold text-blue-900">Formations</h3>
+            <a href="{% url 'formation' %}" class="text-sm text-yellow-600 font-semibold hover:underline">
+                Voir le catalogue →
+            </a>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="300" class="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
+            <i class="fas fa-store text-3xl text-blue-800"></i>
+            <h3 class="font-bold text-blue-900">Boutique</h3>
+            <a href="{% url 'boutique' %}" class="text-sm text-yellow-600 font-semibold hover:underline">
+                Voir la boutique →
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="contacter" class="mt-24 px-4">
+
+    <div class="max-w-3xl mx-auto
+                bg-white/20 backdrop-blur-md
+                border border-white/30 shadow-xl
+                p-8 rounded-3xl">
+
+        <h2 class="text-3xl font-bold text-blue-800 text-center mb-6">
+            Nous envoyer un message
+        </h2>
+
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            <label for="email">Adresse mail :</label>
+
+            <input type="email" name="email" placeholder="Email"
+                   class="w-full px-4 py-3 rounded-xl
+                          bg-white/80 border border-gray-300
+                          focus:ring-2 focus:ring-yellow-500">
+
+            <label for="message">Message :</label>
+
+            <textarea name="message" rows="5" placeholder="Votre message"
+                      class="w-full px-4 py-3 rounded-xl
+                             bg-white/80 border border-gray-300
+                             focus:ring-2 focus:ring-yellow-500"></textarea>
+
+            <button class="w-full py-3 rounded-full
+                           bg-blue-800 text-white font-semibold
+                           hover:bg-yellow-600 transition">
+                Envoyer
+            </button>
+        </form>
+    </div>
+</section>
+
+
+<style>
+  #typewriter {
+    border-right: 2px solid #facc15; /* curseur jaune */
+    padding-right: 2px;
+  }
+
+  .typing {
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #facc15; }
+  }
+</style>
+
+
+<script>
+const slides = document.querySelectorAll('#carousel > div');
+const dots = document.getElementById('dots').children;
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+
+const img = document.getElementById("project-image");
+const title = document.getElementById("project-title");
+const desc = document.getElementById("project-desc");
+const link = document.getElementById("project-link");
+
+const projects = [
+  {
+    image: "{% static 'accueil/images/projet1.jpg' %}",
+    title: "Projet Résidentiel Moderne",
+    desc: "Construction d’une résidence moderne avec des matériaux durables.",
+    link: "#"
+  },
+  {
+    image: "{% static 'accueil/images/projet2.jpg' %}",
+    title: "Complexe Commercial",
+    desc: "Un espace commercial moderne conçu pour l’avenir.",
+    link: "#"
+  },
+  {
+    image: "{% static 'accueil/images/projet3.jpg' %}",
+    title: "Immeuble de Bureaux",
+    desc: "Bureaux modernes intégrant technologie et confort.",
+    link: "#"
+  }
+];
+
+let index_p = 0;
+let index = 0;
+const total = slides.length;
+
+function updateProject() {
+  img.src = projects[index_p].image;
+  title.textContent = projects[index_p].title;
+  desc.textContent = projects[index_p].desc;
+  link.href = projects[index_p].link;
+}
+
+document.getElementById("nextProject").onclick = () => {
+  index_p = (index_p + 1) % projects.length;
+  updateProject();
+};
+
+document.getElementById("prevProject").onclick = () => {
+  index_p = (index_p - 1 + projects.length) % projects.length;
+  updateProject();
+};
+
+function showSlide(i) {
+    for (let j = 0; j < total; j++) {
+        slides[j].classList.remove('opacity-100');
+        slides[j].classList.add('opacity-0');
+        dots[j].classList.remove('bg-white');
+        dots[j].classList.add('bg-white/50');
+    }
+    slides[i].classList.remove('opacity-0');
+    slides[i].classList.add('opacity-100');
+    dots[i].classList.remove('bg-white/50');
+    dots[i].classList.add('bg-white');
+}
+
+prev.addEventListener('click', () => {
+    index = (index - 1 + total) % total;
+    showSlide(index);
+});
+next.addEventListener('click', () => {
+    index = (index + 1) % total;
+    showSlide(index);
+});
+
+// Auto-play
+setInterval(() => {
+    index = (index + 1) % total;
+    showSlide(index);
+}, 4000);
+
+showSlide(index);
+
+  const text = "MODERN TECHNOLOGY";
+  const typewriterEl = document.getElementById("typewriter");
+
+  function typeWriter() {
+    let i = 0;
+    typewriterEl.classList.add("typing");
+
+    function addLetter() {
+      if (i < text.length) {
+        typewriterEl.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(addLetter, 150); // vitesse de frappe
+      } else {
+        typewriterEl.classList.remove("typing"); // retirer curseur après l'animation
+      }
+    }
+    addLetter();
+  }
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        typeWriter();
+        observer.unobserve(entry.target); // animation une seule fois
+      }
+    });
+  }, { threshold: 0.5 }); // 50% du titre visible déclenche l'animation
+
+  observer.observe(typewriterEl);
+
+</script>
+
+{% endblock accueil %}
