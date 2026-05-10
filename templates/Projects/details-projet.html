@@ -1,34 +1,119 @@
 {% extends "base.html" %}
+
 {% block details-projet %}
+<section class="relative max-w-7xl mx-auto px-4 pt-36 pb-24 overflow-hidden">
 
-<div class="max-w-6xl mx-auto py-12 px-4 space-y-8" style="padding-top: 140px;">
+  <!-- Décorations arrière-plan -->
+  <div class="absolute top-24 right-0 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 left-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
 
-  <a href="{% url 'projets-list' %}"
-     class="inline-flex items-center gap-2 mb-6
-            bg-white/20 backdrop-blur-md border border-white/30
-            text-blue-900 px-4 py-2 rounded-xl
-            hover:bg-blue-900 hover:text-white transition font-semibold">
-    <i class="fa-solid fa-arrow-left"></i> Retour aux projets
-  </a>
+  <div class="relative z-10">
 
-  <h1 class="text-3xl font-bold text-blue-900 mb-6">{{ projet.titre }}</h1>
+    <!-- Bouton retour -->
+    <a href="{% url 'projets-list' %}"
+       class="inline-flex items-center gap-3 mb-10
+              bg-white/30 backdrop-blur-xl border border-white/40
+              text-blue-900 px-5 py-3 rounded-full
+              hover:bg-blue-900 hover:text-white
+              transition-all duration-300 font-bold shadow-lg">
+      <i class="fa-solid fa-arrow-left"></i>
+      Retour aux projets
+    </a>
 
-  <p class="text-blue-900 mb-6">{{ projet.description }}</p>
+    <!-- Hero projet -->
+    <div class="mb-14 rounded-[2rem]
+                bg-white/30 backdrop-blur-xl
+                border border-white/40
+                shadow-2xl overflow-hidden">
 
-  <!-- Galerie -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {% for photo in photos %}
-      <div class="overflow-hidden rounded-xl shadow-lg">
-        <img src="{{ photo.image.url }}" alt="{{ photo.description }}"
-             class="w-full h-64 object-cover hover:scale-105 transition duration-300">
-        {% if photo.description %}
-          <p class="text-gray-800 text-sm p-2">{{ photo.description }}</p>
-        {% endif %}
+      {% if projet.affiche %}
+      <div class="relative h-[420px] overflow-hidden">
+        <img src="{{ projet.affiche.url }}"
+             alt="{{ projet.titre }}"
+             class="w-full h-full object-cover">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/30 to-transparent"></div>
+
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+          <span class="inline-flex items-center gap-2 mb-4 rounded-full
+                       bg-white/20 backdrop-blur-xl border border-white/30
+                       px-4 py-2 text-sm font-bold text-white">
+            <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+            Réalisation
+          </span>
+
+          <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
+            {{ projet.titre }}
+          </h1>
+        </div>
       </div>
-    {% empty %}
-      <p class="col-span-3 text-gray-600">Aucune photo disponible pour ce projet.</p>
-    {% endfor %}
-  </div>
-</div>
+      {% else %}
+      <div class="p-8 md:p-10">
+        <span class="inline-flex items-center gap-2 mb-4 rounded-full
+                     bg-blue-900 text-white px-4 py-2 text-sm font-bold">
+          <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+          Réalisation
+        </span>
 
+        <h1 class="text-4xl md:text-6xl font-black text-blue-900 leading-tight">
+          {{ projet.titre }}
+        </h1>
+      </div>
+      {% endif %}
+
+      <!-- Description -->
+      <div class="p-8 md:p-10">
+        <p class="max-w-4xl text-blue-900/80 leading-relaxed text-base md:text-lg">
+          {{ projet.description }}
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Titre galerie -->
+    <div class="mb-10">
+      <h2 class="relative inline-block text-3xl md:text-4xl font-black text-blue-900">
+        Galerie du projet
+        <span class="absolute -bottom-3 left-0 w-20 h-[5px] bg-yellow-400 rounded-full"></span>
+      </h2>
+    </div>
+
+    <!-- Galerie -->
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+
+      {% for photo in photos %}
+      <div class="group break-inside-avoid overflow-hidden rounded-[1.7rem]
+                  bg-white/30 backdrop-blur-xl border border-white/40
+                  shadow-xl hover:shadow-2xl
+                  transition-all duration-500 hover:-translate-y-1">
+
+        <div class="overflow-hidden">
+          <img src="{{ photo.image.url }}"
+               alt="{{ photo.description|default:projet.titre }}"
+               class="w-full object-cover
+                      transition-transform duration-700
+                      group-hover:scale-105">
+        </div>
+
+        {% if photo.description %}
+        <div class="p-5">
+          <p class="text-sm leading-relaxed text-gray-700">
+            {{ photo.description }}
+          </p>
+        </div>
+        {% endif %}
+
+      </div>
+      {% empty %}
+      <div class="rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-12 text-center shadow-xl">
+        <p class="text-lg font-semibold text-gray-700">
+          Aucune photo disponible pour ce projet.
+        </p>
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
 {% endblock %}

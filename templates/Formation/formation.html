@@ -1,304 +1,338 @@
+  
 {% extends "base.html" %}
 {% load static %}
+
 {% block formation %}
 
-<div>
+<div class="relative overflow-hidden">
+
+<!-- HERO -->
 <section
-    class="relative h-screen flex items-center overflow-hidden bg-black px-6 md:px-20"
+    class="relative min-h-screen flex items-center overflow-hidden px-6 md:px-20"
     style="background-image: url('{% static 'formation/images/landing.jpg' %}');
            background-size: cover;
            background-position: center;
            background-repeat: no-repeat;"
 >
-    <!-- overlay sombre -->
-    <div class="absolute inset-0 z-0" style="background: rgba(0,0,0,0.45);"></div>
 
-    <!-- gradient gauche -->
-    <div class="absolute inset-0 z-0"
-         style="background: linear-gradient(to right, rgba(0,0,0,0.72), rgba(0,0,0,0.35), rgba(0,0,0,0));">
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-400 to-transparent"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto pt-32 pb-20">
+
+        <div class="max-w-3xl">
+
+            <span class="inline-flex items-center gap-2 mb-6 rounded-full
+                         bg-white/15 backdrop-blur-xl border border-white/20
+                         px-5 py-2 text-sm font-bold text-white">
+                <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+                Formations • BIM • Architecture • Ingénierie
+            </span>
+
+            <h1 class="text-5xl md:text-7xl font-black leading-tight text-white">
+                Formez-vous aux outils
+                <span class="block text-yellow-400">du bâtiment moderne</span>
+            </h1>
+
+            <p class="mt-6 max-w-2xl text-base md:text-lg text-gray-200 leading-relaxed">
+                Chez Modern Technology of Building, nous proposons des formations pratiques et professionnelles
+                dans les logiciels les plus utilisés en architecture, ingénierie et BIM.
+            </p>
+
+            <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">
+
+                <div class="rounded-3xl bg-white/15 backdrop-blur-xl border border-white/20 p-5">
+                    <div class="text-3xl font-black text-yellow-400">01</div>
+                    <p class="mt-2 text-sm font-semibold text-white">Pratique intensive</p>
+                </div>
+
+                <div class="rounded-3xl bg-white/15 backdrop-blur-xl border border-white/20 p-5">
+                    <div class="text-3xl font-black text-yellow-400">02</div>
+                    <p class="mt-2 text-sm font-semibold text-white">Suivi personnalisé</p>
+                </div>
+
+                <div class="rounded-3xl bg-white/15 backdrop-blur-xl border border-white/20 p-5">
+                    <div class="text-3xl font-black text-yellow-400">03</div>
+                    <p class="mt-2 text-sm font-semibold text-white">Compétences concrètes</p>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-
-    <!-- contenu -->
-    <div class="relative z-10 w-full px-5 sm:px-8 md:px-16 lg:px-24 py-10 md:py-16">
-        <div class="max-w-xl lg:max-w-2xl">
-
-            <p class="mt-5 max-w-lg text-xl sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-white">
-                Bienvenue dans la section 
-                <h1 class="font-black leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-blue-900">
-                  Formation
-                </h1>
-                <h1 class="font-black leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white">
-                    Modern Technology
-                    <span class="block text-yellow-400">
-                        of Building
-                    </span>
-                </h1>
-                <p class="font-bold w-2.5 pt-6">
-                Chez Modern Technology of Building, nous proposons des formations pratiques et 
-                professionnelles dans les logiciels les plus utilisés en architecture, 
-                ingénierie et BIM (Building Information Modeling).
-                Notre objectif est de vous permettre d’acquérir des 
-                compétences concrètes, directement applicables sur le marché du travail .
-                </p>
-            </p>    
-  </div>
-    
 </section>
-<!-- SECTION ORGANISATION DES SESSIONS -->
-<div class="max-w-7xl mx-auto px-4 py-16">
 
-    <div class="max-w-4xl">
+<!-- ORGANISATION DES SESSIONS -->
+<section class="relative max-w-7xl mx-auto px-4 py-24">
 
-        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-6">
-            Organisation des sessions
-        </h2>
+    <div class="absolute top-10 right-0 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
 
-        <p class="text-gray-600 leading-relaxed mb-8">
-            Nos formations sont organisées en groupes afin de garantir une meilleure qualité d’apprentissage et un suivi efficace de chaque apprenant.
-        </p>
+    <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
 
-        <!-- CARDS -->
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div>
+            <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+                Organisation
+            </p>
 
-            <!-- PRO -->
-            <div class="bg-white rounded-3xl border border-gray-100 shadow-md p-6 hover:shadow-xl transition">
+            <h2 class="text-4xl md:text-5xl font-black text-blue-900 mb-6 leading-tight">
+                Des sessions pensées pour mieux apprendre
+            </h2>
 
-                <span class="inline-block bg-blue-900 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                    Formation professionnelle
+            <p class="text-blue-900/70 mb-8 leading-relaxed">
+                Nos formations sont organisées en groupes afin de garantir une meilleure qualité
+                d’apprentissage, plus de pratique et un suivi efficace de chaque apprenant.
+            </p>
+
+            <div class="rounded-3xl bg-blue-900 text-white p-6 shadow-xl">
+                <p class="text-sm text-blue-100 mb-2">Notre approche</p>
+                <p class="text-xl md:text-2xl font-black">
+                    Moins de théorie inutile, plus de pratique guidée.
+                </p></div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+
+            <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-7 shadow-xl hover:-translate-y-2 transition duration-500">
+                <span class="inline-flex mb-5 rounded-full bg-blue-900 text-white text-xs font-black px-4 py-2">
+                    Professionnel
                 </span>
 
-                <h3 class="text-lg font-bold text-blue-900 mb-3">
+                <h3 class="text-2xl font-black text-blue-900 mb-3">
                     Groupe réduit
                 </h3>
 
-                <p class="text-gray-600 text-sm mb-4">
-                    Sessions conçues pour un apprentissage intensif et un accompagnement personnalisé.
+                <p class="text-gray-700 text-sm mb-6">
+                    Sessions intensives avec accompagnement personnalisé.
                 </p>
 
-                <div class="text-2xl font-extrabold text-blue-900">
-                    10 participants
-                    <span class="text-sm font-medium text-gray-500">/ salle</span>
+                <div class="text-4xl font-black text-blue-900">
+                    10
+                    <span class="text-sm font-semibold text-gray-500">participants / salle</span>
                 </div>
-
             </div>
 
-            <!-- ETUDIANT -->
-            <div class="bg-white rounded-3xl border border-gray-100 shadow-md p-6 hover:shadow-xl transition">
-
-                <span class="inline-block bg-yellow-400 text-black text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                    Formation étudiante
+            <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-7 shadow-xl hover:-translate-y-2 transition duration-500">
+                <span class="inline-flex mb-5 rounded-full bg-yellow-400 text-blue-900 text-xs font-black px-4 py-2">
+                    Étudiant
                 </span>
 
-                <h3 class="text-lg font-bold text-blue-900 mb-3">
+                <h3 class="text-2xl font-black text-blue-900 mb-3">
                     Groupe élargi
                 </h3>
 
-                <p class="text-gray-600 text-sm mb-4">
-                    Sessions adaptées pour favoriser l’échange et l’apprentissage collectif.
+                <p class="text-gray-700 text-sm mb-6">
+                    Sessions adaptées à l’apprentissage collectif.
                 </p>
 
-                <div class="text-2xl font-extrabold text-blue-900">
-                    25 participants
-                    <span class="text-sm font-medium text-gray-500">/ salle</span>
+                <div class="text-4xl font-black text-blue-900">
+                    25
+                    <span class="text-sm font-semibold text-gray-500">participants / salle</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FORMATIONS -->
+<section class="relative max-w-7xl mx-auto px-4 pb-28">
+
+    <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+
+        <div>
+            <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+                Programmes
+            </p>
+
+            <h2 class="relative inline-block text-4xl md:text-5xl font-black text-blue-900">
+                Nos formations
+                <span class="absolute -bottom-3 left-0 w-24 h-[5px] bg-yellow-400 rounded-full"></span>
+            </h2>
+        </div>
+
+        <p class="max-w-md text-blue-900/70 leading-relaxed">
+            Des programmes pratiques pour maîtriser les logiciels professionnels du bâtiment,
+            de la conception à la présentation du projet.
+        </p>
+
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        {% for formation in object_list %}
+        <article class="group relative overflow-hidden rounded-[2rem]
+                       bg-white/35 backdrop-blur-xl border border-white/40
+                       shadow-xl hover:shadow-2xl hover:-translate-y-2
+                       transition-all duration-500">
+
+            <!-- IMAGE -->
+            <div class="relative h-64 overflow-hidden">
+
+                {% if formation.affiche %}
+                <img src="{{ formation.affiche.url }}"
+                     alt="{{ formation.nom }}"
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                {% else %}
+                <div class="w-full h-full bg-yellow-400/70 flex items-center justify-center">
+                    <span class="text-blue-900 font-bold">Pas d'image</span>
+                </div>
+                {% endif %}
+
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-950/85 via-blue-950/10 to-transparent"></div>
+
+                <div class="absolute top-5 left-5">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-4 py-2
+                                 text-xs font-black text-blue-900 shadow-lg">
+                        <span class="w-2 h-2 rounded-full bg-blue-900"></span>
+                        Formation
+                    </span>
+                </div><div class="absolute bottom-5 left-5 right-5">
+                    <h3 class="text-2xl font-black text-white leading-tight">
+                        {{ formation.nom }}
+                    </h3>
                 </div>
 
             </div>
 
-        </div>
+            <!-- CONTENU -->
+            <div class="p-6">
 
-        <!-- TEXTE FINAL -->
-        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 text-sm text-blue-900 leading-relaxed">
-            Ces effectifs permettent à chaque apprenant de poser des questions, de pratiquer efficacement et de bénéficier d’un encadrement personnalisé.
-            <br><br>
-            Plusieurs sessions peuvent être organisées en fonction de la demande.
+                <div class="flex items-center gap-4 mb-5">
+
+                    {% if formation.logo %}
+                    <div class="shrink-0 bg-white/70 rounded-2xl p-2 shadow-md border border-white/60">
+                        <img src="{{ formation.logo.url }}"
+                             alt="Logo {{ formation.nom }}"
+                             class="h-12 w-12 object-contain">
+                    </div>
+                    {% endif %}
+
+                    <div>
+                        <p class="text-xs text-blue-900/60 font-bold uppercase tracking-wide">
+                            Programme pratique
+                        </p>
+
+                        <div class="mt-1 inline-flex items-center gap-2 rounded-full bg-white/40 border border-white/40 px-3 py-1">
+                            <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+                            <span class="text-xs font-bold text-blue-900">
+                                {{ formation.duree }} mois
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                    {{ formation.objectifs|truncatechars:120 }}
+                </p>
+
+                <!-- PRIX -->
+                <div class="grid grid-cols-2 gap-3 mb-6">
+
+                    <div class="rounded-2xl bg-white/40 backdrop-blur-md border border-white/50 p-4 shadow-sm">
+                        <p class="text-xs font-bold text-blue-900/60 uppercase tracking-wide mb-1">
+                            Étudiant
+                        </p>
+                        <p class="text-2xl font-black text-blue-900">
+                            {{ formation.prix_etudiant }}$
+                        </p>
+                    </div>
+
+                    <div class="relative rounded-2xl bg-blue-900 p-4 shadow-md overflow-hidden">
+                        <div class="absolute -right-6 -top-6 w-20 h-20 bg-yellow-400/20 rounded-full"></div>
+
+                        <p class="text-xs font-bold text-white/70 uppercase tracking-wide mb-1">
+                            Pro
+                        </p>
+                        <p class="text-2xl font-black text-white">
+                            {{ formation.prix_pro }}$
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- BOUTONS -->
+                <div class="grid grid-cols-2 gap-3">
+
+                    <a href="{% url 'formation_inscription' formation.slug %}"
+                       class="text-center px-4 py-3 bg-blue-900 text-white rounded-full font-bold shadow
+                              hover:bg-yellow-400 hover:text-blue-900 transition duration-300">
+                        S'inscrire
+                    </a>
+
+                    <a href="{{ formation.get_absolute_url }}"
+                       class="text-center px-4 py-3 bg-white/40 backdrop-blur-md border border-white/40
+                              text-blue-900 rounded-full font-bold shadow
+                              hover:bg-blue-900 hover:text-white transition duration-300">
+                        Voir plus
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        {% empty %}
+        <div class="col-span-full rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-12 text-center shadow-xl">
+            <p class="text-lg font-semibold text-gray-700">
+                Aucune formation disponible pour le moment.
+            </p>
         </div>
+        {% endfor %}
 
     </div>
 
-</div>
-<div class="max-w-7xl mx-auto py-12 px-4" style="padding-top: 140px;">
+    <!-- PAGINATION -->
+    {% if is_paginated %}
+    <div class="flex justify-center mt-14 gap-2">
 
-    <div class="mb-12">
-    <h1 class="relative inline-block text-3xl md:text-4xl font-extrabold text-blue-900">
-      Nos formations
-      <span class="absolute -bottom-2 left-0 w-16 h-[4px] bg-yellow-400 rounded-full"></span>
-    </h1>
-  </div>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-    {% for formation in object_list %}
-      <div class="group relative bg-white/20 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden rounded-3xl hover:-translate-y-1">
-
-    <!-- IMAGE -->
-    <div class="relative h-56 overflow-hidden">
-        {% if formation.affiche %}
-            <img src="{{ formation.affiche.url }}" 
-                 alt="{{ formation.nom }}"
-                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}"
+           class="flex items-center justify-center w-11 h-11 bg-white/30 backdrop-blur-xl border border-white/40
+                  text-blue-900 hover:bg-blue-900 hover:text-white transition font-bold rounded-full shadow">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
         {% else %}
-            <div class="w-full h-full bg-white/10 flex items-center justify-center">
-                <span class="text-blue-900 font-medium">Pas d'image</span>
-            </div>
+        <span class="flex items-center justify-center w-11 h-11 bg-white/20 text-gray-400 cursor-not-allowed rounded-full">
+            <i class="fa-solid fa-chevron-left"></i>
+        </span>
         {% endif %}
 
-        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
-
-        <div class="absolute top-4 left-4">
-            <span class="inline-flex items-center rounded-full bg-yellow-400 px-4 py-1 text-xs font-bold text-black shadow">
-                Formation
+        {% for num in paginator.page_range %}
+            {% if page_obj.number == num %}
+            <span class="flex items-center justify-center w-11 h-11 bg-blue-900 text-white font-black rounded-full shadow">
+                {{ num }}
             </span>
-        </div>
-    </div>
-
-    <!-- CONTENU -->
-    <div class="p-6">
-
-        <!-- LOGO + NOM -->
-        <div class="flex items-center gap-4 mb-4">
-
-            {% if formation.logo %}
-            <div class="shrink-0 bg-white rounded-2xl p-2 shadow-md border border-white/60">
-                <img src="{{ formation.logo.url }}"
-                     alt="Logo {{ formation.nom }}"
-                     class="h-12 w-12 object-contain">
-            </div>
+            {% elif num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+            <a href="?page={{ num }}"
+               class="flex items-center justify-center w-11 h-11 bg-white/30 backdrop-blur-xl border border-white/40
+                      text-blue-900 hover:bg-blue-900 hover:text-white transition font-bold rounded-full shadow">
+                {{ num }}
+            </a>
             {% endif %}
+        {% endfor %}
 
-            <div>
-                <h2 class="text-xl font-extrabold text-blue-900 leading-tight">
-                    {{ formation.nom }}
-                </h2>
-                <p class="text-xs text-blue-900/60 font-medium mt-1">
-                    Programme pratique & certifiant
-                </p>
-            </div>
-
-        </div>
-
-        <!-- OBJECTIFS -->
-        <p class="text-blue-900/80 text-sm leading-relaxed mb-5">
-            {{ formation.objectifs|truncatechars:110 }}
-        </p>
-
-        <!-- INFOS -->
-        <div class="flex items-center justify-between gap-3 mb-6">
-
-            <div class="flex items-center gap-2 rounded-full bg-white/30 border border-white/40 px-4 py-2">
-                <span class="text-yellow-400 font-bold">●</span>
-                <span class="text-xs font-semibold text-blue-900">
-                    Durée : {{ formation.duree }}
-                </span>
-            </div>
-
-        </div>
-
-        <!-- PRIX -->
-        <div class="grid grid-cols-2 gap-3 mb-6">
-
-            <div class="relative rounded-2xl bg-white/40 backdrop-blur-md border border-white/50 p-4 shadow-sm">
-                <p class="text-xs font-bold text-blue-900/60 uppercase tracking-wide mb-1">
-                    Étudiant
-                </p>
-                <p class="text-2xl font-black text-blue-900">
-                    {{ formation.prix_etudiant }}$
-                </p>
-                <p class="text-[11px] text-blue-900/60 mt-1">
-                    Tarif accessible
-                </p>
-            </div>
-
-            <div class="relative rounded-2xl bg-blue-900 p-4 shadow-md overflow-hidden">
-                <div class="absolute -right-6 -top-6 w-20 h-20 bg-yellow-400/20 rounded-full"></div>
-
-                <p class="text-xs font-bold text-white/70 uppercase tracking-wide mb-1">
-                    Professionnel
-                </p>
-                <p class="text-2xl font-black text-white">
-                    {{ formation.prix_pro }}$
-                </p>
-                <p class="text-[11px] text-white/70 mt-1">
-                    Pack pro
-                </p>
-            </div>
-
-        </div>
-
-        <!-- BOUTONS -->
-        <div class="flex gap-3">
-
-            <a href="{% url 'formation_inscription' formation.slug %}"
-               class="flex-1 text-center px-4 py-3 bg-blue-900 text-white rounded-2xl font-bold shadow hover:bg-blue-800 transition duration-300">
-                S'inscrire
-            </a>
-
-            <a href="{{ formation.get_absolute_url }}"class="flex-1 text-center px-4 py-3 bg-white/30 backdrop-blur-md border border-white/40 text-blue-900 rounded-2xl font-bold shadow hover:bg-yellow-400 hover:text-black transition duration-300">
-                Voir plus
-            </a>
-
-        </div>
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}"
+           class="flex items-center justify-center w-11 h-11 bg-white/30 backdrop-blur-xl border border-white/40
+                  text-blue-900 hover:bg-blue-900 hover:text-white transition font-bold rounded-full shadow">
+            <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        {% else %}
+        <span class="flex items-center justify-center w-11 h-11 bg-white/20 text-gray-400 cursor-not-allowed rounded-full">
+            <i class="fa-solid fa-chevron-right"></i>
+        </span>
+        {% endif %}
 
     </div>
-
-</div>
-    {% empty %}
-      <p class="col-span-3 text-center text-blue-900 text-lg">
-        Aucune formation disponible pour le moment.
-      </p>
-    {% endfor %}
-
-  </div>
-</div>
-
-<!-- Pagination -->
-{% if is_paginated %}
-<div class="flex justify-center mt-8 gap-2">
-
-  <!-- Précédent -->
-  {% if page_obj.has_previous %}
-    <a href="?page={{ page_obj.previous_page_number }}"
-       class="flex items-center justify-center w-10 h-10 bg-white/20 backdrop-blur-md text-blue-900
-              hover:bg-blue-900 hover:text-white transition font-semibold rounded-full"
-       title="Page précédente">
-      <i class="fa-solid fa-chevron-left"></i>
-    </a>
-  {% else %}
-    <span class="flex items-center justify-center w-10 h-10 bg-gray-200 text-gray-400 cursor-not-allowed rounded-full">
-      <i class="fa-solid fa-chevron-left"></i>
-    </span>
-  {% endif %}
-
-  <!-- Numéros de page -->
-  {% for num in paginator.page_range %}
-    {% if page_obj.number == num %}
-      <span class="flex items-center justify-center w-10 h-10 bg-blue-900 text-white font-bold rounded-full">
-        {{ num }}
-      </span>
-    {% elif num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
-      <a href="?page={{ num }}"
-         class="flex items-center justify-center w-10 h-10 bg-white/20 backdrop-blur-md text-blue-900
-                hover:bg-blue-900 hover:text-white transition font-semibold rounded-full">
-        {{ num }}
-      </a>
     {% endif %}
-  {% endfor %}
 
-  <!-- Suivant -->
-  {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}"
-       class="flex items-center justify-center w-10 h-10 bg-white/20 backdrop-blur-md text-blue-900
-              hover:bg-blue-900 hover:text-white transition font-semibold rounded-full"
-       title="Page suivante">
-      <i class="fa-solid fa-chevron-right"></i>
-    </a>
-  {% else %}
-    <span class="flex items-center justify-center w-10 h-10 bg-gray-200 text-gray-400 cursor-not-allowed rounded-full">
-      <i class="fa-solid fa-chevron-right"></i>
-    </span>
-  {% endif %}
+</section>
 
-</div>
-{% endif %}
 </div>
 
 {% endblock formation %}

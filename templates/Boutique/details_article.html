@@ -1,92 +1,152 @@
 {% extends "base.html" %}
 
 {% block details_article %}
-<section class="max-w-6xl mx-auto py-12 px-4" style="padding-top: 140px;">
+<section class="relative max-w-7xl mx-auto px-4 pt-36 pb-24 overflow-hidden">
 
-  <!-- Bouton retour -->
-  <a href="{% url 'boutique' %}"
-    class="inline-flex items-center gap-3 mb-8
-            bg-yellow-300 text-blue-900 font-semibold
-            px-5 py-2 rounded-full
-            shadow-md hover:bg-yellow-200 hover:text-blue-900
-            transition-all duration-300">
-    <i class="fa-solid fa-arrow-left"></i>
-    Retour
-  </a>
+  <!-- Décorations arrière-plan -->
+  <div class="absolute top-20 right-0 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-10 left-0 w-80 h-80 bg-blue-900/20 rounded-full blur-3xl"></div>
 
-  <!-- Contenu principal -->
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+  <div class="relative z-10">
 
-    <!-- Galerie -->
-    <div class="space-y-4">
-      {% if article.photoarticle_set.all %}
-        <div class="grid grid-cols-2 gap-4">
+    <!-- Bouton retour -->
+    <a href="{% url 'boutique' %}"
+       class="inline-flex items-center gap-3 mb-10
+              bg-white/40 backdrop-blur-xl border border-white/40
+              text-blue-900 font-bold
+              px-5 py-3 rounded-full
+              shadow-lg hover:bg-yellow-400
+              transition-all duration-300">
+      <i class="fa-solid fa-arrow-left"></i>
+      Retour à la boutique
+    </a>
+
+    <!-- Contenu principal -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Galerie images -->
+      <div class="space-y-5">
+
+        {% with article.photoarticle_set.first as first_photo %}
+          {% if first_photo %}
+          <div class="group relative overflow-hidden rounded-[2rem]
+                      bg-white/30 backdrop-blur-xl border border-white/40
+                      shadow-2xl">
+
+            <img src="{{ first_photo.image.url }}"
+                 alt="{{ article.nom }}"
+                 class="w-full h-[420px] object-cover
+                        transition-transform duration-700
+                        group-hover:scale-105">
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+
+            {% if article.reduction > 0 %}
+            <div class="absolute top-5 left-5 rounded-full bg-yellow-400 px-4 py-2
+                        text-xs font-black text-blue-900 shadow-lg">
+              Promo
+            </div>
+            {% endif %}
+
+          </div>
+          {% else %}
+          <div class="h-[420px] bg-white/30 backdrop-blur-xl border border-white/40
+                      flex items-center justify-center rounded-[2rem] shadow-xl">
+            <span class="font-semibold text-gray-600">Aucune image disponible</span>
+          </div>
+          {% endif %}
+        {% endwith %}
+
+        <!-- Miniatures -->
+        <div class="grid grid-cols-3 gap-4">
           {% for photo in article.photoarticle_set.all %}
-          <div class="overflow-hidden rounded-2xl shadow-lg">
+          <div class="group overflow-hidden rounded-2xl
+                      bg-white/30 backdrop-blur-xl border border-white/40
+                      shadow-lg">
             <img src="{{ photo.image.url }}"
                  alt="{{ article.nom }}"
-                 class="w-full h-56 object-cover
+                 class="w-full h-28 object-cover
                         transition-transform duration-500
-                        hover:scale-110">
+                        group-hover:scale-110">
           </div>
           {% endfor %}
         </div>
-      {% else %}
-        <div class="h-64 bg-gray-200 flex items-center justify-center rounded-2xl">
-          <span class="text-gray-500">Aucune image disponible</span>
-        </div>
-      {% endif %}
-    </div>
 
-    <!-- Détails -->
-    <div class="flex flex-col justify-between bg-white/30 backdrop-blur-xl border border-white/30
-                rounded-3xl p-8 shadow-xl">
-
-      <!-- Informations -->
-      <div class="space-y-6">
-        <!-- Titre -->
-        <h1 class="text-3xl font-extrabold text-blue-900">
-          {{ article.nom }}
-        </h1>
-
-        <!-- Description -->
-        <p class="text-gray-800 leading-relaxed text-sm md:text-base">
-          {{ article.description }}
-        </p>
-
-        <!-- Prix -->
-        <div class="text-2xl md:text-3xl font-bold text-blue-900">
-          {% if article.reduction > 0 %}
-            <span class="line-through text-gray-500 text-lg">{{ article.prix }} $</span>
-            <span class="ml-3 text-red-600">{{ article.prix }} $</span>
-          {% else %}
-            {{ article.prix }} $
-          {% endif %}
-        </div>
       </div>
 
-      <!-- Actions -->
-      <div class="mt-6 flex flex-col sm:flex-row gap-4">
-        <a href="https://wa.me/243812345678?text=Bonjour,%20je%20souhaite%20commander%20l'article%20{{ article.nom }}%20:%20{{ request.build_absolute_uri }}"
-          target="_blank"
-          class="flex-1 bg-blue-900 text-yellow-300 px-6 py-3
-                  rounded-full font-semibold shadow-md
-                  hover:bg-yellow-200 hover:text-blue-900
-                  transition-all duration-300">
-          Commander
-        </a>
+      <!-- Détails article -->
+      <div class="relative overflow-hidden rounded-[2rem]
+                  bg-white/35 backdrop-blur-xl
+                  border border-white/40
+                  shadow-2xl p-7 md:p-10">
 
+        <div class="absolute -top-16 -right-16 w-40 h-40 bg-yellow-400/30 rounded-full blur-3xl"></div>
 
-        <button disabled class="w-full bg-yellow-300 text-blue-900 px-6 py-3
-                rounded-full font-semibold shadow-md
-                hover:bg-blue-900 hover:text-yellow-200
-                transition-all duration-300 relative">
-          Acheter directement
-          <!-- Badge -->
-          <span class="absolute -top-2 -right-3 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
-            Bientôt disponible
-          </span>
-        </button>
+        <div class="relative z-10 flex flex-col min-h-[420px]">
+
+          <!-- Catégorie -->
+          <p class="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+            Article disponible
+          </p>
+
+          <!-- Titre -->
+          <h1 class="mb-5 text-4xl md:text-5xl font-black text-blue-900 leading-tight">
+            {{ article.nom }}
+          </h1>
+
+          <!-- Description -->
+          <p class="mb-8 text-gray-700 leading-relaxed text-base">
+            {{ article.description }}
+          </p>
+
+          <!-- Prix -->
+          <div class="mb-8 flex items-end gap-3">
+            {% if article.reduction > 0 %}
+              <span class="text-lg text-gray-400 line-through">
+                {{ article.prix }} $
+              </span>
+              <span class="text-4xl font-black text-red-600">
+                {{ article.prix }} $
+              </span>
+            {% else %}<span class="text-4xl font-black text-blue-900">
+                {{ article.prix }} $
+              </span>
+            {% endif %}
+          </div>
+
+          <!-- Actions -->
+          <div class="mt-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            <a href="https://wa.me/243812345678?text=Bonjour,%20je%20souhaite%20commander%20l'article%20{{ article.nom }}%20:%20{{ request.build_absolute_uri }}"
+               target="_blank"
+               class="flex items-center justify-center gap-2
+                      rounded-full bg-blue-900 px-6 py-4
+                      font-bold text-white shadow-lg
+                      hover:bg-yellow-400 hover:text-blue-900
+                      transition-all duration-300">
+              <i class="fa-brands fa-whatsapp"></i>
+              Commander
+            </a>
+
+            <button disabled
+                    class="relative flex items-center justify-center
+                           rounded-full bg-yellow-400/80 px-6 py-4
+                           font-bold text-blue-900 shadow-lg
+                           opacity-80 cursor-not-allowed">
+
+              Acheter
+
+              <span class="absolute -top-3 -right-2
+                           bg-red-600 text-white text-[10px]
+                           font-black px-2 py-1 rounded-full shadow-md">
+                Bientôt
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
 
     </div>

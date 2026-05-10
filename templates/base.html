@@ -23,107 +23,209 @@
   <body class="relative bg-gray-400">
 
     <!-- HEADER -->
-    <header class="fixed top-0 left-0 w-full z-50">
-      <div class="max-w-7xl mx-auto px-6 pt-4">
+<header class="fixed top-0 left-0 w-full z-50">
+  <div class="max-w-7xl mx-auto px-6 pt-6">
 
-        <!-- BARRE PRINCIPALE -->
-        <div class="h-[80px] flex items-center justify-between
-                    bg-white/30 backdrop-blur-xl
-                    border border-white/30
-                    rounded-2xl shadow-xl
-                    px-6">
+    <!-- BARRE PRINCIPALE -->
+    <div class="h-[85px] flex items-center justify-between
+                bg-white/25 backdrop-blur-2xl
+                border border-white/30
+                rounded-[2rem] shadow-2xl
+                px-6">
 
-          <!-- LOGO -->
-          <a href="{% url 'accueil' %}" class="flex items-center gap-3">
-            <img src="{% static 'accueil/images/logo.png' %}" class="w-24" alt="Logo">
+      <!-- LOGO -->
+      <a href="{% url 'accueil' %}" class="flex items-center gap-3 shrink-0">
+        <img src="{% static 'accueil/images/logo.png' %}"
+             class="w-24 object-contain"
+             alt="Logo">
+      </a>
+
+      <!-- NAV DESKTOP -->
+      <nav class="hidden xl:flex items-center gap-5 font-medium text-blue-900">
+
+        <!-- GROUPE PRINCIPAL -->
+        <div class="flex items-center gap-2 rounded-full
+                    bg-blue-900/95 px-3 py-2
+                    shadow-lg border border-blue-800/20">
+
+          <a href="{% url 'accueil' %}"
+             class="px-5 py-2.5 rounded-full
+                    text-white font-bold text-sm
+                    hover:bg-yellow-400 hover:text-blue-900
+                    transition-all duration-300">
+            Accueil
           </a>
 
-          <!-- NAV DESKTOP -->
-          <nav class="hidden md:flex items-center gap-8 font-medium text-blue-900">
+          <a href="{% url 'services' %}"
+             class="px-5 py-2.5 rounded-full
+                    text-white font-bold text-sm
+                    hover:bg-yellow-400 hover:text-blue-900
+                    transition-all duration-300">
+            Services
+          </a>
 
-            <a href="{% url 'accueil' %}" class="relative group">
-              Accueil
-              <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                           bg-gradient-to-r from-yellow-400 to-yellow-600
-                           scale-x-0 origin-left transition-transform duration-300
-                           group-hover:scale-x-100"></span>
-            </a>
+          <a href="{% url 'formation' %}"
+             class="px-5 py-2.5 rounded-full
+                    text-white font-bold text-sm
+                    hover:bg-yellow-400 hover:text-blue-900
+                    transition-all duration-300">
+            Formation
+          </a>
 
-            <a href="{% url 'boutique' %}" class="relative group">
-              Boutique
-              <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                           bg-gradient-to-r from-yellow-400 to-yellow-600
-                           scale-x-0 origin-left transition-transform duration-300
-                           group-hover:scale-x-100"></span>
-            </a>
-
-            <a href="{% url 'projets-list' %}" class="relative group">
-              Réalisations
-              <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                           bg-gradient-to-r from-yellow-400 to-yellow-600
-                           scale-x-0 origin-left transition-transform duration-300
-                           group-hover:scale-x-100"></span>
-            </a>
-
-            <a href="{% url 'services' %}" class="relative group">
-              Services
-              <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                           bg-gradient-to-r from-yellow-400 to-yellow-600
-                           scale-x-0 origin-left transition-transform duration-300
-                           group-hover:scale-x-100"></span>
-            </a>
-
-            <a href="{% url 'formation' %}" class="relative group">
-              Formation
-              <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                           bg-gradient-to-r from-yellow-400 to-yellow-600
-                           scale-x-0 origin-left transition-transform duration-300
-                           group-hover:scale-x-100"></span>
-            </a>
-
-            <a href="{% url 'gallery-list' %}" class="relative group">
-              Gallerie
-              <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                           bg-gradient-to-r from-yellow-400 to-yellow-600
-                           scale-x-0 origin-left transition-transform duration-300
-                           group-hover:scale-x-100"></span>
-            </a>
-
-            <a href="{% url 'workspace' %}" class="relative group">
-              Espace de travail
-              <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                           bg-gradient-to-r from-yellow-400 to-yellow-600
-                           scale-x-0 origin-left transition-transform duration-300group-hover:scale-x-100"></span>
-            </a>
-
-          </nav>
-
-          <!-- BOUTON MOBILE -->
-          <button id="mobile-menu-btn" class="md:hidden text-blue-900 text-2xl">
-            <i id="btn_icone" class="fas fa-bars"></i>
-          </button>
         </div>
 
-        <!-- MENU MOBILE -->
-        <nav id="mobile-menu"
-             class="hidden md:hidden mt-4
-                    bg-white/40 backdrop-blur-xl
-                    border border-white/30
-                    rounded-2xl shadow-xl
-                    p-6 space-y-4 text-blue-900 font-medium">
-          <a href="{% url 'accueil' %}" class="block hover:text-yellow-500">Accueil</a>
-          <a href="{% url 'boutique' %}" class="block hover:text-yellow-500">Boutique</a>
-          <a href="{% url 'projets-list' %}" class="block hover:text-yellow-500">Réalisations</a>
-          <a href="{% url 'services' %}" class="block hover:text-yellow-500">Services</a>
-          <a href="{% url 'formation' %}" class="block hover:text-yellow-500">Formation</a>
-          <a href="{% url 'gallery-list' %}" class="block hover:text-yellow-500">Gallerie</a>
-          <a href="{% url 'workspace' %}" class="block hover:text-yellow-500">Espace de travail</a>
-        </nav>
+        <!-- SÉPARATEUR -->
+        <div class="h-8 w-[1px] bg-blue-900/15"></div>
+
+        <!-- GROUPE SECONDAIRE -->
+        <div class="flex items-center gap-7 text-[15px]">
+
+          <a href="{% url 'boutique' %}" class="relative group font-semibold">
+            Boutique
+
+            <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                         bg-gradient-to-r from-yellow-400 to-yellow-600
+                         scale-x-0 origin-left
+                         transition-transform duration-300
+                         group-hover:scale-x-100">
+            </span>
+          </a>
+
+          <a href="{% url 'projets-list' %}" class="relative group font-semibold">
+            Réalisations
+
+            <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                         bg-gradient-to-r from-yellow-400 to-yellow-600
+                         scale-x-0 origin-left
+                         transition-transform duration-300
+                         group-hover:scale-x-100">
+            </span>
+          </a>
+
+          <a href="{% url 'gallery-list' %}" class="relative group font-semibold">
+            Galerie
+
+            <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                         bg-gradient-to-r from-yellow-400 to-yellow-600
+                         scale-x-0 origin-left
+                         transition-transform duration-300
+                         group-hover:scale-x-100">
+            </span>
+          </a>
+
+          <a href="{% url 'workspace' %}" class="relative group font-semibold">
+            Workspace
+
+            <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                         bg-gradient-to-r from-yellow-400 to-yellow-600
+                         scale-x-0 origin-left
+                         transition-transform duration-300
+                         group-hover:scale-x-100">
+            </span>
+          </a>
+
+        </div>
+
+      </nav>
+
+      <!-- BOUTON MOBILE -->
+      <button id="mobile-menu-btn"
+              class="xl:hidden text-blue-900 text-2xl">
+        <i id="btn_icone" class="fas fa-bars"></i>
+      </button>
+
+    </div>
+
+    <!-- MENU MOBILE -->
+    <nav id="mobile-menu"
+         class="hidden xl:hidden mt-4
+                bg-white/30 backdrop-blur-2xl
+                border border-white/30rounded-[2rem] shadow-2xl
+                p-6 text-blue-900">
+
+      <!-- Sections principales -->
+      <div class="mb-6">
+
+        <p class="text-xs uppercase tracking-[0.25em]
+                  text-yellow-600 font-black mb-4">
+          Sections principales
+        </p>
+
+        <div class="space-y-3">
+
+          <a href="{% url 'accueil' %}"
+             class="block rounded-2xl bg-blue-900 text-white
+                    px-5 py-4 font-bold
+                    hover:bg-yellow-400 hover:text-blue-900
+                    transition">
+            Accueil
+          </a>
+
+          <a href="{% url 'services' %}"
+             class="block rounded-2xl bg-blue-900 text-white
+                    px-5 py-4 font-bold
+                    hover:bg-yellow-400 hover:text-blue-900
+                    transition">
+            Services
+          </a>
+
+          <a href="{% url 'formation' %}"
+             class="block rounded-2xl bg-blue-900 text-white
+                    px-5 py-4 font-bold
+                    hover:bg-yellow-400 hover:text-blue-900
+                    transition">
+            Formation
+          </a>
+
+        </div>
+
       </div>
-    </header>
+
+      <!-- Séparation -->
+      <div class="border-t border-blue-900/10 pt-5">
+
+        <p class="text-xs uppercase tracking-[0.25em]
+                  text-blue-900/60 font-black mb-4">
+          Autres sections
+        </p>
+
+        <div class="space-y-3">
+
+          <a href="{% url 'boutique' %}"
+             class="block rounded-xl px-4 py-3
+                    hover:bg-blue-900 hover:text-white transition">
+            Boutique
+          </a>
+
+          <a href="{% url 'projets-list' %}"
+             class="block rounded-xl px-4 py-3
+                    hover:bg-blue-900 hover:text-white transition">
+            Réalisations
+          </a>
+
+          <a href="{% url 'gallery-list' %}"
+             class="block rounded-xl px-4 py-3
+                    hover:bg-blue-900 hover:text-white transition">
+            Galerie
+          </a>
+
+          <a href="{% url 'workspace' %}"
+             class="block rounded-xl px-4 py-3
+                    hover:bg-blue-900 hover:text-white transition">
+            Espace de travail
+          </a>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+  </div>
+</header>
 
     <!-- CONTENU PRINCIPAL -->
-    <main class="pt-[112px]">
+    <main>
 
       {% block accueil %}
       {% endblock accueil %}

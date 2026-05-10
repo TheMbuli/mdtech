@@ -1,231 +1,256 @@
+
 {% extends "base.html" %}
 {% load static %}
 
 {% block services %}
 
-<div>
+<div class="relative overflow-hidden">
 
 <!-- HERO -->
 <section
-    class="relative h-screen flex items-center overflow-hidden bg-black px-6 md:px-20"
+    class="relative min-h-screen flex items-center overflow-hidden px-6 md:px-20"
     style="background-image: url('{% static 'services/images/landing_services.jpg' %}');
            background-size: cover;
            background-position: center;
            background-repeat: no-repeat;"
 >
 
-    <!-- overlay sombre -->
-    <div class="absolute inset-0 z-0" style="background: rgba(0,0,0,0.45);"></div>
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-400 to-transparent"></div>
 
-    <!-- gradient gauche -->
-    <div class="absolute inset-0 z-0"
-         style="background: linear-gradient(to right, rgba(0,0,0,0.72), rgba(0,0,0,0.35), rgba(0,0,0,0));">
-    </div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto pt-32 pb-20">
 
-    <div class="relative z-10 w-full px-5 sm:px-8 md:px-16 lg:px-24 py-10 md:py-16">
-        <div class="max-w-xl lg:max-w-2xl">
+        <div class="max-w-3xl">
 
-            <h1 class="font-black text-5xl md:text-6xl text-blue-900">
-                Services et facturations
+            <span class="inline-flex items-center gap-2 mb-6 rounded-full
+                         bg-white/15 backdrop-blur-xl border border-white/20
+                         px-5 py-2 text-sm font-bold text-white">
+                <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+                Services • Facturation • Accompagnement
+            </span>
+
+            <h1 class="text-5xl md:text-7xl font-black leading-tight text-white">
+                Des services pensés pour
+                <span class="block text-yellow-400">vos projets modernes</span>
             </h1>
 
-            <h1 class="font-black text-5xl md:text-6xl text-white mt-2">
-                Modern Technology
-                <span class="block text-yellow-400">of Building</span>
-            </h1>
+            <p class="mt-6 max-w-2xl text-base md:text-lg text-gray-200 leading-relaxed">
+                Découvrez une gamme complète de services adaptés à vos besoins, à votre budget et à votre localisation,
+                avec une tarification claire et un accompagnement professionnel.
+            </p>
 
-            <!-- SECTION INTRO SERVICES -->
-            <div class="max-w-7xl mx-auto px-4 py-16">
+            <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">
 
-                <div class="max-w-3xl">
+                <div class="rounded-3xl bg-white/15 backdrop-blur-xl border border-white/20 p-5">
+                    <div class="text-3xl font-black text-yellow-400">01</div>
+                    <p class="mt-2 text-sm font-semibold text-white">Qualité technique</p>
+                </div>
 
-                    <p class="text-gray-400 leading-relaxed mb-6 font-bold ">
-                        Découvrez une gamme complète de services adaptés à vos besoins, à votre budget et à votre localisation.
-                        Nous vous garantissons des prestations de qualité, des tarifs transparents et un accompagnement professionnel à chaque étape de votre projet.
-                    </p>
+                <div class="rounded-3xl bg-white/15 backdrop-blur-xl border border-white/20 p-5">
+                    <div class="text-3xl font-black text-yellow-400">02</div>
+                    <p class="mt-2 text-sm font-semibold text-white">Tarifs transparents</p>
+                </div>
 
-                    <!-- ENGAGEMENTS -->
-                    <div class="bg-white rounded-3xl border border-gray-100 shadow-md p-6">
-
-                        <h3 class="text-lg font-bold text-blue-900 mb-4">
-                            Nos engagements
-                        </h3>
-
-                        <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-700">
-
-                            <div class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                                Qualité et précision technique
-                            </div>
-
-                            <div class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                                Respect des délais convenus
-                            </div>
-
-                            <div class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                                Tarification claire et accessible
-                            </div>
-
-                            <div class="flex items-center gap-3">
-                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                                Assistance professionnelle continue
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                <div class="rounded-3xl bg-white/15 backdrop-blur-xl border border-white/20 p-5">
+                    <div class="text-3xl font-black text-yellow-400">03</div>
+                    <p class="mt-2 text-sm font-semibold text-white">Suivi professionnel</p>
                 </div>
 
             </div>
 
         </div>
+
     </div>
 </section>
 
 <!-- SECTION FACTURATION -->
-<div class="max-w-7xl mx-auto px-4 py-16">
+<section class="relative max-w-7xl mx-auto px-4 py-24">
 
-    <div class="grid md:grid-cols-2 gap-10 items-center">
+    <div class="absolute top-10 right-0 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
+
+    <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
 
         <!-- TEXTE -->
         <div>
 
-            <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-6">
-                Système de facturation intelligent
-            </h2>
-
-            <p class="text-gray-600 mb-6 leading-relaxed">
-                Chez <span class="font-semibold text-blue-900">Modern Technology of Building</span>, nos tarifs sont calculés de manière transparente et adaptée à chaque projet.
+            <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+                Facturation
             </p>
 
-            <div class="space-y-4 mb-8">
+            <h2 class="text-4xl md:text-5xl font-black text-blue-900 mb-6 leading-tight">
+                Un système de facturation intelligent et transparent
+            </h2>
 
-                <div class="flex items-start gap-4">
-                    <div class="w-3 h-3 bg-yellow-400 rounded-full mt-2"></div>
-                    <p class="text-gray-700 text-sm">
-                        Surface totale du projet (m²)
-                    </p>
+            <p class="text-blue-900/70 mb-8 leading-relaxed">
+                Chez <span class="font-bold text-blue-900">Modern Technology of Building</span>,
+                nos tarifs sont calculés selon les caractéristiques réelles de votre projet afin de proposer une offre juste.
+            </p>
+
+            <div class="grid sm:grid-cols-3 gap-4 mb-8">
+
+                <div class="rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-5 shadow-lg"><div class="w-10 h-10 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                    </div>
+                    <h3 class="font-black text-blue-900">Surface</h3>
+                    <p class="text-sm text-gray-700 mt-1">Surface totale du projet</p>
                 </div>
 
-                <div class="flex items-start gap-4">
-                    <div class="w-3 h-3 bg-yellow-400 rounded-full mt-2"></div>
-                    <p class="text-gray-700 text-sm">
-                        Nombre de niveaux
-                    </p>
+                <div class="rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-5 shadow-lg">
+                    <div class="w-10 h-10 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="font-black text-blue-900">Niveaux</h3>
+                    <p class="text-sm text-gray-700 mt-1">Nombre d’étages</p>
                 </div>
 
-                <div class="flex items-start gap-4">
-                    <div class="w-3 h-3 bg-yellow-400 rounded-full mt-2"></div>
-                    <p class="text-gray-700 text-sm">
-                        Type de service demandé
-                    </p>
+                <div class="rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-5 shadow-lg">
+                    <div class="w-10 h-10 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h3 class="font-black text-blue-900">Service</h3>
+                    <p class="text-sm text-gray-700 mt-1">Type de prestation</p>
                 </div>
 
             </div>
 
-            <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 text-sm text-blue-900 font-semibold">
-                Surface totale = Surface par niveau × Nombre de niveaux
+            <div class="rounded-3xl bg-blue-900 text-white p-6 shadow-xl">
+                <p class="text-sm text-blue-100 mb-2">Formule de base</p>
+                <p class="text-xl md:text-2xl font-black">
+                    Surface totale = Surface par niveau × Nombre de niveaux
+                </p>
             </div>
 
         </div>
 
         <!-- CARD SERVICE -->
-        <div class="bg-white rounded-3xl shadow-lg p-6 border border-gray-100 hover:shadow-2xl transition">
+        <div class="relative rounded-[2rem] overflow-hidden
+                    bg-white/35 backdrop-blur-xl border border-white/40
+                    shadow-2xl p-8">
 
-            <span class="inline-block bg-yellow-400 text-black text-xs font-bold px-4 py-1 rounded-full mb-4">
-                BIM / Architecture
-            </span>
+            <div class="absolute -top-20 -right-20 w-56 h-56 bg-yellow-400/30 rounded-full blur-3xl"></div>
 
-            <h3 class="text-xl font-extrabold text-blue-900 mb-4">
-                Modélisation architecturale (Plans BIM)
-            </h3>
+            <div class="relative z-10">
 
-            <p class="text-gray-600 text-sm mb-6">
-                Une approche moderne basée sur le BIM pour concevoir, visualiser et optimiser vos projets de construction.
-            </p>
+                <span class="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 text-xs font-black px-4 py-2 rounded-full mb-6">
+                    <i class="fa-solid fa-cube"></i>
+                    BIM / Architecture
+                </span>
 
-            <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+                <h3 class="text-3xl font-black text-blue-900 mb-4">
+                    Modélisation architecturale
+                </h3>
 
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                    Plans 2D
-                </div>
+                <p class="text-gray-700 leading-relaxed mb-8">
+                    Une approche moderne basée sur le BIM pour concevoir, visualiser et optimiser vos projets de construction.
+                </p>
 
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                    Coupes & façades
-                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                    Plan de masse
-                </div>
+                    <div class="rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
+                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        Plans 2D
+                    </div>
 
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                    Fondations & plafonds
-                </div>
+                    <div class="rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
+                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        Coupes & façades
+                    </div>
 
-                <div class="flex items-center gap-2 col-span-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                    Perspectives architecturales
-                </div>
+                    <div class="rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
+                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        Plan de masse
+                    </div>
+
+                    <div class="rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
+                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        Fondations
+                    </div>
+
+                    <div class="sm:col-span-2 rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
+                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        Perspectives architecturales
+                    </div></div>
 
             </div>
 
         </div>
 
     </div>
-
-</div>
-
+</section>
 
 <!-- SERVICES -->
-<div class="max-w-7xl mx-auto py-16 px-4">
+<section class="relative max-w-7xl mx-auto px-4 pb-28">
 
-    <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-12">
-        Découvrez nos services
-    </h2>
+    <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+
+        <div>
+            <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+                Prestations
+            </p>
+
+            <h2 class="relative inline-block text-4xl md:text-5xl font-black text-blue-900">
+                Découvrez nos services
+                <span class="absolute -bottom-3 left-0 w-24 h-[5px] bg-yellow-400 rounded-full"></span>
+            </h2>
+        </div>
+
+        <p class="max-w-md text-blue-900/70 leading-relaxed">
+            Des offres flexibles pour accompagner vos projets, de l’étude à la conception complète.
+        </p>
+
+    </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
         {% for service in services %}
-        <div class="group bg-white rounded-3xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden border border-gray-100">
+        <article class="group relative overflow-hidden rounded-[2rem]
+                       bg-white/35 backdrop-blur-xl border border-white/40
+                       shadow-xl hover:shadow-2xl hover:-translate-y-2
+                       transition-all duration-500">
 
-            <!-- CAROUSEL -->
-            <div class="relative overflow-hidden">
+            <!-- IMAGE / CAROUSEL -->
+            <div class="relative h-64 overflow-hidden">
 
-                <div class="service-carousel relative h-56 overflow-hidden bg-gray-100">
+                <div class="service-carousel relative h-full overflow-hidden bg-gray-100">
 
                     {% for image in service.images.all %}
                     <div class="service-slide {% if forloop.first %}active{% endif %}">
-                        <img 
-                            src="{{ image.image.url }}" 
+                        <img
+                            src="{{ image.image.url }}"
                             alt="{{ service.nom }}"
-                            class="w-full h-full object-cover"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         >
                     </div>
                     {% empty %}
-                    <div class="h-full flex items-center justify-center bg-gray-200 text-gray-500">
+                    <div class="h-full flex items-center justify-center bg-yellow-400/70 text-blue-900 font-bold">
                         Aucune image disponible
                     </div>
                     {% endfor %}
 
                 </div>
 
-                <div class="absolute top-3 right-3">
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-blue-950/10 to-transparent"></div>
+
+                <div class="absolute top-5 left-5">
                     {% if geo.city == "Goma" %}
-                    <span class="bg-green-500 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                    <span class="inline-flex items-center gap-2 bg-green-500 text-white text-xs px-4 py-2 rounded-full font-black shadow-lg">
+                        <span class="w-2 h-2 bg-white rounded-full"></span>
                         Local
                     </span>
                     {% else %}
-                    <span class="bg-blue-900 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                    <span class="inline-flex items-center gap-2 bg-blue-900 text-white text-xs px-4 py-2 rounded-full font-black shadow-lg">
+                        <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
                         Standard
                     </span>
                     {% endif %}
+                </div>
+
+                <div class="absolute bottom-5 left-5 right-5">
+                    <h3 class="text-2xl font-black text-white leading-tight">
+                        {{ service.nom }}
+                    </h3>
                 </div>
 
             </div>
@@ -233,40 +258,51 @@
             <!-- CONTENT -->
             <div class="p-6">
 
-                <h3 class="text-xl font-bold text-blue-900 mb-2">
-                    {{ service.nom }}
-                </h3>
-
-                <p class="text-gray-600 text-sm mb-4">
+                <p class="text-gray-700 text-sm leading-relaxed mb-6">
                     {{ service.description }}
                 </p>
 
-                <!-- PRIX -->
-                <div class="mb-6">
+                <div class="mb-6 rounded-2xl bg-white/40 border border-white/40 p-4">
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">
+                        Tarif estimatif
+                    </p>
+
                     {% if geo.city == "Goma" %}
-                    <div class="text-green-600 font-bold text-lg">
+                    <div class="text-green-600 font-black text-2xl">
                         {{ service.prix_nord_kivu }} $
-                        <span class="text-xs text-gray-500">(Prix Goma)</span>
+                        <span class="text-xs font-semibold text-gray-500">(Goma)</span>
                     </div>
-                    {% else %}
-                    <div class="text-blue-900 font-bold text-lg">
+                    {% else %}<div class="text-blue-900 font-black text-2xl">
                         {{ service.prix }} $
-                        <span class="text-xs text-gray-500">(Prix standard)</span>
+                        <span class="text-xs font-semibold text-gray-500">(Standard)</span>
                     </div>
                     {% endif %}
                 </div>
 
-                <!-- BUTTON -->
-                <a href="#"class="block text-center bg-blue-900 text-white py-3 rounded-full font-semibold hover:bg-blue-800 transition">
+                <a href="#"
+                   class="group/link flex items-center justify-center gap-3
+                          rounded-full bg-blue-900 px-5 py-3
+                          font-bold text-white
+                          shadow-lg transition-all duration-300
+                          hover:bg-yellow-400 hover:text-blue-900">
                     Demander un devis
+                    <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover/link:translate-x-1"></i>
                 </a>
 
             </div>
 
+        </article>
+        {% empty %}
+        <div class="col-span-full rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-12 text-center shadow-xl">
+            <p class="text-lg font-semibold text-gray-700">
+                Aucun service disponible pour le moment.
+            </p>
         </div>
         {% endfor %}
 
     </div>
+
+</section>
 
 </div>
 

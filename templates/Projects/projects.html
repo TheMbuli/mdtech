@@ -1,44 +1,114 @@
 {% extends "base.html" %}
 {% load static %}
-{% block projets %}  {# ou une autre block si tu veux #}
 
-<div class="max-w-7xl mx-auto py-12 px-4" style="padding-top: 140px;">
-    <div class="mb-12">
-    <h1 class="relative inline-block text-3xl md:text-4xl font-extrabold text-blue-900">
-      Nos Réalisations
-      <span class="absolute -bottom-2 left-0 w-16 h-[4px] bg-yellow-400 rounded-full"></span>
-    </h1>
-  </div>
+{% block projets %}
+<section class="relative max-w-7xl mx-auto px-4 pt-36 pb-24 overflow-hidden">
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    {% for projet in projets %}
-      <div class="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg rounded-2xl overflow-hidden">
-        
-        {% if projet.photos.first %}
-          <img src="{{ projet.photos.first.image.url }}" 
+  <!-- Décorations arrière-plan -->
+  <div class="absolute top-24 right-0 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 left-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
+
+  <div class="relative z-10">
+
+    <!-- HEADER -->
+    <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+
+      <div>
+        <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+          Portfolio
+        </p>
+
+        <h1 class="relative inline-block text-4xl md:text-5xl font-black text-blue-900">
+          Nos Réalisations
+          <span class="absolute -bottom-3 left-0 w-24 h-[5px] bg-yellow-400 rounded-full"></span>
+        </h1>
+      </div>
+
+      <p class="max-w-md text-blue-900/70 leading-relaxed">
+        Découvrez quelques projets conçus avec exigence, créativité et savoir-faire.
+      </p>
+
+    </div>
+
+    <!-- GRID PROJETS -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      {% for projet in projets %}
+      <article class="group relative overflow-hidden rounded-[2rem]
+                     bg-white/30 backdrop-blur-xl border border-white/40
+                     shadow-xl hover:shadow-2xl
+                     transition-all duration-500 hover:-translate-y-2">
+
+        <!-- Image -->
+        <div class="relative h-72 overflow-hidden">
+
+          {% if projet.affiche %}
+          <img src="{{ projet.affiche.url }}"
                alt="{{ projet.titre }}"
-               class="w-full h-56 object-cover">
-        {% else %}
-          <div class="w-full h-56 bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-700">Aucune image</span>
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          {% else %}
+          <div class="w-full h-full bg-yellow-400/80 flex items-center justify-center">
+            <span class="font-bold text-blue-900">Aucune image</span>
           </div>
-        {% endif %}
+          {% endif %}
 
-        <div class="p-5">
-          <h2 class="text-xl font-semibold text-blue-900 mb-2">{{ projet.titre }}</h2>
-          <p class="text-gray-800 mb-4">{{ projet.description|truncatechars:90 }}</p>
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/20 to-transparent"></div>
+
+          <!-- Badge -->
+          <div class="absolute top-5 left-5">
+            <span class="inline-flex items-center gap-2 rounded-full
+                         bg-white/25 backdrop-blur-xl border border-white/30
+                         px-4 py-2 text-xs font-bold text-white shadow-lg">
+              <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+              Réalisation
+            </span>
+          </div>
+
+          <!-- Titre sur image -->
+          <div class="absolute bottom-5 left-5 right-5">
+            <h2 class="text-2xl font-black text-white leading-tight">
+              {{ projet.titre }}
+            </h2>
+          </div>
+
+        </div>
+
+        <!-- Contenu -->
+        <div class="p-6">
+
+          <p class="mb-6 text-sm leading-relaxed text-gray-700">
+            {{ projet.description|truncatechars:110 }}
+          </p>
 
           <a href="{{ projet.get_absolute_url }}"
-             class="block text-center bg-blue-900 text-white px-4 py-2 rounded-xl
-                    hover:bg-white/20 hover:text-blue-900 transition font-semibold">
-            Voir le projet
-          </a>
-        </div>
-      </div>
-    {% empty %}
-      <p class="text-center text-gray-600 col-span-3">Aucun projet disponible pour le moment.</p>
-    {% endfor %}
-  </div>
-</div>
+             class="group/link inline-flex w-full items-center justify-center gap-3
+                    rounded-full bg-blue-900 px-5 py-3
+                    font-bold text-white
+                    shadow-lg transition-all duration-300
+                    hover:bg-yellow-400 hover:text-blue-900">
 
+            Voir le projet
+
+            <i class="fa-solid fa-arrow-right
+                      transition-transform duration-300
+                      group-hover/link:translate-x-1"></i>
+          </a>
+
+        </div>
+
+      </article>
+
+      {% empty %}
+      <div class="col-span-full rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-12 text-center shadow-xl">
+        <p class="text-lg font-semibold text-gray-700">
+          Aucun projet disponible pour le moment.
+        </p>
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
 {% endblock %}

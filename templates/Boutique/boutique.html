@@ -1,99 +1,137 @@
 {% extends "base.html" %}
 
 {% block boutique %}
-<section class="max-w-7xl mx-auto px-4 py-20" style="padding-top: 140px;">
+<section class="relative max-w-7xl mx-auto px-4 pt-36 pb-24 overflow-hidden">
 
-  <!-- TITRE -->
-  <div class="mb-12">
-    <h1 class="relative inline-block text-3xl md:text-4xl font-extrabold text-blue-900">
-      Nos articles
-      <span class="absolute -bottom-2 left-0 w-16 h-[4px] bg-yellow-400 rounded-full"></span>
-    </h1>
-  </div>
+  <!-- Décorations arrière-plan -->
+  <div class="absolute top-20 right-0 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 left-0 w-80 h-80 bg-blue-900/20 rounded-full blur-3xl"></div>
 
-  <!-- GRID -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+  <div class="relative z-10">
 
-    {% for article in object_list %}
-    <div class="group relative flex flex-col overflow-hidden rounded-3xl border border-white/30 bg-white/40 backdrop-blur-xl shadow-xl transition-all duration-500 hover:shadow-2xl">
+    <!-- HEADER PAGE -->
+    <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
 
-      <!-- IMAGE -->
-      {% with article.photoarticle_set.first as photo %}
-        {% if photo %}
-          <div class="overflow-hidden">
-            <img
-              src="{{ photo.image.url }}"
-              alt="{{ article.nom }}"
-              class="h-60 w-full object-cover transition-transform duration-700 group-hover:scale-110"
-            >
-          </div>
-        {% else %}
-          <div class="flex h-60 w-full items-center justify-center bg-yellow-400">
-            <span class="font-semibold text-blue-900">Aucune image</span>
-          </div>
-        {% endif %}
-      {% endwith %}
-
-      <!-- CONTENU -->
-      <div class="flex flex-1 flex-col p-6">
-
-        <!-- TITRE ARTICLE -->
-        <h2 class="mb-2 text-xl font-bold text-blue-900">
-          {{ article.nom }}
-        </h2>
-
-        <!-- DESCRIPTION -->
-        <p class="mb-4 text-sm leading-relaxed text-gray-700">
-          {{ article.description|truncatechars:90 }}
+      <div>
+        <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+          Boutique
         </p>
 
-        <!-- PRIX -->
-        <div class="mb-6">
-          {% if article.reduction > 0 %}
-            <span class="text-sm text-gray-400 line-through">
-              {{ article.prix }} $
-            </span>
-            <span class="ml-2 text-xl font-extrabold text-red-600">
-              {{ article.prix }} $
-            </span>
-          {% else %}
-            <span class="text-xl font-extrabold text-blue-900">
-              {{ article.prix }} $
-            </span>
-          {% endif %}
-        </div>
-
-        <!-- ACTIONS -->
-        <div class="mt-auto flex flex-col gap-3 sm:flex-row">
-
-          <!-- BOUTON COMMANDER -->
-          <a
-            href="https://wa.me/243812345678?text=Bonjour,%20je%20souhaite%20commander%20l'article%20{{ article.nom }}%20:%20{{ request.scheme }}://{{ request.get_host }}{% url 'details-article' article.id %}"
-            target="_blank"
-            class="flex flex-1 items-center justify-center gap-2 rounded-full bg-blue-900 px-4 py-3 font-semibold text-white transition-all duration-300 hover:bg-yellow-500 hover:text-blue-900"
-          >
-            <i class="fa-solid fa-cart-shopping"></i>
-            Commander
-          </a>
-
-          <!-- BOUTON VOIR PLUS -->
-          <a
-            href="{% url 'details-article' article.id %}"
-            class="flex flex-1 items-center justify-center rounded-full border-2 border-blue-900 px-4 py-3 font-semibold text-blue-900 transition-all duration-300 hover:bg-blue-900 hover:text-white"
-          >
-            Voir plus
-          </a>
-
-        </div>
-
+        <h1 class="relative inline-block text-4xl md:text-5xl font-black text-blue-900">
+          Nos articles
+          <span class="absolute -bottom-3 left-0 w-20 h-[5px] bg-yellow-400 rounded-full"></span>
+        </h1>
       </div>
+
+      <p class="max-w-md text-blue-900/70 leading-relaxed">
+        Découvrez nos articles disponibles et commandez directement via WhatsApp.
+      </p>
+
     </div>
 
-    {% empty %}
-      <p class="col-span-full text-center text-gray-600">
-        Aucun article disponible
-      </p>
-    {% endfor %}
+    <!-- GRID -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      {% for article in object_list %}
+      <article class="group relative flex flex-col overflow-hidden rounded-[2rem]
+                     bg-white/35 backdrop-blur-xl border border-white/40
+                     shadow-xl hover:shadow-2xl
+                     transition-all duration-500 hover:-translate-y-2">
+
+        <!-- Badge -->
+        {% if article.reduction > 0 %}
+        <div class="absolute top-5 left-5 z-20 rounded-full bg-yellow-400 px-4 py-2
+                    text-xs font-black text-blue-900 shadow-lg">
+          Promo
+        </div>
+        {% endif %}
+
+        <!-- IMAGE -->
+        {% with article.photoarticle_set.first as photo %}
+          {% if photo %}
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src="{{ photo.image.url }}"
+                alt="{{ article.nom }}"
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              >
+
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+            </div>
+          {% else %}
+            <div class="flex h-64 w-full items-center justify-center bg-yellow-400">
+              <span class="font-bold text-blue-900">Aucune image</span>
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <!-- CONTENU -->
+        <div class="flex flex-1 flex-col p-6">
+
+          <h2 class="mb-3 text-2xl font-black text-blue-900">
+            {{ article.nom }}
+          </h2>
+
+          <p class="mb-6 text-sm leading-relaxed text-gray-700">
+            {{ article.description|truncatechars:100 }}
+          </p>
+
+          <!-- PRIX -->
+          <div class="mb-7 flex items-end gap-3">
+            {% if article.reduction > 0 %}
+              <span class="text-sm text-gray-400 line-through">
+                {{ article.prix }} $
+              </span>
+              <span class="text-2xl font-black text-red-600">
+                {{ article.prix }} $
+              </span>
+            {% else %}
+              <span class="text-2xl font-black text-blue-900">
+                {{ article.prix }} $
+              </span>
+            {% endif %}
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="mt-auto grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+            <a
+              href="https://wa.me/243812345678?text=Bonjour,%20je%20souhaite%20commander%20l'article%20{{ article.nom }}%20:%20{{ request.scheme }}://{{ request.get_host }}{% url 'details-article' article.id %}"
+              target="_blank"
+              class="flex items-center justify-center gap-2 rounded-full
+                     bg-blue-900 px-4 py-3
+                     font-bold text-white
+                     transition-all duration-300
+                     hover:bg-yellow-400 hover:text-blue-900"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              Commander
+            </a>
+
+            <a href="{% url 'details-article' article.id %}"
+              class="flex items-center justify-center rounded-full
+                     border-2 border-blue-900 px-4 py-3
+                     font-bold text-blue-900
+                     transition-all duration-300
+                     hover:bg-blue-900 hover:text-white"
+            >
+              Voir plus
+            </a>
+
+          </div>
+
+        </div>
+      </article>
+
+      {% empty %}
+      <div class="col-span-full rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-12 text-center shadow-xl">
+        <p class="text-lg font-semibold text-gray-700">
+          Aucun article disponible pour le moment.
+        </p>
+      </div>
+      {% endfor %}
+
+    </div>
 
   </div>
 </section>

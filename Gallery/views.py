@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Gallery
+from django.shortcuts import render
+from .models import Edition
 
-def gallery_list(request):
-    galleries = Gallery.objects.order_by('-date_creation')
-    return render(request, 'Gallery/gallery-list.html', {'galleries': galleries})
 
-def gallery_detail(request, pk):
-    gallery = get_object_or_404(Gallery, pk=pk)
-    return render(request, 'Gallery/gallery-detail.html', {'gallery': gallery})
+def gallery_view(request):
+    editions = Edition.objects.prefetch_related("imagesedition_set").order_by("-annee")
+
+    return render(request, "Gallery/gallery-list.html", {
+        "editions": editions
+    })

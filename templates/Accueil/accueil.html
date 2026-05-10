@@ -1,652 +1,408 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block accueil %}
+
+<div class="relative overflow-hidden">
+
+<!-- HERO -->
 <section
-    class="relative h-screen flex items-center overflow-hidden bg-black px-6 md:px-20"
+    class="relative min-h-screen flex items-center overflow-hidden px-6 md:px-20"
     style="background-image: url('{% static 'accueil/images/landing.jpg' %}');
            background-size: cover;
            background-position: center;
            background-repeat: no-repeat;"
 >
-    <!-- overlay sombre -->
-    <div class="absolute inset-0 z-0" style="background: rgba(0,0,0,0.45);"></div>
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-400 to-transparent"></div>
 
-    <!-- gradient gauche -->
-    <div class="absolute inset-0 z-0"
-         style="background: linear-gradient(to right, rgba(0,0,0,0.62), rgba(0,0,0,0.25), rgba(0,0,0,0));">
-    </div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto pt-32 pb-20">
 
-    <!-- contenu -->
-    <div class="relative z-10 w-full px-5 sm:px-8 md:px-16 lg:px-24 py-10 md:py-16">
-        <div class="max-w-xl lg:max-w-2xl">
+        <div class="max-w-3xl">
 
-            <div class="mb-5">
-                <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm"
-                      style="background: rgba(255,255,255,0.08);">
-                    <span class="h-2 w-2 rounded-full bg-yellow-400 animate-pulse"></span>
-                    Innovation & Architecture
-                </span>
-            </div>
+            <span class="inline-flex items-center gap-2 mb-6 rounded-full
+                         bg-white/15 backdrop-blur-xl border border-white/20
+                         px-5 py-2 text-sm font-bold text-white">
+                <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+                Innovation • Architecture • BIM
+            </span>
 
-            <h1 class="font-black leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white">
+            <h1 class="text-5xl md:text-7xl font-black leading-tight text-white">
                 Modern Technology
-                <span class="block text-yellow-400">
-                    of Building
-                </span>
+                <span class="block text-yellow-400">of Building</span>
             </h1>
 
-            <p class="mt-5 max-w-lg text-sm sm:text-base md:text-lg leading-relaxed text-white">
-                Nous offrons des services de modélisation BIM, de conception architecturale et de
-                visualisation 3D de haute qualité pour des projets à l’échelle mondiale mais aussi
-                des formations professionnelles pour vos projets et votre avenir.
+            <p class="mt-6 max-w-2xl text-base md:text-lg text-gray-200 leading-relaxed">
+                Nous concevons des solutions modernes en architecture, BIM, visualisation 3D,
+                formation professionnelle et accompagnement technique pour vos projets.
             </p>
 
-            <div class="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
+            <div class="mt-10 flex flex-col sm:flex-row gap-4">
                 <a href="#activites"
-                   class="inline-flex items-center justify-center gap-3 rounded-full bg-yellow-400 px-6 py-3 text-sm sm:text-base font-semibold text-black transition hover:scale-[1.02] hover:bg-yellow-300">
-                    <span>Découvrir nos services</span>
+                   class="inline-flex items-center justify-center gap-3 rounded-full
+                          bg-yellow-400 px-7 py-4 font-bold text-blue-900
+                          hover:bg-white transition-all duration-300 shadow-lg">
+                    Découvrir nos services
                     <i class="fas fa-arrow-right"></i>
                 </a>
 
                 <a href="#contacter"
-                   class="inline-flex items-center justify-center gap-3 rounded-full border border-white/30 px-6 py-3 text-sm sm:text-base font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
-                   style="background: rgba(255,255,255,0.06);">
+                   class="inline-flex items-center justify-center gap-3 rounded-full
+                          bg-white/15 backdrop-blur-xl border border-white/25
+                          px-7 py-4 font-bold text-white
+                          hover:bg-white/25 transition-all duration-300">
                     <i class="fas fa-paper-plane text-yellow-400"></i>
-                    <span>Nous contacter</span>
+                    Nous contacter
                 </a>
             </div>
 
-            <div class="mt-8 flex items-center gap-4">
-                <span class="h-[2px] w-10 sm:w-14 bg-yellow-400"></span>
-                <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-white/70">
-                    Construire le futur
-                </span>
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">
+
+                <div class="rounded-3xl bg-white/15 backdrop-blur-xl border border-white/20 p-5">
+                    <div class="text-3xl font-black text-yellow-400">100+</div>
+                    <p class="mt-2 text-sm font-semibold text-white">Apprenants formés</p>
+                </div>
+
+                <div class="rounded-3xl bg-white/15 backdrop-blur-xl border border-white/20 p-5">
+                    <div class="text-3xl font-black text-yellow-400">3+</div>
+                    <p class="mt-2 text-sm font-semibold text-white">Années d’expérience</p>
+                </div>
+
+                <div class="rounded-3xl bg-white/15 backdrop-blur-xl border border-white/20 p-5">
+                    <div class="text-3xl font-black text-yellow-400">01</div>
+                    <p class="mt-2 text-sm font-semibold text-white">Antenne à Goma</p>
+                </div>
+
             </div>
 
         </div>
+
     </div>
 </section>
-{% load static %}    
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out-cubic',
-        once: true
-      });
-    </script>
 
+<!-- OUTILS -->
+<section class="relative max-w-7xl mx-auto px-4 py-24">
 
-<div class="mt-14 flex flex-col items-center gap-10 px-4 md:px-0">
+    <div class="absolute top-10 right-0 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
 
-    {% comment %} ITEM 1 {% endcomment %}
-    <div data-aos="fade-right" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
-        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
-            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
-                <span class="text-xl md:text-2xl font-bold text-blue-900">1</span>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
-                <img src="{% static 'accueil/images/AI.png' %}" class="w-full h-full object-contain">
-            </div>
+    <div class="relative z-10"><div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
-                <h2 class="font-extrabold text-black">Adobe Illustrator</h2>
-                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                    Adobe Illustrator est un logiciel de dessin vectoriel utilisé pour créer des illustrations, des logos et des graphiques.
+                <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+                    Technologies
                 </p>
+
+                <h2 class="relative inline-block text-4xl md:text-5xl font-black text-blue-900">
+                    Les outils que nous maîtrisons
+                    <span class="absolute -bottom-3 left-0 w-24 h-[5px] bg-yellow-400 rounded-full"></span>
+                </h2>
             </div>
+
+            <p class="max-w-md text-blue-900/70 leading-relaxed">
+                Une combinaison d’outils professionnels pour concevoir, modéliser,
+                visualiser et présenter des projets de qualité.
+            </p>
         </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            {% comment %} Outil 1 {% endcomment %}
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+                <img src="{% static 'accueil/images/AI.png' %}" class="w-16 h-16 object-contain mb-5">
+                <h3 class="text-xl font-black text-blue-900 mb-2">Adobe Illustrator</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">Création graphique, logos, illustrations et supports visuels professionnels.</p>
+            </div>
+
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+                <img src="{% static 'accueil/images/Archicad.png' %}" class="w-16 h-16 object-contain mb-5">
+                <h3 class="text-xl font-black text-blue-900 mb-2">Archicad</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">Conception architecturale BIM et modélisation intelligente du bâtiment.</p>
+            </div>
+
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+                <img src="{% static 'accueil/images/Autocad.png' %}" class="w-16 h-16 object-contain mb-5">
+                <h3 class="text-xl font-black text-blue-900 mb-2">AutoCAD</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">Plans techniques, dessins 2D, conception et documentation professionnelle.</p>
+            </div>
+
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+                <img src="{% static 'accueil/images/Lumion.png' %}" class="w-16 h-16 object-contain mb-5">
+                <h3 class="text-xl font-black text-blue-900 mb-2">Lumion</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">Rendus 3D réalistes, animations et visualisations architecturales.</p>
+            </div>
+
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+                <img src="{% static 'accueil/images/Photoshop.png' %}" class="w-16 h-16 object-contain mb-5">
+                <h3 class="text-xl font-black text-blue-900 mb-2">Photoshop</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">Retouche, montage, présentation graphique et communication visuelle.</p>
+            </div>
+
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+                <img src="{% static 'accueil/images/Revit.png' %}" class="w-16 h-16 object-contain mb-5">
+                <h3 class="text-xl font-black text-blue-900 mb-2">Revit</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">Modélisation BIM avancée pour bâtiments, plans, coupes et coordination.</p></div>
+
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+                <img src="{% static 'accueil/images/Sketchup.png' %}" class="w-16 h-16 object-contain mb-5">
+                <h3 class="text-xl font-black text-blue-900 mb-2">SketchUp</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">Modélisation 3D rapide, intuitive et adaptée aux concepts architecturaux.</p>
+            </div>
+
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+                <img src="{% static 'accueil/images/V-ray.png' %}" class="w-16 h-16 object-contain mb-5">
+                <h3 class="text-xl font-black text-blue-900 mb-2">V-Ray</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">Moteur de rendu réaliste pour images architecturales haut de gamme.</p>
+            </div>
+
+        </div>
+
     </div>
+</section>
 
-    {% comment %} ITEM 2 {% endcomment %}
-    <div data-aos="fade-right" data-aos-delay="100" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
-        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
-            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
-                <span class="text-xl md:text-2xl font-bold text-blue-900">2</span>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
-                <img src="{% static 'accueil/images/Archicad.png' %}" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h2 class="font-extrabold text-black">Archicad</h2>
-                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                    Archicad est un logiciel BIM utilisé pour la conception architecturale.
-                </p>
-            </div>
-        </div>
-    </div>
+<!-- POURQUOI NOUS CHOISIR -->
+<section class="relative max-w-7xl mx-auto px-4 pb-24">
 
-    {% comment %} ITEM 3 {% endcomment %}
-    <div data-aos="fade-right" data-aos-delay="200" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
-        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
-            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
-                <span class="text-xl md:text-2xl font-bold text-blue-900">3</span>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
-                <img src="{% static 'accueil/images/Autocad.png' %}" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h2 class="font-extrabold text-black">AutoCAD</h2>
-                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                    AutoCAD est un logiciel de CAO pour dessins techniques 2D et 3D.
-                </p>
-            </div>
-        </div>
-    </div>
+    <div class="mb-16 text-center">
+        <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+            Nos forces
+        </p>
 
-    {% comment %} ITEM 4 {% endcomment %}
-    <div data-aos="fade-right" data-aos-delay="300" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
-        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
-            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
-                <span class="text-xl md:text-2xl font-bold text-blue-900">4</span>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
-                <img src="{% static 'accueil/images/Lumion.png' %}" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h2 class="font-extrabold text-black">Lumion</h2>
-                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                    Lumion est un logiciel de rendu 3D en temps réel.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    {% comment %} ITEM 5 {% endcomment %}
-    <div data-aos="fade-right" data-aos-delay="400" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
-        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
-            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
-                <span class="text-xl md:text-2xl font-bold text-blue-900">5</span>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
-                <img src="{% static 'accueil/images/Photoshop.png' %}" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h2 class="font-extrabold text-black">Photoshop</h2>
-                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                    Photoshop est un logiciel de retouche et création graphique.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    {% comment %} ITEM 6 {% endcomment %}
-    <div data-aos="fade-right" data-aos-delay="500" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
-        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
-            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
-                <span class="text-xl md:text-2xl font-bold text-blue-900">6</span>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
-                <img src="{% static 'accueil/images/Revit.png' %}" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h2 class="font-extrabold text-black">Revit</h2>
-                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                    Revit est un logiciel BIM pour concevoir des bâtiments en 3D.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    {% comment %} ITEM 7 {% endcomment %}
-    <div data-aos="fade-right" data-aos-delay="600" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
-        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
-            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
-                <span class="text-xl md:text-2xl font-bold text-blue-900">7</span>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
-                <img src="{% static 'accueil/images/Sketchup.png' %}" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h2 class="font-extrabold text-black">SketchUp</h2>
-                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                    SketchUp est un logiciel de modélisation 3D simple et intuitif.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    {% comment %} ITEM 8 {% endcomment %}
-    <div data-aos="fade-right" data-aos-delay="700" class="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 max-w-3xl w-full">
-        <div class="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
-            <div class="absolute inset-0 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center">
-                <span class="text-xl md:text-2xl font-bold text-blue-900">8</span>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 px-4 sm:px-6 py-4 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg w-full text-center sm:text-left">
-            <div class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
-                <img src="{% static 'accueil/images/V-ray.png' %}" class="w-full h-full object-contain">
-            </div>
-            <div>
-                <h2 class="font-extrabold text-black">V-Ray</h2>
-                <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                    V-Ray est un moteur de rendu réaliste pour l’architecture et l’animation.
-                </p>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-
-
-
-
-<!-- SECTION -->
-<div class="mt-24 px-4">
-
-    <!-- TITRE -->
-    <div class="text-center mb-12" data-aos="fade-down">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900">
-            Pourquoi <span class="text-yellow-500">nous choisir</span>
+        <h2 class="text-4xl md:text-5xl font-black text-blue-900">
+            Pourquoi nous choisir ?
         </h2>
-        <p class="mt-3 text-gray-700 max-w-2xl mx-auto">
-            Des atouts solides pour vous accompagner vers la réussite professionnelle.
+
+        <p class="mt-4 max-w-2xl mx-auto text-blue-900/70">
+            Nous combinons expertise technique, accompagnement humain et vision moderne
+            pour vous aider à réussir vos projets.
         </p>
     </div>
 
-    <!-- CARTES -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-        <!-- CARTE 1 -->
-        <div data-aos="fade-up"
-             class="flex flex-col items-center text-center gap-4 
-                    p-6 rounded-2xl 
-                    bg-white/20 backdrop-blur-md 
-                    border border-white/30 shadow-lg
-                    transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
-
-            <i class="fa-solid fa-users text-4xl text-blue-900"></i>
-
-            <h3 class="font-extrabold text-black text-lg">
-                Communauté active
-            </h3>
-
-            <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                Intégrez une communauté d'apprenants et de formateurs passionnés :
-                partagez, échangez et progressez ensemble.
+        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-8 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+            <div class="w-14 h-14 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center text-2xl mb-6">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <h3 class="text-2xl font-black text-blue-900 mb-3">Communauté active</h3>
+            <p class="text-gray-700 leading-relaxed">
+                Une communauté d’apprenants, de formateurs et de professionnels qui partagent, échangent et progressent ensemble.
             </p>
         </div>
 
-        <!-- CARTE 2 -->
-        <div data-aos="fade-up" data-aos-delay="150"
-             class="flex flex-col items-center text-center gap-4 
-                    p-6 rounded-2xl 
-                    bg-white/20 backdrop-blur-md 
-                    border border-white/30 shadow-lg
-                    transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
-
-            <i class="fa-solid fa-award text-4xl text-blue-900"></i>
-
-            <h3 class="font-extrabold text-black text-lg">
-                Certification
-            </h3>
-
-            <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                Obtenez une certification reconnue, valorisant vos compétences
-                et attestant officiellement de votre réussite.
+        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-8 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+            <div class="w-14 h-14 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center text-2xl mb-6">
+                <i class="fa-solid fa-award"></i>
+            </div>
+            <h3 class="text-2xl font-black text-blue-900 mb-3">Certification</h3>
+            <p class="text-gray-700 leading-relaxed">
+                Des formations structurées avec une attestation valorisant les compétences acquises.
             </p>
         </div>
 
-        <!-- CARTE 3 -->
-        <div data-aos="fade-up" data-aos-delay="300"
-             class="flex flex-col items-center text-center gap-4 
-                    p-6 rounded-2xl 
-                    bg-white/20 backdrop-blur-md 
-                    border border-white/30 shadow-lg
-                    transition transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
-
-            <i class="fa-solid fa-briefcase text-4xl text-blue-900"></i>
-
-            <h3 class="font-extrabold text-black text-lg">
-                Emplois
-            </h3>
-
-            <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
-                Sélection des candidats prometteurs ayant brillamment réussi
-                leur formation au sein de l'entreprise.
+        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-8 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+            <div class="w-14 h-14 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center text-2xl mb-6">
+                <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <h3 class="text-2xl font-black text-blue-900 mb-3">Opportunités</h3>
+            <p class="text-gray-700 leading-relaxed">
+                Les meilleurs profils peuvent être orientés vers des missions, stages ou collaborations professionnelles.
             </p>
         </div>
 
     </div>
-</div>
+</section>
 
-<div class="mt-24 px-4">
+<!-- PROJETS RÉCENTS -->
+<section class="relative max-w-7xl mx-auto px-4 pb-24">
 
-    <div class="flex justify-center mb-6">
-        <span class="inline-block text-xs font-bold uppercase tracking-widest
-                     text-blue-800 bg-white/30 backdrop-blur-md
-                     px-4 py-2 rounded-full border border-white/40 shadow">
-            En chiffres
-        </span>
-    </div>
-
-    <div class="max-w-5xl mx-auto
-                bg-white/20 backdrop-blur-md
-                border border-white/30
-                rounded-3xl shadow-xl
-                p-6 md:p-10">
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-blue-900">
-
-            <!-- ITEM -->
-            <div data-aos="fade-up" class="space-y-3">
-                <p class="text-sm font-medium">Apprenants</p>
-                <h3 class="text-4xl font-black">
-                    100<span class="text-yellow-500">+</span>
-                </h3>
-                <p class="text-sm">Chaque année</p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="150" class="space-y-3">
-                <p class="text-sm font-medium">Années d’existence</p>
-                <h3 class="text-4xl font-black">
-                    3<span class="text-yellow-500">+</span>
-                </h3>
-                <p class="text-sm">D'expérience</p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="300" class="space-y-3">
-                <p class="text-sm font-medium">Antennes</p>
-                <h3 class="text-4xl font-black">
-                    01
-                </h3>
-                <p class="text-sm">Goma</p>
-            </div>
-
+    <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div>
+            <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+                Portfolio
+            </p><h2 class="relative inline-block text-4xl md:text-5xl font-black text-blue-900">
+                Nos projets récents
+                <span class="absolute -bottom-3 left-0 w-24 h-[5px] bg-yellow-400 rounded-full"></span>
+            </h2>
         </div>
-    </div>
-</div>
 
-<section class="mt-24 px-4">
-
-    <!-- TITRE -->
-    <div class="flex justify-between items-center max-w-5xl mx-auto mb-8">
-        <h2 class="text-3xl font-extrabold text-blue-800">
-            Nos <span class="text-yellow-500">projets</span>
-        </h2>
-
-        <a href="{% url 'projets-list' %}" 
-           class="px-5 py-2 rounded-full
-                  bg-white/30 backdrop-blur-md
-                  border border-white/40 shadow
-                  hover:bg-white/50 transition">
-            Voir plus
+        <a href="{% url 'projets-list' %}"
+           class="inline-flex items-center justify-center gap-3 rounded-full
+                  bg-blue-900 px-6 py-3 font-bold text-white
+                  hover:bg-yellow-400 hover:text-blue-900 transition">
+            Voir tous les projets
+            <i class="fa-solid fa-arrow-right"></i>
         </a>
     </div>
 
-    <!-- CARTE -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
         {% for projet in projets_recents %}
-        <div data-aos="fade-up"
-             class="relative rounded-3xl overflow-hidden
-                    bg-white/20 backdrop-blur-md
-                    border border-white/30 shadow-xl">
+        <article class="group relative overflow-hidden rounded-[2rem]
+                       bg-white/30 backdrop-blur-xl border border-white/40
+                       shadow-xl hover:shadow-2xl hover:-translate-y-2
+                       transition-all duration-500">
 
-            {% if projet.photos.first %}
-            <img src="{{ projet.photos.first.image.url }}"
-                 class="w-full h-[420px] object-cover">
-            {% else %}
-            <div class="w-full h-[420px] bg-gray-200 flex items-center justify-center">
-                <span class="text-gray-700">Pas d'image</span>
-            </div>
-            {% endif %}
+            <div class="relative h-[420px] overflow-hidden">
+                {% if projet.photos.first %}
+                <img src="{{ projet.photos.first.image.url }}"
+                     alt="{{ projet.titre }}"
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                {% else %}
+                <div class="w-full h-full bg-yellow-400/70 flex items-center justify-center">
+                    <span class="font-bold text-blue-900">Pas d'image</span>
+                </div>
+                {% endif %}
 
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div class="p-6 text-white max-w-lg">
-                    <h3 class="text-2xl font-bold mb-2">{{ projet.titre }}</h3>
-                    <p class="text-sm mb-4">{{ projet.description|truncatechars:90 }}</p>
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/20 to-transparent"></div>
+
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                    <span class="inline-flex items-center gap-2 mb-4 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 px-4 py-2 text-xs font-bold text-white">
+                        <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+                        Réalisation
+                    </span>
+
+                    <h3 class="text-2xl font-black text-white mb-3">
+                        {{ projet.titre }}
+                    </h3>
+
+                    <p class="text-sm text-gray-200 mb-5">
+                        {{ projet.description|truncatechars:90 }}
+                    </p>
 
                     <a href="{{ projet.get_absolute_url }}"
-                       class="px-4 py-2 rounded-full
-                              bg-white/20 backdrop-blur-md
-                              border border-white/40
-                              hover:bg-white/40 transition inline-block">
+                       class="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-2 font-bold text-blue-900 hover:bg-white transition">
                         Voir plus
+                        <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
-        </div>
+
+        </article>
         {% empty %}
-        <p class="col-span-3 text-center text-gray-600">Aucun projet disponible.</p>
+        <div class="col-span-full rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-12 text-center shadow-xl">
+            <p class="text-lg font-semibold text-gray-700">
+                Aucun projet disponible.
+            </p>
+        </div>
         {% endfor %}
 
     </div>
 </section>
 
+<!-- ACTIVITÉS -->
+<section id="activites" class="relative max-w-7xl mx-auto px-4 pb-24">
 
+    <div class="mb-16 text-center">
+        <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+            Activités
+        </p>
 
-<section id="activites" class="mt-24 px-4">
-
-    <h2 class="text-3xl font-extrabold text-blue-800 text-center mb-12">
-        Nos <span class="text-yellow-500">activités</span>
-    </h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-
-        <!-- CARTE -->
-        <div data-aos="fade-up"
-             class="flex flex-col items-center text-center gap-4
-                    p-6 rounded-2xl
-                    bg-white/20 backdrop-blur-md
-                    border border-white/30 shadow-lg
-                    hover:-translate-y-2 transition">
-
-            <i class="fas fa-pencil text-3xl text-blue-800"></i>
-            <h3 class="font-bold text-blue-900">Conception & DAO</h3>
-            <p class="text-sm text-gray-700">
-                Des idées modernes et innovantes adaptées à vos projets.
-            </p>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="100" class="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
-            <i class="fas fa-building text-3xl text-blue-800"></i>
-            <h3 class="font-bold text-blue-900">Espace de travail</h3>
-            <p class="text-sm text-gray-700">Un environnement moderne et professionnel.</p>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="200" class="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
-            <i class="fas fa-graduation-cap text-3xl text-blue-800"></i>
-            <h3 class="font-bold text-blue-900">Formations</h3>
-            <a href="{% url 'formation' %}" class="text-sm text-yellow-600 font-semibold hover:underline">
-                Voir le catalogue →
-            </a>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="300" class="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
-            <i class="fas fa-store text-3xl text-blue-800"></i>
-            <h3 class="font-bold text-blue-900">Boutique</h3>
-            <a href="{% url 'boutique' %}" class="text-sm text-yellow-600 font-semibold hover:underline">
-                Voir la boutique →
-            </a>
-        </div>
-
-    </div>
-</section>
-
-
-<section id="contacter" class="mt-24 px-4">
-
-    <div class="max-w-3xl mx-auto
-                bg-white/20 backdrop-blur-md
-                border border-white/30 shadow-xl
-                p-8 rounded-3xl">
-
-        <h2 class="text-3xl font-bold text-blue-800 text-center mb-6">
-            Nous envoyer un message
+        <h2 class="text-4xl md:text-5xl font-black text-blue-900">
+            Ce que nous proposons
         </h2>
+    </div>
 
-        <form method="post" class="space-y-6">
-            {% csrf_token %}
-            <label for="email">Adresse mail :</label>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-            <input type="email" name="email" placeholder="Email"
-                   class="w-full px-4 py-3 rounded-xl
-                          bg-white/80 border border-gray-300
-                          focus:ring-2 focus:ring-yellow-500">
+        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-7 shadow-xl hover:-translate-y-2 transition-all duration-500">
+            <i class="fas fa-pencil-ruler text-4xl text-blue-900 mb-5"></i>
+            <h3 class="text-xl font-black text-blue-900 mb-3">Conception & DAO</h3>
+            <p class="text-sm text-gray-700">Des idées modernes, techniques et adaptées à vos projets.</p>
+        </div><div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-7 shadow-xl hover:-translate-y-2 transition-all duration-500">
+            <i class="fas fa-building text-4xl text-blue-900 mb-5"></i>
+            <h3 class="text-xl font-black text-blue-900 mb-3">Espace de travail</h3>
+            <p class="text-sm text-gray-700">Un environnement moderne pour apprendre, créer et collaborer.</p>
+        </div>
 
-            <label for="message">Message :</label>
+        <a href="{% url 'formation' %}"
+           class="rounded-[2rem] bg-blue-900 p-7 shadow-xl hover:-translate-y-2 transition-all duration-500 group">
+            <i class="fas fa-graduation-cap text-4xl text-yellow-400 mb-5"></i>
+            <h3 class="text-xl font-black text-white mb-3">Formations</h3>
+            <p class="text-sm text-blue-100">Découvrez notre catalogue de formations pratiques.</p>
+        </a>
 
-            <textarea name="message" rows="5" placeholder="Votre message"
-                      class="w-full px-4 py-3 rounded-xl
-                             bg-white/80 border border-gray-300
-                             focus:ring-2 focus:ring-yellow-500"></textarea>
+        <a href="{% url 'boutique' %}"
+           class="rounded-[2rem] bg-yellow-400 p-7 shadow-xl hover:-translate-y-2 transition-all duration-500 group">
+            <i class="fas fa-store text-4xl text-blue-900 mb-5"></i>
+            <h3 class="text-xl font-black text-blue-900 mb-3">Boutique</h3>
+            <p class="text-sm text-blue-900/80">Explorez les articles disponibles dans notre boutique.</p>
+        </a>
 
-            <button class="w-full py-3 rounded-full
-                           bg-blue-800 text-white font-semibold
-                           hover:bg-yellow-600 transition">
-                Envoyer
-            </button>
-        </form>
     </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contacter" class="relative max-w-7xl mx-auto px-4 pb-28">
 
-<style>
-  #typewriter {
-    border-right: 2px solid #facc15; /* curseur jaune */
-    padding-right: 2px;
-  }
+    <div class="rounded-[2rem] bg-blue-900 overflow-hidden shadow-2xl">
 
-  .typing {
-    animation: blink 0.7s infinite;
-  }
+        <div class="grid lg:grid-cols-2">
 
-  @keyframes blink {
-    0%, 100% { border-color: transparent; }
-    50% { border-color: #facc15; }
-  }
-</style>
+            <div class="p-8 md:p-12 text-white">
+                <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-400">
+                    Contact
+                </p>
 
+                <h2 class="text-4xl md:text-5xl font-black mb-6">
+                    Parlons de votre projet
+                </h2>
 
+                <p class="text-blue-100 leading-relaxed">
+                    Envoyez-nous un message pour une formation, un service, un projet architectural
+                    ou une collaboration professionnelle.
+                </p>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-xl p-8 md:p-12">
+
+                <form method="post" class="space-y-5">
+                    {% csrf_token %}
+
+                    <div>
+                        <label class="block mb-2 text-sm font-bold text-white">
+                            Adresse mail
+                        </label>
+                        <input type="email" name="email" placeholder="Votre email"
+                               class="w-full px-5 py-4 rounded-2xl
+                                      bg-white/90 border border-white/40
+                                      focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    </div>
+
+                    <div>
+                        <label class="block mb-2 text-sm font-bold text-white">
+                            Message
+                        </label>
+                        <textarea name="message" rows="5" placeholder="Votre message"
+                                  class="w-full px-5 py-4 rounded-2xl
+                                         bg-white/90 border border-white/40
+                                         focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
+                    </div>
+
+                    <button class="w-full py-4 rounded-full
+                                   bg-yellow-400 text-blue-900 font-black
+                                   hover:bg-white transition-all duration-300">
+                        Envoyer le message
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-const slides = document.querySelectorAll('#carousel > div');
-const dots = document.getElementById('dots').children;
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-
-const img = document.getElementById("project-image");
-const title = document.getElementById("project-title");
-const desc = document.getElementById("project-desc");
-const link = document.getElementById("project-link");
-
-const projects = [
-  {
-    image: "{% static 'accueil/images/projet1.jpg' %}",
-    title: "Projet Résidentiel Moderne",
-    desc: "Construction d’une résidence moderne avec des matériaux durables.",
-    link: "#"
-  },
-  {
-    image: "{% static 'accueil/images/projet2.jpg' %}",
-    title: "Complexe Commercial",
-    desc: "Un espace commercial moderne conçu pour l’avenir.",
-    link: "#"
-  },
-  {
-    image: "{% static 'accueil/images/projet3.jpg' %}",
-    title: "Immeuble de Bureaux",
-    desc: "Bureaux modernes intégrant technologie et confort.",
-    link: "#"
-  }
-];
-
-let index_p = 0;
-let index = 0;
-const total = slides.length;
-
-function updateProject() {
-  img.src = projects[index_p].image;
-  title.textContent = projects[index_p].title;
-  desc.textContent = projects[index_p].desc;
-  link.href = projects[index_p].link;
-}
-
-document.getElementById("nextProject").onclick = () => {
-  index_p = (index_p + 1) % projects.length;
-  updateProject();
-};
-
-document.getElementById("prevProject").onclick = () => {
-  index_p = (index_p - 1 + projects.length) % projects.length;
-  updateProject();
-};
-
-function showSlide(i) {
-    for (let j = 0; j < total; j++) {
-        slides[j].classList.remove('opacity-100');
-        slides[j].classList.add('opacity-0');
-        dots[j].classList.remove('bg-white');
-        dots[j].classList.add('bg-white/50');
-    }
-    slides[i].classList.remove('opacity-0');
-    slides[i].classList.add('opacity-100');
-    dots[i].classList.remove('bg-white/50');
-    dots[i].classList.add('bg-white');
-}
-
-prev.addEventListener('click', () => {
-    index = (index - 1 + total) % total;
-    showSlide(index);
-});
-next.addEventListener('click', () => {
-    index = (index + 1) % total;
-    showSlide(index);
-});
-
-// Auto-play
-setInterval(() => {
-    index = (index + 1) % total;
-    showSlide(index);
-}, 4000);
-
-showSlide(index);
-
-  const text = "MODERN TECHNOLOGY";
-  const typewriterEl = document.getElementById("typewriter");
-
-  function typeWriter() {
-    let i = 0;
-    typewriterEl.classList.add("typing");
-
-    function addLetter() {
-      if (i < text.length) {
-        typewriterEl.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(addLetter, 150); // vitesse de frappe
-      } else {
-        typewriterEl.classList.remove("typing"); // retirer curseur après l'animation
-      }
-    }
-    addLetter();
-  }
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        typeWriter();
-        observer.unobserve(entry.target); // animation une seule fois
-      }
-    });
-  }, { threshold: 0.5 }); // 50% du titre visible déclenche l'animation
-
-  observer.observe(typewriterEl);
-
+  AOS.init({
+    duration: 800,
+    easing: 'ease-out-cubic',
+    once: true
+  });
 </script>
 
 {% endblock accueil %}

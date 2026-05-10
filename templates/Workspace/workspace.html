@@ -1,156 +1,318 @@
+
 {% extends "base.html" %}
 {% load static %}
 
 {% block workspace %}
 
-<div class="max-w-7xl mx-auto py-12 px-4 space-y-8" style="padding-top: 145px;">
+<section class="relative max-w-7xl mx-auto px-4 pt-36 pb-24 overflow-hidden">
 
-  <!-- Image principale -->
-  <div class="overflow-hidden rounded-2xl shadow-lg">
-    <img src="{% static 'workspace/images/heos-cormo.webp' %}"
-         alt="Espace de travail"
-         class="w-full h-[420px] object-cover">
-  </div>
+  <div class="absolute top-24 right-0 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 left-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
 
-  <!-- Présentation -->
-  <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg space-y-6">
+  <div class="relative z-10">
 
-    <h1 class="text-3xl font-bold text-blue-900 mb-4">
-      ESPACE DE TRAVAIL
-    </h1>
+    <!-- HERO -->
+    <div class="relative overflow-hidden rounded-[2rem] shadow-2xl mb-12">
 
-    <p class="text-blue-900 leading-relaxed mb-6">
-      Cet espace de travail moderne est conçu pour offrir un environnement
-      calme, professionnel et parfaitement équipé pour vos réunions,
-      formations et sessions de coworking.
-    </p>
+      <img src="{% static 'workspace/images/heos-cormo.webp' %}"
+           alt="Espace de travail"
+           class="w-full h-[520px] object-cover">
 
-    <!-- Avantages -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-blue-900 mb-6">
-      <div class="p-4 flex flex-col items-center gap-2">
-        <i class="fas fa-bolt text-2xl"></i>
-        <span class="text-lg font-medium">Disponible</span>
-      </div>
-      <div class="p-4 flex flex-col items-center gap-2">
-        <i class="fa-solid fa-wifi text-2xl"></i>
-        <span class="text-lg font-medium">Haut débit</span>
-      </div>
-      <div class="p-4 flex flex-col items-center gap-2">
-        <i class="fas fa-dollar-sign text-2xl"></i>
-        <span class="text-lg font-medium">{{ prix_heure }} / heure</span>
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-950/45 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+      <div class="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+
+        <span class="inline-flex items-center gap-2 mb-5 rounded-full
+                     bg-white/15 backdrop-blur-xl border border-white/20
+                     px-5 py-2 text-sm font-bold text-white">
+          <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+          Disponible à la réservation
+        </span>
+
+        <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
+          Espace de travail
+          <span class="block text-yellow-400">moderne & professionnel</span>
+        </h1>
+
+        <p class="mt-5 max-w-2xl text-gray-200 leading-relaxed">
+          Un environnement calme, équipé et confortable pour vos réunions,
+          formations, sessions de coworking et travaux professionnels.
+        </p>
+
       </div>
     </div>
 
-    <!-- Bouton Réservation -->
-    <button onclick="toggleReservation()"
-            class="bg-blue-900 text-white/90 px-6 py-3 rounded-xl shadow-lg
-                   hover:bg-white/20 hover:text-blue-900
-                   transition font-semibold flex items-center gap-2">
-      <i class="fa-solid fa-calendar-check"></i>
-      Réserver un espace
-    </button>
+    <!-- PRESENTATION -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-12">
 
-  </div>
+      <!-- Texte -->
+      <div class="lg:col-span-2 rounded-[2rem]
+                  bg-white/35 backdrop-blur-xl border border-white/40
+                  shadow-xl p-8 md:p-10">
 
-  <!-- Formulaire / Confirmation -->
+        <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
+          Workspace
+        </p>
 
-    {% if reservation_reussie %}
-      <!-- DIV DE CONFIRMATION -->
-      <div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-8 shadow-lg">
-        <div class="text-center py-12">
-          <i class="fa-solid fa-check-circle text-blue-900 text-4xl mb-4"></i>
-          <h2 class="text-2xl font-bold text-blue-900 mb-2">Réservation réussie !</h2>
-          <p class="text-blue-900 mb-4">Merci pour votre réservation.</p>
-          <a href="{% url 'workspace' %}"
-            class="inline-block bg-blue-900 text-white px-6 py-3 rounded-xl shadow-lg
-                    hover:bg-white/20 hover:text-blue-900 transition font-semibold">
-            Faire une autre réservation
-          </a>
-        </div>
+        <h2 class="text-3xl md:text-4xl font-black text-blue-900 mb-5">
+          Un espace pensé pour travailler efficacement
+        </h2>
+
+        <p class="text-blue-900/75 leading-relaxed">
+          Cet espace de travail moderne est conçu pour offrir un cadre professionnel,
+          agréable et parfaitement adapté à vos besoins : réunions, formations,
+          sessions d’étude, présentations ou coworking.
+        </p>
+
+        <div class="mt-8 grid sm:grid-cols-3 gap-4">
+
+          <div class="rounded-3xl bg-white/40 border border-white/40 p-5">
+            <div class="w-12 h-12 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center mb-4">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="font-black text-blue-900">Disponible</h3>
+            <p class="text-sm text-gray-700 mt-1">Réservation simple</p>
+          </div>
+
+          <div class="rounded-3xl bg-white/40 border border-white/40 p-5">
+            <div class="w-12 h-12 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center mb-4">
+              <i class="fa-solid fa-wifi"></i>
+            </div>
+            <h3 class="font-black text-blue-900">Haut débit</h3>
+            <p class="text-sm text-gray-700 mt-1">Connexion stable</p>
+          </div>
+
+          <div class="rounded-3xl bg-blue-900 p-5 text-white overflow-hidden relative">
+            <div class="absolute -right-8 -top-8 w-24 h-24 bg-yellow-400/20 rounded-full"></div>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-yellow-400 text-blue-900 flex items-center justify-center mb-4">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <h3 class="font-black">{{ prix_heure }} / heure</h3>
+              <p class="text-sm text-blue-100 mt-1">Tarif flexible</p>
+            </div>
+          </div></div>
+
       </div>
-    {% else %}
-      <!-- Formulaire -->
-      <div class="bg-white/20 backdrop-blur-md border hidden border-white/30 rounded-2xl p-8 shadow-lg " id="reservationForm">
-        <form method="post" class="space-y-6" >
-          {% csrf_token %}
 
-          <h2 class="text-2xl font-bold text-blue-900 mb-6">
+      <!-- CTA -->
+      <div class="rounded-[2rem] bg-blue-900 text-white shadow-xl p-8 md:p-10 flex flex-col justify-between">
+
+        <div>
+          <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-400">
+            Réservation
+          </p>
+
+          <h2 class="text-3xl font-black mb-4">
+            Besoin d’un espace aujourd’hui ?
+          </h2>
+
+          <p class="text-blue-100 leading-relaxed">
+            Sélectionnez votre date, vos heures et réservez rapidement.
+          </p>
+        </div>
+
+        <button onclick="toggleReservation()"
+                class="mt-8 inline-flex items-center justify-center gap-3
+                       rounded-full bg-yellow-400 px-6 py-4
+                       font-black text-blue-900
+                       hover:bg-white transition-all duration-300">
+          <i class="fa-solid fa-calendar-check"></i>
+          Réserver un espace
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- CONFIRMATION / FORMULAIRE -->
+    {% if reservation_reussie %}
+
+    <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-10 shadow-xl">
+      <div class="text-center py-10">
+        <div class="w-20 h-20 mx-auto rounded-full bg-blue-900 text-yellow-400 flex items-center justify-center mb-6">
+          <i class="fa-solid fa-check text-3xl"></i>
+        </div>
+
+        <h2 class="text-3xl font-black text-blue-900 mb-3">
+          Réservation réussie !
+        </h2>
+
+        <p class="text-blue-900/70 mb-8">
+          Merci pour votre réservation. Nous vous contacterons si nécessaire.
+        </p>
+
+        <a href="{% url 'workspace' %}"
+           class="inline-flex items-center justify-center rounded-full
+                  bg-blue-900 px-7 py-4 font-bold text-white
+                  hover:bg-yellow-400 hover:text-blue-900 transition">
+          Faire une autre réservation
+        </a>
+      </div>
+    </div>
+
+    {% else %}
+
+    <div id="reservationForm"
+         class="hidden rounded-[2rem]
+                bg-white/35 backdrop-blur-xl border border-white/40
+                shadow-2xl overflow-hidden">
+
+      <div class="grid lg:grid-cols-5">
+
+        <!-- Colonne info -->
+        <div class="lg:col-span-2 bg-blue-900 p-8 md:p-10 text-white">
+
+          <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-400">
+            Formulaire
+          </p>
+
+          <h2 class="text-3xl md:text-4xl font-black mb-5">
             Réserver cet espace
           </h2>
 
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-blue-900 font-medium mb-1">Heure de début</label>
-              <input type="time" id="heureDebut" name="heure_debut"
-                    class="w-full px-3 py-2 rounded-lg border border-white/30 bg-white/10
-                            text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-blue-900 font-medium mb-1">Heure de fin</label>
-              <input type="time" id="heureFin" name="heure_fin"
-                    class="w-full px-3 py-2 rounded-lg border border-white/30 bg-white/10
-                            text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-          </div>
+          <p class="text-blue-100 leading-relaxed mb-8">
+            Remplissez les informations de réservation. Le prix total sera calculé automatiquement
+            selon la durée choisie.
+          </p>
 
-          <div class="mb-4">
-            <label class="block text-blue-900 font-medium mb-1">{{ form.date.label }}</label>
-            {{ form.date }}
-            {% if form.date.errors %}
-              <p class="text-red-600 text-sm">{{ form.date.errors }}</p>
-            {% endif %}
-          </div>
-          
-          <div class="mb-4">
-            <label class="block text-blue-900 font-medium mb-1">{{ form.nom.label }}</label>
-            {{ form.nom }}
-            {% if form.nom.errors %}
-              <p class="text-red-600 text-sm">{{ form.nom.errors }}</p>
-            {% endif %}
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-blue-900 font-medium mb-1">{{ form.email.label }}</label>
-            {{ form.email }}
-            {% if form.email.errors %}
-              <p class="text-red-600 text-sm">{{ form.email.errors }}</p>
-            {% endif %}
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-blue-900 font-medium mb-1">{{ form.telephone.label }}</label>
-            {{ form.telephone }}
-            {% if form.telephone.errors %}
-              <p class="text-red-600 text-sm">{{ form.telephone.errors }}</p>
-            {% endif %}
-          </div>
-
-          <div class="bg-blue-900 text-white/90 p-6 mb-6 w-full max-w-md mx-auto
-              rounded-xl shadow-lg flex justify-between">
-            <p class="text-lg">
-              Durée : <span id="duree" class="font-bold">0 h</span>
-            </p>
-            <p class="text-lg">
-              Total : <span id="total" class="font-bold">0 $</span>
+          <div class="rounded-3xl bg-white/10 border border-white/20 p-6">
+            <p class="text-sm text-blue-100 mb-2">Prix par heure</p>
+            <p class="text-4xl font-black text-yellow-400">
+              {{ prix_heure }}
             </p>
           </div>
 
-          <button type="submit"
-                  class="w-full bg-blue-900 text-white/90 px-6 py-3 rounded-xl shadow-lg
-                        hover:bg-white/20 hover:text-blue-900 transition font-semibold">
-            Réserver maintenant
-          </button>
+        </div>
 
-        </form>
+        <!-- Formulaire -->
+        <div class="lg:col-span-3 p-8 md:p-10">
+
+          <form method="post" class="space-y-6">
+            {% csrf_token %}
+
+            <div class="grid sm:grid-cols-2 gap-5">
+
+              <div>
+                <label class="block text-blue-900 font-bold mb-2">
+                  Heure de début
+                </label>
+                <input type="time" id="heureDebut" name="heure_debut"
+                       class="w-full px-4 py-3 rounded-2xl
+                              border border-white/40 bg-white/60
+                              text-blue-900
+                              focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                       required>
+              </div>
+
+              <div>
+                <label class="block text-blue-900 font-bold mb-2">
+                  Heure de fin
+                </label>
+                <input type="time" id="heureFin" name="heure_fin"
+                       class="w-full px-4 py-3 rounded-2xl
+                              border border-white/40 bg-white/60text-blue-900
+                              focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                       required>
+              </div>
+
+            </div>
+
+            <div>
+              <label class="block text-blue-900 font-bold mb-2">
+                {{ form.date.label }}
+              </label>
+              {{ form.date }}
+              {% if form.date.errors %}
+                <p class="text-red-600 text-sm mt-1">{{ form.date.errors }}</p>
+              {% endif %}
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-5">
+
+              <div>
+                <label class="block text-blue-900 font-bold mb-2">
+                  {{ form.nom.label }}
+                </label>
+                {{ form.nom }}
+                {% if form.nom.errors %}
+                  <p class="text-red-600 text-sm mt-1">{{ form.nom.errors }}</p>
+                {% endif %}
+              </div>
+
+              <div>
+                <label class="block text-blue-900 font-bold mb-2">
+                  {{ form.email.label }}
+                </label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                  <p class="text-red-600 text-sm mt-1">{{ form.email.errors }}</p>
+                {% endif %}
+              </div>
+
+            </div>
+
+            <div>
+              <label class="block text-blue-900 font-bold mb-2">
+                {{ form.telephone.label }}
+              </label>
+              {{ form.telephone }}
+              {% if form.telephone.errors %}
+                <p class="text-red-600 text-sm mt-1">{{ form.telephone.errors }}</p>
+              {% endif %}
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+
+              <div class="rounded-3xl bg-white/50 border border-white/40 p-5">
+                <p class="text-sm text-blue-900/60 font-bold uppercase tracking-wide">
+                  Durée
+                </p>
+                <p class="text-2xl font-black text-blue-900 mt-1">
+                  <span id="duree">0 h</span>
+                </p>
+              </div>
+
+              <div class="rounded-3xl bg-blue-900 p-5 text-white">
+                <p class="text-sm text-blue-100 font-bold uppercase tracking-wide">
+                  Total
+                </p>
+                <p class="text-2xl font-black text-yellow-400 mt-1">
+                  <span id="total">0 $</span>
+                </p>
+              </div>
+
+            </div>
+
+            <button type="submit"
+                    class="w-full rounded-full bg-blue-900 px-6 py-4
+                           font-black text-white shadow-lg
+                           hover:bg-yellow-400 hover:text-blue-900
+                           transition-all duration-300">
+              Réserver maintenant
+            </button>
+
+          </form>
+
+        </div>
+
       </div>
+
+    </div>
+
     {% endif %}
-</div>
+
+  </div>
+</section>
 
 <script>
 function toggleReservation() {
     const form = document.getElementById("reservationForm");
+    if (!form) return;
+
     form.classList.toggle("hidden");
-    form.scrollIntoView({ behavior: "smooth" });
+    form.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 const prixParHeure = parseFloat("{{ prix_heure }}");
@@ -165,7 +327,8 @@ function calculerPrix() {
     const [h1, m1] = heureDebut.value.split(":").map(Number);
     const [h2, m2] = heureFin.value.split(":").map(Number);
 
-    const diff = (h2*60 + m2) - (h1*60 + m1);
+    const diff = (h2 * 60 + m2) - (h1 * 60 + m1);
+
     if (diff <= 0) {
         dureeEl.textContent = "Heure invalide";
         totalEl.textContent = "0 $";
@@ -180,5 +343,4 @@ function calculerPrix() {
 heureDebut?.addEventListener("input", calculerPrix);
 heureFin?.addEventListener("input", calculerPrix);
 </script>
-
 {% endblock workspace %}

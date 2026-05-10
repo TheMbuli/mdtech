@@ -1,40 +1,185 @@
 {% extends "base.html" %}
 
 {% block gallery %}
-<div class="max-w-7xl mx-auto py-12 px-4" style="padding-top: 140px;">
+<section class="max-w-7xl mx-auto pt-32 pb-24 px-4">
 
-    <div class="mb-12">
-        <h1 class="relative inline-block text-3xl md:text-4xl font-extrabold text-blue-900">
-        Notre gallery 
-        <span class="absolute -bottom-2 left-0 w-16 h-[4px] bg-yellow-400 rounded-full"></span>
-        </h1>
+    <!-- TIMELINE NAVIGATION -->
+    <div class="sticky top-28 z-40 mb-24">
+
+        <div class="relative">
+
+            <!-- Ligne timeline -->
+            <div class="absolute top-1/2 left-0 w-full h-[2px]
+                        bg-gradient-to-r from-blue-900 via-yellow-400 to-blue-900
+                        -translate-y-1/2 rounded-full">
+            </div>
+
+            <!-- Editions -->
+            <div class="relative flex items-center gap-6 overflow-x-auto py-4 px-2">
+
+                {% for edition in editions %}
+                <a href="#edition-{{ edition.annee }}"
+                   class="group relative shrink-0 flex flex-col items-center">
+
+                    <!-- Point timeline -->
+                    <div class="relative z-10 w-5 h-5 rounded-full
+                                bg-yellow-400 border-4 border-blue-900
+                                shadow-lg
+                                group-hover:scale-125 transition duration-300">
+                    </div>
+
+                    <!-- Année -->
+                    <div class="mt-4 px-5 py-2 rounded-full
+                                bg-white/20 backdrop-blur-xl
+                                border border-white/30
+                                text-blue-900 font-bold text-sm md:text-base
+                                shadow-md
+                                group-hover:bg-blue-900
+                                group-hover:text-white
+                                transition duration-300">
+
+                        {{ edition.annee }}
+
+                    </div>
+
+                </a>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- LISTE DES ÉDITIONS -->
+    <div class="relative">
 
-        {% for gallery in galleries %}
-        <a href="{% url 'gallery-detail' gallery.pk %}" 
-           class="relative bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1">
+        <!-- Ligne verticale -->
+        <div class="absolute left-[22px] top-0 bottom-0 w-[2px]
+                    bg-gradient-to-b from-yellow-400 via-blue-900 to-transparent">
+        </div>
 
-            {% if gallery.images.first %}
-            <img src="{{ gallery.images.first.image.url }}" 
-                 alt="{{ gallery.titre }}"
-                 class="w-full h-64 object-cover">
-            {% else %}
-            <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
-                <span class="text-gray-700">Pas d'image</span>
+        {% for edition in editions %}
+        <section id="edition-{{ edition.annee }}"
+                 class="relative pl-16 mb-28 scroll-mt-40">
+
+            <!-- Point timeline -->
+            <div class="absolute left-0 top-2 w-11 h-11 rounded-full
+                        bg-blue-900 border-4 border-yellow-400
+                        shadow-xl flex items-center justify-center">
+
+                <span class="text-white font-black text-sm">
+                    {{ edition.annee|slice:"2:" }}
+                </span>
+
             </div>
-            {% endif %}
 
-            <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4">
-                <h2 class="text-xl font-bold text-white">{{ gallery.titre }}</h2>
-                <p class="text-gray-200 text-sm mt-1">{{ gallery.description|truncatechars:60 }}</p>
+            <!-- Header -->
+            <div class="mb-10">
+
+                <h2 class="relative inline-block
+                           text-3xl md:text-4xl
+                           font-black text-blue-900">
+
+                    Édition {{ edition.annee }}
+
+                    <span class="absolute -bottom-3 left-0
+                                 w-20 h-[5px]
+                                 bg-yellow-400 rounded-full">
+                    </span>
+
+                </h2>
+
             </div>
-        </a>
+
+            <!-- Grid images -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                {% for image_edition in edition.imagesedition_set.all %}
+                <div class="group relative overflow-hidden rounded-3xl
+                            bg-white/20 backdrop-blur-xl
+                            border border-white/30
+                            shadow-xl hover:shadow-2xl
+                            transition duration-500">
+
+                    <!-- Image -->
+                    <div class="overflow-hidden">
+                        <img src="{{ image_edition.image.url }}"
+                             alt="Image édition {{ edition.annee }}"
+                             class="w-full h-72 object-cover
+                                    group-hover:scale-110
+                                    transition duration-700">
+                    </div>
+
+                    <!-- Overlay -->
+                    <div class="absolute inset-0bg-gradient-to-t
+                                from-black/70 via-black/10 to-transparent">
+                    </div>
+
+                    <!-- Texte -->
+                    <div class="absolute bottom-0 left-0 w-full p-5">
+
+                        <div class="flex items-center justify-between">
+
+                            <div>
+                                <h3 class="text-2xl font-black text-white">
+                                    {{ edition.annee }}
+                                </h3>
+
+                                <p class="text-sm text-gray-200">
+                                    Modern Technology of Building
+                                </p>
+                            </div>
+
+                            <div class="w-10 h-10 rounded-full
+                                        bg-yellow-400/90
+                                        flex items-center justify-center
+                                        backdrop-blur-md">
+
+                                <span class="text-blue-900 text-lg font-black">
+                                    +
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+                <div class="col-span-full">
+
+                    <div class="rounded-3xl
+                                bg-white/20 backdrop-blur-md
+                                border border-white/30
+                                p-10 text-center">
+
+                        <p class="text-gray-700 text-lg">
+                            Aucune image disponible pour cette édition.
+                        </p>
+
+                    </div>
+
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </section>
+
         {% empty %}
-        <p class="text-center text-gray-600">Aucune galerie disponible.</p>
+        <div class="text-center py-20">
+
+            <p class="text-gray-700 text-xl">
+                Aucune image disponible.
+            </p>
+
+        </div>
         {% endfor %}
 
     </div>
-</div>
+
+</section>
 {% endblock %}
