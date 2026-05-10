@@ -1,78 +1,135 @@
 {% extends "base.html" %}
 {% block details_formation %}
 
-<div class="max-w-6xl mx-auto py-12 px-4">
-
-  <!-- Bouton Retour -->
+<div class="max-w-7xl mx-auto px-4 mt-12 md:mt-16 lg:mt-20 mb-16" style="padding-top: 150px;">
+  <!-- RETOUR -->
   <a href="{% url 'formation' %}"
-     class="inline-flex items-center gap-2 mb-6
+     class="inline-flex items-center gap-2 mb-10
             bg-white/20 backdrop-blur-md border border-white/30
-            text-blue-900 px-4 py-2 rounded-xl
+            text-blue-900 px-5 py-3 rounded-2xl
             hover:bg-blue-900 hover:text-white
-            transition font-semibold">
-
+            transition-all duration-300 font-bold shadow-md">
     <i class="fa-solid fa-arrow-left"></i>
     Retour aux formations
   </a>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-    <!-- Image -->
-    <div class="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg rounded-2xl overflow-hidden h-64">
-      {% if formation.affiche %}
-        <img src="{{ formation.affiche.url }}"
-            alt="{{ formation.nom }}"
-            class="w-full h-full object-cover">
-      {% else %}
-        <div class="w-full h-full flex items-center justify-center">
-          <span class="text-blue-900 font-medium">Pas d'image</span>
+    <!-- IMAGE -->
+    <div class="group relative rounded-3xl overflow-hidden shadow-2xl border border-white/30">
+
+      <div class="relative h-[380px] md:h-[450px]">
+
+        {% if formation.affiche %}
+          <img src="{{ formation.affiche.url }}"
+               alt="{{ formation.nom }}"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        {% else %}
+          <div class="w-full h-full flex items-center justify-center bg-white/10">
+            <span class="text-blue-900 font-medium">Pas d'image</span>
+          </div>
+        {% endif %}
+
+        <!-- overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+        <!-- badge -->
+        <div class="absolute top-5 left-5">
+          <span class="bg-yellow-400 text-black px-4 py-1 rounded-full text-xs font-black shadow">
+            Formation
+          </span>
         </div>
-      {% endif %}
+
+        <!-- logo -->
+        {% if formation.logo %}
+        <div class="absolute bottom-5 left-5 bg-white rounded-2xl p-3 shadow-lg">
+          <img src="{{ formation.logo.url }}"
+               class="h-14 w-14 object-contain">
+        </div>
+        {% endif %}
+
+      </div>
+
     </div>
 
+    <!-- DETAILS -->
+    <div class="relative bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl p-6 md:p-8 shadow-2xl">
 
-    <!-- Détails -->
-    <div class="flex flex-col justify-between bg-white/20 backdrop-blur-md border border-white/30 shadow-lg rounded-2xl p-6 space-y-6">
+      <!-- glow effect -->
+      <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-400/20 rounded-full blur-3xl"></div>
 
-      <div>
-        <h1 class="text-3xl font-bold text-blue-900 mb-4">
+      <div class="relative z-10">
+
+        <p class="text-sm font-bold text-yellow-500 uppercase tracking-wide mb-2">
+          Programme certifiant
+        </p>
+
+        <h1 class="text-3xl md:text-4xl font-black text-blue-900 mb-5 leading-tight">
           {{ formation.nom }}
         </h1>
 
-        <p class="text-blue-900 mb-4">
+        <p class="text-blue-900/80 leading-relaxed mb-6">
           {{ formation.description }}
         </p>
 
-        <p class="text-blue-900 mb-4 font-medium">
-          Objectifs : {{ formation.objectifs }}
-        </p>
+        <!-- OBJECTIFS -->
+        <div class="bg-white/30 border border-white/40 rounded-2xl p-5 mb-6 shadow-sm">
+          <h2 class="text-lg font-extrabold text-blue-900 mb-3">
+            Objectifs
+          </h2>
+          <p class="text-blue-900/80 text-sm leading-relaxed">
+            {{ formation.objectifs }}
+          </p>
+        </div>
 
-        <p class="text-blue-900 mb-4 font-medium">
-          Durée : {{ formation.duree }}
-        </p>
+        <!-- INFOS -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
 
-        <p class="text-blue-900 text-2xl font-bold mb-6">
-          {{ formation.prix }} $
-        </p>
-      </div>
+          <div class="bg-white/30 border border-white/40 rounded-2xl p-4 shadow-sm text-center">
+            <p class="text-xs text-blue-900/60 font-bold uppercase mb-1">Durée</p>
+            <p class="text-blue-900 font-black text-lg">{{ formation.duree }}</p>
+          </div>
 
-      <!-- Boutons -->
-      <div class="flex gap-4">
+          <div class="bg-white/30 border border-white/40 rounded-2xl p-4 shadow-sm text-center">
+            <p class="text-xs text-blue-900/60 font-bold uppercase mb-1">Étudiant</p>
+            <p class="text-blue-900 font-black text-xl">{{ formation.prix_etudiant }}$</p>
+          </div>
 
-        <!-- S’inscrire -->
-        <a href="{% url 'formation_inscription' formation.slug %}"
-           class="flex-1 bg-blue-900 text-white px-6 py-3
-                  hover:bg-white/20 hover:text-blue-900
-                  border border-white/30 rounded-xl
-                  transition font-semibold text-center shadow">
-          S'inscrire
-        </a>
+          <div class="bg-blue-900 rounded-2xl p-4 shadow-md text-center">
+            <p class="text-xs text-white/70 font-bold uppercase mb-1">Pro</p>
+            <p class="text-white font-black text-xl">{{ formation.prix_pro }}$</p>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="flex flex-col sm:flex-row gap-4">
+
+          <a href="{% url 'formation_inscription' formation.slug %}"
+             class="flex-1 flex items-center justify-center gap-2
+                    bg-blue-900 text-white px-6 py-4 rounded-2xlhover:bg-blue-800 transition-all duration-300
+                    font-bold shadow-md">
+            S'inscrire maintenant
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+
+          <a href="{% url 'formation' %}"
+             class="flex-1 flex items-center justify-center
+                    bg-white/30 backdrop-blur-md border border-white/40
+                    text-blue-900 px-6 py-4 rounded-2xl
+                    hover:bg-yellow-400 hover:text-black
+                    transition-all duration-300 font-bold shadow-md">
+            Voir les formations
+          </a>
+
+        </div>
 
       </div>
 
     </div>
 
   </div>
+
 </div>
 
 {% endblock details_formation %}

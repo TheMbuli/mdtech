@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block boutique %}
 
-<section class="max-w-7xl mx-auto px-4 py-16">
+{% block boutique %}
+<section class="max-w-7xl mx-auto px-4 py-20" style="padding-top: 140px;">
 
   <!-- TITRE -->
   <div class="mb-12">
@@ -15,42 +15,42 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
     {% for article in object_list %}
-    <div class="group relative rounded-3xl
-                bg-white/30 backdrop-blur-xl border border-white/30
-                shadow-xl hover:shadow-2xl
-                transition-all duration-500
-                flex flex-col">
+    <div class="group relative flex flex-col overflow-hidden rounded-3xl border border-white/30 bg-white/40 backdrop-blur-xl shadow-xl transition-all duration-500 hover:shadow-2xl">
 
       <!-- IMAGE -->
       {% with article.photoarticle_set.first as photo %}
         {% if photo %}
-          <div class="overflow-hidden rounded-t-3xl">
-            <img src="{{ photo.image.url }}"
-                 alt="{{ article.nom }}"
-                 class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="overflow-hidden">
+            <img
+              src="{{ photo.image.url }}"
+              alt="{{ article.nom }}"
+              class="h-60 w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            >
           </div>
         {% else %}
-          <div class="w-full h-60 bg-yellow-400 flex items-center justify-center rounded-t-3xl">
-            <span class="text-blue-900 font-semibold">Aucune image</span>
+          <div class="flex h-60 w-full items-center justify-center bg-yellow-400">
+            <span class="font-semibold text-blue-900">Aucune image</span>
           </div>
         {% endif %}
       {% endwith %}
 
       <!-- CONTENU -->
-      <div class="p-6 flex flex-col flex-1">
+      <div class="flex flex-1 flex-col p-6">
 
-        <h2 class="text-xl font-bold text-blue-900 mb-2">
+        <!-- TITRE ARTICLE -->
+        <h2 class="mb-2 text-xl font-bold text-blue-900">
           {{ article.nom }}
         </h2>
 
-        <p class="text-gray-800 text-sm leading-relaxed mb-4">
+        <!-- DESCRIPTION -->
+        <p class="mb-4 text-sm leading-relaxed text-gray-700">
           {{ article.description|truncatechars:90 }}
         </p>
 
         <!-- PRIX -->
         <div class="mb-6">
           {% if article.reduction > 0 %}
-            <span class="text-sm line-through text-gray-500">
+            <span class="text-sm text-gray-400 line-through">
               {{ article.prix }} $
             </span>
             <span class="ml-2 text-xl font-extrabold text-red-600">
@@ -64,30 +64,31 @@
         </div>
 
         <!-- ACTIONS -->
-        <div class="flex gap-4 mt-auto">
-          <a href="https://wa.me/243812345678?text=Bonjour,%20je%20souhaite%20commander%20l'article%20{{ article.nom }}%20:%20{{ request.scheme }}://{{ request.get_host }}{% url 'details-article' article.id %}"
+        <div class="mt-auto flex flex-col gap-3 sm:flex-row">
+
+          <!-- BOUTON COMMANDER -->
+          <a
+            href="https://wa.me/243812345678?text=Bonjour,%20je%20souhaite%20commander%20l'article%20{{ article.nom }}%20:%20{{ request.scheme }}://{{ request.get_host }}{% url 'details-article' article.id %}"
             target="_blank"
-            class="flex-1 flex items-center justify-center gap-2
-                    bg-blue-900 text-white px-4 py-3 rounded-full
-                    font-semibold hover:bg-yellow-500 hover:text-blue-900
-                    transition-all duration-300">
+            class="flex flex-1 items-center justify-center gap-2 rounded-full bg-blue-900 px-4 py-3 font-semibold text-white transition-all duration-300 hover:bg-yellow-500 hover:text-blue-900"
+          >
             <i class="fa-solid fa-cart-shopping"></i>
             Commander
           </a>
 
-          <a href="{% url 'details-article' article.id %}"
-            class="flex-1 flex items-center justify-center
-                    border-2 border-blue-900 text-blue-900
-                    px-4 py-3 rounded-full font-semibold
-                    hover:bg-blue-900 hover:text-white
-                    transition-all duration-300">
+          <!-- BOUTON VOIR PLUS -->
+          <a
+            href="{% url 'details-article' article.id %}"
+            class="flex flex-1 items-center justify-center rounded-full border-2 border-blue-900 px-4 py-3 font-semibold text-blue-900 transition-all duration-300 hover:bg-blue-900 hover:text-white"
+          >
             Voir plus
           </a>
-        </div>
 
+        </div>
 
       </div>
     </div>
+
     {% empty %}
       <p class="col-span-full text-center text-gray-600">
         Aucun article disponible
@@ -95,7 +96,5 @@
     {% endfor %}
 
   </div>
-
 </section>
-
 {% endblock boutique %}

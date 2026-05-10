@@ -1,91 +1,71 @@
 {% extends "base.html" %}
 {% load static %}
 {% block accueil %}
-<section class="min-h-[75vh] flex items-center px-6 md:px-20 mt-6">
+<section
+    class="relative h-screen flex items-center overflow-hidden bg-black px-6 md:px-20"
+    style="background-image: url('{% static 'accueil/images/landing.jpg' %}');
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;"
+>
+    <!-- overlay sombre -->
+    <div class="absolute inset-0 z-0" style="background: rgba(0,0,0,0.45);"></div>
 
-    <div class="relative max-w-4xl space-y-10" data-aos="fade-up">
-
-        <!-- MINI BADGE -->
-        <div class="inline-flex items-center gap-3
-                    px-5 py-2 rounded-full
-                    border border-blue-900/20
-                    backdrop-blur-md
-                    shadow-sm">
-
-            <span class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
-
-            <span class="text-xs uppercase tracking-widest font-bold text-blue-900">
-                Innovation & Architecture
-            </span>
-        </div>
-
-        <!-- TITRE -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-blue-900">
-            Modern Technology
-            <span class="block text-transparent bg-clip-text
-                         bg-gradient-to-r from-yellow-400 to-yellow-600">
-                of Building
-            </span>
-        </h1>
-
-        <!-- TEXTE -->
-        <p class="text-gray-700 text-lg max-w-2xl leading-relaxed">
-            Nous concevons et réalisons des solutions de construction intelligentes,
-            durables et adaptées aux exigences du monde moderne.
-        </p>
-
-        <!-- ACTIONS -->
-        <div class="flex flex-wrap items-center gap-6 pt-4">
-
-            <!-- ACTION PRINCIPALE -->
-            <a href="#activites"
-               class="group relative inline-flex items-center gap-3
-                      px-7 py-3 rounded-full
-                      bg-blue-900 text-white font-semibold
-                      overflow-hidden shadow-xl">
-
-                <!-- halo animé -->
-                <span class="absolute inset-0 bg-gradient-to-r
-                             from-yellow-400 to-yellow-500
-                             opacity-0 group-hover:opacity-100
-                             transition duration-500"></span>
-
-                <span class="relative z-10">
-                    Découvrir nos services
-                </span>
-
-                <i class="fas fa-arrow-right relative z-10
-                          transform group-hover:translate-x-1 transition"></i>
-            </a>
-
-            <!-- ACTION SECONDAIRE -->
-            <a href="#contacter"
-               class="group inline-flex items-center gap-3
-                      px-7 py-3 rounded-full
-                      border border-blue-900/30
-                      text-blue-900 font-semibold
-                      backdrop-blur-md
-                      hover:bg-blue-900/5 transition">
-
-                <i class="fas fa-paper-plane text-yellow-500"></i>
-                <span>Nous contacter</span>
-            </a>
-
-        </div>
-
-        <!-- LIGNE DECORATIVE -->
-        <div class="flex items-center gap-4 pt-6">
-            <span class="w-12 h-[2px] bg-blue-900"></span>
-            <span class="text-xs uppercase tracking-widest text-blue-900/60">
-                Construire le futur
-            </span>
-        </div>
-
+    <!-- gradient gauche -->
+    <div class="absolute inset-0 z-0"
+         style="background: linear-gradient(to right, rgba(0,0,0,0.62), rgba(0,0,0,0.25), rgba(0,0,0,0));">
     </div>
 
+    <!-- contenu -->
+    <div class="relative z-10 w-full px-5 sm:px-8 md:px-16 lg:px-24 py-10 md:py-16">
+        <div class="max-w-xl lg:max-w-2xl">
+
+            <div class="mb-5">
+                <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm"
+                      style="background: rgba(255,255,255,0.08);">
+                    <span class="h-2 w-2 rounded-full bg-yellow-400 animate-pulse"></span>
+                    Innovation & Architecture
+                </span>
+            </div>
+
+            <h1 class="font-black leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white">
+                Modern Technology
+                <span class="block text-yellow-400">
+                    of Building
+                </span>
+            </h1>
+
+            <p class="mt-5 max-w-lg text-sm sm:text-base md:text-lg leading-relaxed text-white">
+                Nous offrons des services de modélisation BIM, de conception architecturale et de
+                visualisation 3D de haute qualité pour des projets à l’échelle mondiale mais aussi
+                des formations professionnelles pour vos projets et votre avenir.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
+                <a href="#activites"
+                   class="inline-flex items-center justify-center gap-3 rounded-full bg-yellow-400 px-6 py-3 text-sm sm:text-base font-semibold text-black transition hover:scale-[1.02] hover:bg-yellow-300">
+                    <span>Découvrir nos services</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+                <a href="#contacter"
+                   class="inline-flex items-center justify-center gap-3 rounded-full border border-white/30 px-6 py-3 text-sm sm:text-base font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+                   style="background: rgba(255,255,255,0.06);">
+                    <i class="fas fa-paper-plane text-yellow-400"></i>
+                    <span>Nous contacter</span>
+                </a>
+            </div>
+
+            <div class="mt-8 flex items-center gap-4">
+                <span class="h-[2px] w-10 sm:w-14 bg-yellow-400"></span>
+                <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-white/70">
+                    Construire le futur
+                </span>
+            </div>
+
+        </div>
+    </div>
 </section>
-
-
 {% load static %}    
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>

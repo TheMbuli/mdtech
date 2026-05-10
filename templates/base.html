@@ -1,260 +1,277 @@
 {% load static tailwind_tags %}
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Modern Technology of build </title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Font Awesome CDN -->
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-            />
-        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-        {% tailwind_css %}
-    </head>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Modern Technology of Build</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <body class="bg-gray-400 pt-28">
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
 
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    {% tailwind_css %}
+  </head>
+
+  <body class="relative bg-gray-400">
+
+    <!-- HEADER -->
     <header class="fixed top-0 left-0 w-full z-50">
-  <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="max-w-7xl mx-auto px-6 pt-4">
 
-    <div class="flex items-center justify-between
-                bg-white/30 backdrop-blur-xl
-                border border-white/30
-                rounded-2xl shadow-xl
-                px-6 py-3">
+        <!-- BARRE PRINCIPALE -->
+        <div class="h-[80px] flex items-center justify-between
+                    bg-white/30 backdrop-blur-xl
+                    border border-white/30
+                    rounded-2xl shadow-xl
+                    px-6">
 
-      <!-- LOGO -->
-      <a href="{% url 'accueil' %}" class="flex items-center gap-3">
-        <img src="{% static 'accueil/images/logo.png' %}" class="w-24" alt="Logo">
-      </a>
+          <!-- LOGO -->
+          <a href="{% url 'accueil' %}" class="flex items-center gap-3">
+            <img src="{% static 'accueil/images/logo.png' %}" class="w-24" alt="Logo">
+          </a>
 
-      <!-- NAV DESKTOP -->
-      <nav class="hidden md:flex items-center gap-8 font-medium text-blue-900">
+          <!-- NAV DESKTOP -->
+          <nav class="hidden md:flex items-center gap-8 font-medium text-blue-900">
 
-        <a href="{% url 'accueil' %}" class="relative group">
-          Accueil
-          <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                      bg-gradient-to-r from-yellow-400 to-yellow-600
-                      scale-x-0 origin-left transition-transform duration-300
-                      group-hover:scale-x-100"></span>
-        </a>
+            <a href="{% url 'accueil' %}" class="relative group">
+              Accueil
+              <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                           bg-gradient-to-r from-yellow-400 to-yellow-600
+                           scale-x-0 origin-left transition-transform duration-300
+                           group-hover:scale-x-100"></span>
+            </a>
 
-        <a href="{% url 'boutique' %}" class="relative group">
-          Boutique
-          <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                      bg-gradient-to-r from-yellow-400 to-yellow-600
-                      scale-x-0 origin-left transition-transform duration-300
-                      group-hover:scale-x-100"></span>
-        </a>
+            <a href="{% url 'boutique' %}" class="relative group">
+              Boutique
+              <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                           bg-gradient-to-r from-yellow-400 to-yellow-600
+                           scale-x-0 origin-left transition-transform duration-300
+                           group-hover:scale-x-100"></span>
+            </a>
 
-        <a href="{% url 'projets-list' %}" class="relative group">
-          Réalisations
-          <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                      bg-gradient-to-r from-yellow-400 to-yellow-600
-                      scale-x-0 origin-left transition-transform duration-300
-                      group-hover:scale-x-100"></span>
-        </a>
+            <a href="{% url 'projets-list' %}" class="relative group">
+              Réalisations
+              <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                           bg-gradient-to-r from-yellow-400 to-yellow-600
+                           scale-x-0 origin-left transition-transform duration-300
+                           group-hover:scale-x-100"></span>
+            </a>
 
-        <a href="{% url 'services' %}" class="relative group">
-          Services
-          <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                      bg-gradient-to-r from-yellow-400 to-yellow-600
-                      scale-x-0 origin-left transition-transform duration-300
-                      group-hover:scale-x-100"></span>
-        </a>
+            <a href="{% url 'services' %}" class="relative group">
+              Services
+              <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                           bg-gradient-to-r from-yellow-400 to-yellow-600
+                           scale-x-0 origin-left transition-transform duration-300
+                           group-hover:scale-x-100"></span>
+            </a>
 
-        <a href="{% url 'formation' %}" class="relative group">
-          Formation
-          <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                      bg-gradient-to-r from-yellow-400 to-yellow-600
-                      scale-x-0 origin-left transition-transform duration-300
-                      group-hover:scale-x-100"></span>
-        </a>
+            <a href="{% url 'formation' %}" class="relative group">
+              Formation
+              <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                           bg-gradient-to-r from-yellow-400 to-yellow-600
+                           scale-x-0 origin-left transition-transform duration-300
+                           group-hover:scale-x-100"></span>
+            </a>
 
-        <a href="{% url 'gallery-list' %}" class="relative group">
-          Gallerie
-          <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                      bg-gradient-to-r from-yellow-400 to-yellow-600
-                      scale-x-0 origin-left transition-transform duration-300
-                      group-hover:scale-x-100"></span>
-        </a>
+            <a href="{% url 'gallery-list' %}" class="relative group">
+              Gallerie
+              <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                           bg-gradient-to-r from-yellow-400 to-yellow-600
+                           scale-x-0 origin-left transition-transform duration-300
+                           group-hover:scale-x-100"></span>
+            </a>
 
-        <a href="{% url 'workspace' %}" class="relative group">
-          Espace de travail
-          <span class="absolute -bottom-1 left-0 w-full h-[2px]
-                      bg-gradient-to-r from-yellow-400 to-yellow-600
-                      scale-x-0 origin-left transition-transform duration-300
-                      group-hover:scale-x-100"></span>
-        </a>
+            <a href="{% url 'workspace' %}" class="relative group">
+              Espace de travail
+              <span class="absolute -bottom-1 left-0 w-full h-[2px]
+                           bg-gradient-to-r from-yellow-400 to-yellow-600
+                           scale-x-0 origin-left transition-transform duration-300group-hover:scale-x-100"></span>
+            </a>
 
-      </nav>
+          </nav>
 
-      <!-- BOUTON MOBILE -->
-      <button id="mobile-menu-btn"
-              class="md:hidden text-blue-900 text-2xl">
-        <i id="btn_icone" class="fas fa-bars"></i>
-      </button>
-    </div>
+          <!-- BOUTON MOBILE -->
+          <button id="mobile-menu-btn" class="md:hidden text-blue-900 text-2xl">
+            <i id="btn_icone" class="fas fa-bars"></i>
+          </button>
+        </div>
 
-    <!-- MENU MOBILE -->
-    <nav id="mobile-menu"
-         class="hidden md:hidden mt-4
-                bg-white/40 backdrop-blur-xl
-                border border-white/30
-                rounded-2xl shadow-xl
-                p-6 space-y-4 text-blue-900 font-medium">
+        <!-- MENU MOBILE -->
+        <nav id="mobile-menu"
+             class="hidden md:hidden mt-4
+                    bg-white/40 backdrop-blur-xl
+                    border border-white/30
+                    rounded-2xl shadow-xl
+                    p-6 space-y-4 text-blue-900 font-medium">
+          <a href="{% url 'accueil' %}" class="block hover:text-yellow-500">Accueil</a>
+          <a href="{% url 'boutique' %}" class="block hover:text-yellow-500">Boutique</a>
+          <a href="{% url 'projets-list' %}" class="block hover:text-yellow-500">Réalisations</a>
+          <a href="{% url 'services' %}" class="block hover:text-yellow-500">Services</a>
+          <a href="{% url 'formation' %}" class="block hover:text-yellow-500">Formation</a>
+          <a href="{% url 'gallery-list' %}" class="block hover:text-yellow-500">Gallerie</a>
+          <a href="{% url 'workspace' %}" class="block hover:text-yellow-500">Espace de travail</a>
+        </nav>
+      </div>
+    </header>
 
-      <a href="{% url 'accueil' %}" class="block hover:text-yellow-500">Accueil</a>
-      <a href="{% url 'boutique' %}" class="block hover:text-yellow-500">Boutique</a>
-      <a href="{% url 'projets-list' %}" class="block hover:text-yellow-500">Réalisations</a>
-            <a href="{% url 'services' %}" class="block hover:text-yellow-500">Services</a>
-      <a href="{% url 'formation' %}" class="block hover:text-yellow-500">Formation</a>
-      <a href="{% url 'gallery-list' %}" class="block hover:text-yellow-500">Gallerie</a>
-      <a href="{% url 'workspace' %}" class="block hover:text-yellow-500">Espace de travail</a>
+    <!-- CONTENU PRINCIPAL -->
+    <main class="pt-[112px]">
 
-    </nav>
-  </div>
-</header>
+      {% block accueil %}
+      {% endblock accueil %}
 
+      {% block boutique %}
+      {% endblock boutique %}
 
-    {% block accueil %}
-    {% endblock accueil %}
+      {% block details_article %}
+      {% endblock details_article %}
 
-    {% block boutique %} 
-    {% endblock boutique %}
+      {% block formation %}
+      {% endblock formation %}
 
-    {% block details_article %}
-    {% endblock details_article %}
+      {% block details_formation %}
+      {% endblock details_formation %}
 
-    {% block formation %} 
-    {% endblock formation %}
+      {% block inscription %}
+      {% endblock inscription %}
 
-    {% block details_formation %}
-    {% endblock details_formation %}
+      {% block workspace %}
+      {% endblock workspace %}
 
-    {% block inscription %}
-    {% endblock inscription %}
+      {% block projets %}
+      {% endblock projets %}
 
-    {% block workspace %}
-    {% endblock workspace %}
+      {% block details-projet %}
+      {% endblock details-projet %}
 
-    {% block projets %}    
-    {% endblock projets %}
+      {% block gallery %}
+      {% endblock gallery %}
 
-    {% block details-projet %}
-    {% endblock details-projet %}
+      {% block services %}
+      {% endblock services %}
 
-    {% block gallery %}
-    {% endblock gallery %}
+      {% block gallery-detail %}
+      {% endblock gallery-detail %}
 
-    {% block services %}
-    {% endblock services %}
+    </main>
 
-    {% block gallery-detail %}
-    {% endblock gallery-detail %}
-
+    <!-- FOOTER -->
     <footer class="mt-24 relative">
 
-  <!-- vague décorative -->
-  <div class="absolute inset-x-0 -top-10 h-20 bg-gradient-to-r
-              from-blue-900 to-blue-800
-              blur-3xl opacity-30"></div>
+      <!-- VAGUE DÉCORATIVE -->
+      <div class="absolute inset-x-0 -top-10 h-20 bg-gradient-to-r
+                  from-blue-900 to-blue-800
+                  blur-3xl opacity-30"></div>
 
-  <div class="bg-blue-900 text-white">
-    <div class="max-w-7xl mx-auto px-6 py-14
-                grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
 
-      <!-- BRAND -->
-      <div>
-        <h3 class="text-2xl font-black mb-4">
-          Modern Technology of Building
-        </h3>
-        <p class="text-sm text-blue-100 leading-relaxed">
-          Nous concevons des solutions architecturales modernes,
-          durables et intelligentes pour le futur.
-        </p>
-      </div>
-
-      <!-- LIENS -->
-      <div>
-        <h4 class="font-bold text-lg mb-4">Navigation</h4>
-        <ul class="space-y-2 text-blue-100">
-          <li><a href="{% url 'accueil' %}" class="hover:text-yellow-400">Accueil</a></li>
-          <li><a href="{% url 'boutique' %}" class="hover:text-yellow-400">Boutique</a></li>
-          <li><a href="{% url 'projets-list' %}" class="hover:text-yellow-400">Réalisations</a></li>
-          <li><a href="{% url 'formation' %}" class="hover:text-yellow-400">Formation</a></li>
-          <li><a href="{% url 'workspace' %}" class="hover:text-yellow-400">Espace de travail</a></li>
-        </ul>
-      </div>
-
-      <!-- SOCIAL -->
-      <div>
-        <h4 class="font-bold text-lg mb-4">Réseaux</h4>
-        <div class="flex flex-col gap-3">
-          <!-- Modern Technology of Building -->
-          <div class="flex gap-4 text-xl">
-            <a href="https://www.facebook.com/share/16xARVMjJh/?mibextid=wwXIfr" class="hover:text-yellow-400"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com/modern_technologi_of_building?igsh=cWducXJzaG9sdmph&utm_source=qr" class="hover:text-yellow-400"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://wa.me/243972159400" class="hover:text-yellow-400"><i class="fa-brands fa-whatsapp"></i></a>
+          <!-- BRAND -->
+          <div>
+            <h3 class="text-2xl font-black mb-4">
+              Modern Technology of Building
+            </h3>
+            <p class="text-sm text-blue-100 leading-relaxed">
+              Nous concevons des solutions architecturales modernes,
+              durables et intelligentes pour le futur.
+            </p>
           </div>
 
-          <!-- Genius Developers -->
-          <div class="flex flex-col mt-4 items-start">
-            <img src="{% static 'accueil/images/gendev.png' %}" alt="Genius Developers Logo" class="w-16 h-16 mb-2">
-            <p class="font-semibold"> Powered by Genius Developers</p>
-            <p class="text-sm text-blue-100">Goma, RD Congo</p>
-            <div class="flex gap-4 mt-2 text-xl">
-              <a href="https://www.instagram.com/geniusdeveloppers?igsh=MWtiYTRjMWk0NTk2dQ==" target="_blank" class="hover:text-yellow-400"><i class="fa-brands fa-instagram"></i></a>
-              <a href="mailto:geniusdevelopers11@gmail.com" target="_blank" class="hover:text-yellow-400"><i class="fa-solid fa-envelope"></i></a>
-              <a href="https://wa.me/243982639465?src=qr" target="_blank" class="hover:text-yellow-400"><i class="fa-brands fa-whatsapp"></i></a>
-              <a href="tel:+243982639465" class="hover:text-yellow-400"><i class="fa-solid fa-phone"></i></a>
+          <!-- LIENS -->
+          <div>
+            <h4 class="font-bold text-lg mb-4">Navigation</h4>
+            <ul class="space-y-2 text-blue-100">
+              <li><a href="{% url 'accueil' %}" class="hover:text-yellow-400">Accueil</a></li>
+              <li><a href="{% url 'boutique' %}" class="hover:text-yellow-400">Boutique</a></li>
+              <li><a href="{% url 'projets-list' %}" class="hover:text-yellow-400">Réalisations</a></li>
+              <li><a href="{% url 'formation' %}" class="hover:text-yellow-400">Formation</a></li>
+              <li><a href="{% url 'workspace' %}" class="hover:text-yellow-400">Espace de travail</a></li>
+            </ul>
+          </div>
+          <!-- SOCIAL -->
+          <div>
+            <h4 class="font-bold text-lg mb-4">Réseaux</h4>
+            <div class="flex flex-col gap-3">
+
+              <!-- MTB -->
+              <div class="flex gap-4 text-xl">
+                <a href="https://www.facebook.com/share/16xARVMjJh/?mibextid=wwXIfr" class="hover:text-yellow-400">
+                  <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/modern_technologi_of_building?igsh=cWducXJzaG9sdmph&utm_source=qr" class="hover:text-yellow-400">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/243972159400" class="hover:text-yellow-400">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </a>
+              </div>
+
+              <!-- GENIUS DEVELOPERS -->
+              <div class="flex flex-col mt-4 items-start">
+                <img src="{% static 'accueil/images/gendev.png' %}" alt="Genius Developers Logo" class="w-16 h-16 mb-2">
+                <p class="font-semibold">Powered by Genius Developers</p>
+                <p class="text-sm text-blue-100">Goma, RD Congo</p>
+
+                <div class="flex gap-4 mt-2 text-xl">
+                  <a href="https://www.instagram.com/geniusdeveloppers?igsh=MWtiYTRjMWk0NTk2dQ==" target="_blank" class="hover:text-yellow-400">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                  <a href="mailto:geniusdevelopers11@gmail.com" target="_blank" class="hover:text-yellow-400">
+                    <i class="fa-solid fa-envelope"></i>
+                  </a>
+                  <a href="https://wa.me/243982639465?src=qr" target="_blank" class="hover:text-yellow-400">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </a>
+                  <a href="tel:+243982639465" class="hover:text-yellow-400">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+                </div>
+              </div>
+
             </div>
           </div>
+
+        </div>
+
+        <!-- COPYRIGHT -->
+        <div class="border-t border-white/20 text-center py-4 text-sm text-blue-100">
+          © 2025 Modern Technology of Building — Tous droits réservés
         </div>
       </div>
+    </footer>
 
-    </div>
-
-    <!-- COPYRIGHT -->
-    <div class="border-t border-white/20 text-center py-4 text-sm text-blue-100">
-      © 2025 Modern Technology of Building — Tous droits réservés
-    </div>
-  </div>
-
-</footer>
-
-
-
-
-    <!-- JS pour toggler le menu -->
+    <!-- JS MENU MOBILE -->
     <script>
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const btn_icone = document.getElementById('btn_icone')
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const btn_icone = document.getElementById('btn_icone');
 
-        btn.addEventListener('click', () => {
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('grid'); // transforme en grid
-            } else {
-                menu.classList.remove('grid');
-                menu.classList.add('hidden');
-            }
+      btn.addEventListener('click', () => {
+        if (menu.classList.contains('hidden')) {
+          menu.classList.remove('hidden');
+          menu.classList.add('grid');
+        } else {
+          menu.classList.remove('grid');
+          menu.classList.add('hidden');
+        }
 
-            if(btn_icone.classList.contains('fa-bars')){
-                btn_icone.classList.remove('fa-bars')
-                btn_icone.classList.add('fa-x')
-            }else{
-                btn_icone.classList.remove('fa-x')
-                btn_icone.classList.add('fa-bars')
-            }
-        });
+        if (btn_icone.classList.contains('fa-bars')) {
+          btn_icone.classList.remove('fa-bars');
+          btn_icone.classList.add('fa-x');
+        } else {
+          btn_icone.classList.remove('fa-x');
+          btn_icone.classList.add('fa-bars');
+        }
+      });
     </script>
 
-    </body>
+  </body>
 </html>

@@ -8,10 +8,12 @@ class Formation(models.Model):
     nom = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=120, unique=True, blank=True)
     description = models.TextField(max_length=1000)
-    duree = models.DurationField(help_text="Durée de la formation (HH:MM:SS)")
-    prix = models.PositiveIntegerField(help_text="Prix en dollars")
+    duree = models.PositiveBigIntegerField()
+    prix_pro = models.PositiveIntegerField(help_text="Prix pro")
+    prix_etudiant = models.PositiveBigIntegerField(help_text="Prix étudiant")
     affiche = models.ImageField(upload_to='formation_images', blank=True, null=True)
     objectifs = models.TextField(max_length=500)
+    logo = models.ImageField(upload_to="logo")
     
     # Optionnel : dates de création et modification
     created_at = models.DateTimeField(auto_now_add=True)

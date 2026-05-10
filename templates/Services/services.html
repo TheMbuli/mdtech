@@ -1,26 +1,303 @@
 {% extends "base.html" %}
-{% block services %}  {# ou une autre block si tu veux #}
+{% load static %}
 
-<div class="max-w-7xl mx-auto py-12 px-4">
+{% block services %}
 
-    <div class="mb-12">
-        <h1 class="relative inline-block text-3xl md:text-4xl font-extrabold text-blue-900">
-        Nos services
-        <span class="absolute -bottom-2 left-0 w-16 h-[4px] bg-yellow-400 rounded-full"></span>
-        </h1>
+<div>
+
+<!-- HERO -->
+<section
+    class="relative h-screen flex items-center overflow-hidden bg-black px-6 md:px-20"
+    style="background-image: url('{% static 'services/images/landing_services.jpg' %}');
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;"
+>
+
+    <!-- overlay sombre -->
+    <div class="absolute inset-0 z-0" style="background: rgba(0,0,0,0.45);"></div>
+
+    <!-- gradient gauche -->
+    <div class="absolute inset-0 z-0"
+         style="background: linear-gradient(to right, rgba(0,0,0,0.72), rgba(0,0,0,0.35), rgba(0,0,0,0));">
     </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    <p class="text-gray-700 text-lg max-w-2xl leading-relaxed">
-      Bienvenue dans la section Services & Facturation de Modern Technology of Building
+    <div class="relative z-10 w-full px-5 sm:px-8 md:px-16 lg:px-24 py-10 md:py-16">
+        <div class="max-w-xl lg:max-w-2xl">
 
-      Dans cet espace, nous vous présentons l’ensemble de nos services, nos modalités de tarification ainsi que des exemples de projets réalisés, adaptés à votre zone géographique.
+            <h1 class="font-black text-5xl md:text-6xl text-blue-900">
+                Services et facturations
+            </h1>
 
-      Afin de vous offrir des informations précises et pertinentes, nous vous invitons à sélectionner votre zone :
+            <h1 class="font-black text-5xl md:text-6xl text-white mt-2">
+                Modern Technology
+                <span class="block text-yellow-400">of Building</span>
+            </h1>
 
-      Choisissez votre zone pour accéder aux détails spécifiques qui vous concernent.
-    </p>
-  </div>
+            <!-- SECTION INTRO SERVICES -->
+            <div class="max-w-7xl mx-auto px-4 py-16">
+
+                <div class="max-w-3xl">
+
+                    <p class="text-gray-400 leading-relaxed mb-6 font-bold ">
+                        Découvrez une gamme complète de services adaptés à vos besoins, à votre budget et à votre localisation.
+                        Nous vous garantissons des prestations de qualité, des tarifs transparents et un accompagnement professionnel à chaque étape de votre projet.
+                    </p>
+
+                    <!-- ENGAGEMENTS -->
+                    <div class="bg-white rounded-3xl border border-gray-100 shadow-md p-6">
+
+                        <h3 class="text-lg font-bold text-blue-900 mb-4">
+                            Nos engagements
+                        </h3>
+
+                        <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-700">
+
+                            <div class="flex items-center gap-3">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                Qualité et précision technique
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                Respect des délais convenus
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                Tarification claire et accessible
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                Assistance professionnelle continue
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SECTION FACTURATION -->
+<div class="max-w-7xl mx-auto px-4 py-16">
+
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+
+        <!-- TEXTE -->
+        <div>
+
+            <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-6">
+                Système de facturation intelligent
+            </h2>
+
+            <p class="text-gray-600 mb-6 leading-relaxed">
+                Chez <span class="font-semibold text-blue-900">Modern Technology of Building</span>, nos tarifs sont calculés de manière transparente et adaptée à chaque projet.
+            </p>
+
+            <div class="space-y-4 mb-8">
+
+                <div class="flex items-start gap-4">
+                    <div class="w-3 h-3 bg-yellow-400 rounded-full mt-2"></div>
+                    <p class="text-gray-700 text-sm">
+                        Surface totale du projet (m²)
+                    </p>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="w-3 h-3 bg-yellow-400 rounded-full mt-2"></div>
+                    <p class="text-gray-700 text-sm">
+                        Nombre de niveaux
+                    </p>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="w-3 h-3 bg-yellow-400 rounded-full mt-2"></div>
+                    <p class="text-gray-700 text-sm">
+                        Type de service demandé
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4 text-sm text-blue-900 font-semibold">
+                Surface totale = Surface par niveau × Nombre de niveaux
+            </div>
+
+        </div>
+
+        <!-- CARD SERVICE -->
+        <div class="bg-white rounded-3xl shadow-lg p-6 border border-gray-100 hover:shadow-2xl transition">
+
+            <span class="inline-block bg-yellow-400 text-black text-xs font-bold px-4 py-1 rounded-full mb-4">
+                BIM / Architecture
+            </span>
+
+            <h3 class="text-xl font-extrabold text-blue-900 mb-4">
+                Modélisation architecturale (Plans BIM)
+            </h3>
+
+            <p class="text-gray-600 text-sm mb-6">
+                Une approche moderne basée sur le BIM pour concevoir, visualiser et optimiser vos projets de construction.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Plans 2D
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Coupes & façades
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Plan de masse
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Fondations & plafonds
+                </div>
+
+                <div class="flex items-center gap-2 col-span-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Perspectives architecturales
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
+
+<!-- SERVICES -->
+<div class="max-w-7xl mx-auto py-16 px-4">
+
+    <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-12">
+        Découvrez nos services
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        {% for service in services %}
+        <div class="group bg-white rounded-3xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden border border-gray-100">
+
+            <!-- CAROUSEL -->
+            <div class="relative overflow-hidden">
+
+                <div class="service-carousel relative h-56 overflow-hidden bg-gray-100">
+
+                    {% for image in service.images.all %}
+                    <div class="service-slide {% if forloop.first %}active{% endif %}">
+                        <img 
+                            src="{{ image.image.url }}" 
+                            alt="{{ service.nom }}"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                    {% empty %}
+                    <div class="h-full flex items-center justify-center bg-gray-200 text-gray-500">
+                        Aucune image disponible
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="absolute top-3 right-3">
+                    {% if geo.city == "Goma" %}
+                    <span class="bg-green-500 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                        Local
+                    </span>
+                    {% else %}
+                    <span class="bg-blue-900 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                        Standard
+                    </span>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <!-- CONTENT -->
+            <div class="p-6">
+
+                <h3 class="text-xl font-bold text-blue-900 mb-2">
+                    {{ service.nom }}
+                </h3>
+
+                <p class="text-gray-600 text-sm mb-4">
+                    {{ service.description }}
+                </p>
+
+                <!-- PRIX -->
+                <div class="mb-6">
+                    {% if geo.city == "Goma" %}
+                    <div class="text-green-600 font-bold text-lg">
+                        {{ service.prix_nord_kivu }} $
+                        <span class="text-xs text-gray-500">(Prix Goma)</span>
+                    </div>
+                    {% else %}
+                    <div class="text-blue-900 font-bold text-lg">
+                        {{ service.prix }} $
+                        <span class="text-xs text-gray-500">(Prix standard)</span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- BUTTON -->
+                <a href="#"class="block text-center bg-blue-900 text-white py-3 rounded-full font-semibold hover:bg-blue-800 transition">
+                    Demander un devis
+                </a>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<style>
+.service-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.service-slide.active {
+    opacity: 1;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".service-carousel").forEach(function (carousel) {
+        const slides = carousel.querySelectorAll(".service-slide");
+        let index = 0;
+
+        if (slides.length <= 1) return;
+
+        setInterval(function () {
+            slides[index].classList.remove("active");
+            index = (index + 1) % slides.length;
+            slides[index].classList.add("active");
+        }, 3000);
+    });
+});
+</script>
 
 {% endblock %}

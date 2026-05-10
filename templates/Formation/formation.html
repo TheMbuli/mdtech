@@ -1,8 +1,122 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block formation %}
 
-<div class="max-w-7xl mx-auto py-12 px-4">
+<div>
+<section
+    class="relative h-screen flex items-center overflow-hidden bg-black px-6 md:px-20"
+    style="background-image: url('{% static 'formation/images/landing.jpg' %}');
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;"
+>
+    <!-- overlay sombre -->
+    <div class="absolute inset-0 z-0" style="background: rgba(0,0,0,0.45);"></div>
+
+    <!-- gradient gauche -->
+    <div class="absolute inset-0 z-0"
+         style="background: linear-gradient(to right, rgba(0,0,0,0.72), rgba(0,0,0,0.35), rgba(0,0,0,0));">
+    </div>
+
+    <!-- contenu -->
+    <div class="relative z-10 w-full px-5 sm:px-8 md:px-16 lg:px-24 py-10 md:py-16">
+        <div class="max-w-xl lg:max-w-2xl">
+
+            <p class="mt-5 max-w-lg text-xl sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-white">
+                Bienvenue dans la section 
+                <h1 class="font-black leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-blue-900">
+                  Formation
+                </h1>
+                <h1 class="font-black leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white">
+                    Modern Technology
+                    <span class="block text-yellow-400">
+                        of Building
+                    </span>
+                </h1>
+                <p class="font-bold w-2.5 pt-6">
+                Chez Modern Technology of Building, nous proposons des formations pratiques et 
+                professionnelles dans les logiciels les plus utilisés en architecture, 
+                ingénierie et BIM (Building Information Modeling).
+                Notre objectif est de vous permettre d’acquérir des 
+                compétences concrètes, directement applicables sur le marché du travail .
+                </p>
+            </p>    
+  </div>
+    
+</section>
+<!-- SECTION ORGANISATION DES SESSIONS -->
+<div class="max-w-7xl mx-auto px-4 py-16">
+
+    <div class="max-w-4xl">
+
+        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-6">
+            Organisation des sessions
+        </h2>
+
+        <p class="text-gray-600 leading-relaxed mb-8">
+            Nos formations sont organisées en groupes afin de garantir une meilleure qualité d’apprentissage et un suivi efficace de chaque apprenant.
+        </p>
+
+        <!-- CARDS -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+
+            <!-- PRO -->
+            <div class="bg-white rounded-3xl border border-gray-100 shadow-md p-6 hover:shadow-xl transition">
+
+                <span class="inline-block bg-blue-900 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                    Formation professionnelle
+                </span>
+
+                <h3 class="text-lg font-bold text-blue-900 mb-3">
+                    Groupe réduit
+                </h3>
+
+                <p class="text-gray-600 text-sm mb-4">
+                    Sessions conçues pour un apprentissage intensif et un accompagnement personnalisé.
+                </p>
+
+                <div class="text-2xl font-extrabold text-blue-900">
+                    10 participants
+                    <span class="text-sm font-medium text-gray-500">/ salle</span>
+                </div>
+
+            </div>
+
+            <!-- ETUDIANT -->
+            <div class="bg-white rounded-3xl border border-gray-100 shadow-md p-6 hover:shadow-xl transition">
+
+                <span class="inline-block bg-yellow-400 text-black text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                    Formation étudiante
+                </span>
+
+                <h3 class="text-lg font-bold text-blue-900 mb-3">
+                    Groupe élargi
+                </h3>
+
+                <p class="text-gray-600 text-sm mb-4">
+                    Sessions adaptées pour favoriser l’échange et l’apprentissage collectif.
+                </p>
+
+                <div class="text-2xl font-extrabold text-blue-900">
+                    25 participants
+                    <span class="text-sm font-medium text-gray-500">/ salle</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TEXTE FINAL -->
+        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 text-sm text-blue-900 leading-relaxed">
+            Ces effectifs permettent à chaque apprenant de poser des questions, de pratiquer efficacement et de bénéficier d’un encadrement personnalisé.
+            <br><br>
+            Plusieurs sessions peuvent être organisées en fonction de la demande.
+        </div>
+
+    </div>
+
+</div>
+<div class="max-w-7xl mx-auto py-12 px-4" style="padding-top: 140px;">
 
     <div class="mb-12">
     <h1 class="relative inline-block text-3xl md:text-4xl font-extrabold text-blue-900">
@@ -14,65 +128,119 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
     {% for formation in object_list %}
-      <div class="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden rounded-2xl">
+      <div class="group relative bg-white/20 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden rounded-3xl hover:-translate-y-1">
 
-        <!-- Image -->
+    <!-- IMAGE -->
+    <div class="relative h-56 overflow-hidden">
         {% if formation.affiche %}
-          <img src="{{ formation.affiche.url }}" 
-               alt="{{ formation.nom }}"
-               class="w-full h-56 object-cover">
+            <img src="{{ formation.affiche.url }}" 
+                 alt="{{ formation.nom }}"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
         {% else %}
-          <div class="w-full h-56 bg-white/10 flex items-center justify-center">
-            <span class="text-blue-900 font-medium">Pas d'image</span>
-          </div>
+            <div class="w-full h-full bg-white/10 flex items-center justify-center">
+                <span class="text-blue-900 font-medium">Pas d'image</span>
+            </div>
         {% endif %}
 
-        <!-- Contenu -->
-        <div class="p-5">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
 
-          <h2 class="text-xl font-semibold text-blue-900 mb-2">
-            {{ formation.nom }}
-          </h2>
+        <div class="absolute top-4 left-4">
+            <span class="inline-flex items-center rounded-full bg-yellow-400 px-4 py-1 text-xs font-bold text-black shadow">
+                Formation
+            </span>
+        </div>
+    </div>
 
-          <p class="text-blue-900 text-sm mb-3">
-            {{ formation.objectifs|truncatechars:80 }}
-          </p>
+    <!-- CONTENU -->
+    <div class="p-6">
 
-          <p class="text-blue-900 font-medium mb-3">
-            Durée : {{ formation.duree }}
-          </p>
+        <!-- LOGO + NOM -->
+        <div class="flex items-center gap-4 mb-4">
 
-          <p class="text-blue-900 font-bold text-lg mb-4">
-            {{ formation.prix }} $
-          </p>
+            {% if formation.logo %}
+            <div class="shrink-0 bg-white rounded-2xl p-2 shadow-md border border-white/60">
+                <img src="{{ formation.logo.url }}"
+                     alt="Logo {{ formation.nom }}"
+                     class="h-12 w-12 object-contain">
+            </div>
+            {% endif %}
 
-          <!-- Boutons -->
-          <div class="flex gap-3">
-
-            <!-- S’inscrire -->
-            <a href="{% url 'formation_inscription' formation.slug %}"
-               class="flex-1 text-center px-4 py-2
-                      bg-blue-900 text-white
-                      rounded-2xl font-semibold shadow
-                      hover:bg-blue-800 transition duration-300">
-              S'inscrire
-            </a>
-
-            <!-- Voir plus -->
-            <a href="{{ formation.get_absolute_url }}"
-               class="flex-1 text-center px-4 py-2
-                      bg-white/20 backdrop-blur-md border border-white/30
-                      text-blue-900
-                      rounded-2xl font-semibold shadow
-                      hover:bg-blue-900 hover:text-white
-                      transition duration-300">
-              Voir plus
-            </a>
-
-          </div>
+            <div>
+                <h2 class="text-xl font-extrabold text-blue-900 leading-tight">
+                    {{ formation.nom }}
+                </h2>
+                <p class="text-xs text-blue-900/60 font-medium mt-1">
+                    Programme pratique & certifiant
+                </p>
+            </div>
 
         </div>
-      </div>
+
+        <!-- OBJECTIFS -->
+        <p class="text-blue-900/80 text-sm leading-relaxed mb-5">
+            {{ formation.objectifs|truncatechars:110 }}
+        </p>
+
+        <!-- INFOS -->
+        <div class="flex items-center justify-between gap-3 mb-6">
+
+            <div class="flex items-center gap-2 rounded-full bg-white/30 border border-white/40 px-4 py-2">
+                <span class="text-yellow-400 font-bold">●</span>
+                <span class="text-xs font-semibold text-blue-900">
+                    Durée : {{ formation.duree }}
+                </span>
+            </div>
+
+        </div>
+
+        <!-- PRIX -->
+        <div class="grid grid-cols-2 gap-3 mb-6">
+
+            <div class="relative rounded-2xl bg-white/40 backdrop-blur-md border border-white/50 p-4 shadow-sm">
+                <p class="text-xs font-bold text-blue-900/60 uppercase tracking-wide mb-1">
+                    Étudiant
+                </p>
+                <p class="text-2xl font-black text-blue-900">
+                    {{ formation.prix_etudiant }}$
+                </p>
+                <p class="text-[11px] text-blue-900/60 mt-1">
+                    Tarif accessible
+                </p>
+            </div>
+
+            <div class="relative rounded-2xl bg-blue-900 p-4 shadow-md overflow-hidden">
+                <div class="absolute -right-6 -top-6 w-20 h-20 bg-yellow-400/20 rounded-full"></div>
+
+                <p class="text-xs font-bold text-white/70 uppercase tracking-wide mb-1">
+                    Professionnel
+                </p>
+                <p class="text-2xl font-black text-white">
+                    {{ formation.prix_pro }}$
+                </p>
+                <p class="text-[11px] text-white/70 mt-1">
+                    Pack pro
+                </p>
+            </div>
+
+        </div>
+
+        <!-- BOUTONS -->
+        <div class="flex gap-3">
+
+            <a href="{% url 'formation_inscription' formation.slug %}"
+               class="flex-1 text-center px-4 py-3 bg-blue-900 text-white rounded-2xl font-bold shadow hover:bg-blue-800 transition duration-300">
+                S'inscrire
+            </a>
+
+            <a href="{{ formation.get_absolute_url }}"class="flex-1 text-center px-4 py-3 bg-white/30 backdrop-blur-md border border-white/40 text-blue-900 rounded-2xl font-bold shadow hover:bg-yellow-400 hover:text-black transition duration-300">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
     {% empty %}
       <p class="col-span-3 text-center text-blue-900 text-lg">
         Aucune formation disponible pour le moment.
@@ -131,5 +299,6 @@
 
 </div>
 {% endif %}
+</div>
 
 {% endblock formation %}
