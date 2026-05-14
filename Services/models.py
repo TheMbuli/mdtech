@@ -3,8 +3,8 @@ from django.db import models
 class Service(models.Model):
     nom = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
-    prix_nord_kivu = models.IntegerField(default=0)
-    prix_autre  = models.IntegerField(default=0)
+    prix = models.IntegerField(default=0)
+    
 
     def __str__(self):
         return self.nom
