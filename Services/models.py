@@ -3,7 +3,7 @@ from django.db import models
 class Service(models.Model):
     nom = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
-    prix = models.IntegerField(default=0)
+    pricing = models.TextField(max_length=500)
     
 
     def __str__(self):

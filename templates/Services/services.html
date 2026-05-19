@@ -266,17 +266,10 @@
                     <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">
                         Tarif estimatif
                     </p>
-
-                    {% if geo.city == "Goma" %}
-                    <div class="text-green-600 font-black text-2xl">
-                        {{ service.prix_nord_kivu }} $
-                        <span class="text-xs font-semibold text-gray-500">(Goma)</span>
-                    </div>
-                    {% else %}<div class="text-blue-900 font-black text-2xl">
-                        {{ service.prix }} $
+                    <div class="text-blue-900 font-black text-2xl">
+                        {{ service.pricing }}
                         <span class="text-xs font-semibold text-gray-500">(Standard)</span>
                     </div>
-                    {% endif %}
                 </div>
 
                 <a href="#"
