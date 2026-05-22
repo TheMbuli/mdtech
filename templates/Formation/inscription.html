@@ -1,130 +1,114 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block inscription %}
 
-<section class="relative py-32 px-4 overflow-hidden">
+<section class="relative py-32 overflow-hidden">
 
-  <!-- Background glassmorphism léger -->
-  <div class="absolute inset-0 -z-10">
-    <div class="absolute top-0 left-0 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-0 w-[30rem] h-[30rem] bg-cyan-200/20 rounded-full blur-3xl"></div>
+  <!-- Background -->
+  <div class="absolute inset-0 -z-10 bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
+    <div class="absolute top-10 left-0 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-[30rem] h-[30rem] bg-cyan-300/20 rounded-full blur-3xl"></div>
   </div>
 
   <div class="max-w-6xl mx-auto">
 
-    <!-- Bouton retour -->
+    <!-- Retour -->
     <a href="{% url 'formation' %}"
        class="inline-flex items-center gap-2 mb-8
-              bg-white/20 backdrop-blur-xl
-              border border-white/30
+              bg-white/70 backdrop-blur-xl
+              border border-white/60
               text-blue-900 px-5 py-3 rounded-2xl
-              shadow-lg hover:bg-blue-900 hover:text-white
+              shadow-md hover:bg-blue-900 hover:text-white
               transition-all duration-300 font-semibold">
-
       <i class="fa-solid fa-arrow-left"></i>
       Retour aux formations
     </a>
 
-    <!-- Card principale -->
-    <div class="grid lg:grid-cols-5 overflow-hidden
-                rounded-[2.5rem]
-                bg-white/20 backdrop-blur-2xl
-                border border-white/30
-                shadow-[0_20px_80px_rgba(0,0,0,0.15)]">
+    <div class="grid lg:grid-cols-5 overflow-hidden rounded-[2rem]
+                bg-white/50 backdrop-blur-2xl border border-white/70
+                shadow-[0_20px_80px_rgba(0,0,0,0.12)]">
 
-      <!-- PARTIE GAUCHE -->
+      <!-- GAUCHE -->
       <div class="lg:col-span-2 relative p-8 md:p-10
-                  bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700
+                  bg-gradient-to-br from-blue-950 via-blue-900 to-cyan-700
                   text-white overflow-hidden">
 
-        <!-- déco -->
         <div class="absolute top-0 right-0 w-52 h-52 bg-white/10 rounded-full blur-2xl"></div>
         <div class="absolute bottom-0 left-0 w-40 h-40 bg-cyan-300/20 rounded-full blur-2xl"></div>
 
-        <div class="relative z-10">
+        <div class="relative z-10 h-full flex flex-col justify-between">
 
-          <span class="inline-flex items-center gap-2
-                       px-4 py-2 rounded-full
-                       bg-white/10 border border-white/20
-                       text-sm font-semibold mb-8">
+          <div>
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full
+                         bg-white/10 border border-white/20 text-sm font-semibold mb-8">
+              <i class="fa-solid fa-graduation-cap"></i>
+              Formation premium
+            </span>
 
-            <i class="fa-solid fa-graduation-cap"></i>
-            Formation premium
-          </span>
+            <h1 class="text-4xl md:text-5xl font-black leading-tight mb-6">
+              {{ formation.nom }}
+            </h1>
 
-          <h1 class="text-4xl md:text-5xl font-black leading-tight mb-6">
-            {{ formation.nom }}
-          </h1>
+            <p class="text-blue-100 leading-relaxed mb-8">
+              Remplissez le formulaire pour réserver votre place. Après validation,
+              vous recevrez un email de confirmation avec les prochaines étapes.
+            </p>
 
-          <p class="text-blue-100 leading-relaxed mb-10">
-            Rejoignez une expérience d’apprentissage moderne,
-            immersive et orientée vers la pratique.
-          </p>
+            <div class="space-y-5">
 
-          <!-- mini stats -->
-          <div class="space-y-5">
-
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-white/10
-                          border border-white/20
-                          flex items-center justify-center">
-                <i class="fa-solid fa-bolt"></i>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <p class="font-bold">Inscription rapide</p>
+                  <p class="text-sm text-blue-100">Moins d’une minute</p>
+                </div>
               </div>
 
-              <div>
-                <p class="font-bold">Inscription rapide</p>
-                <p class="text-sm text-blue-100">
-                  Moins d’une minute
-                </p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
+                  <i class="fa-solid fa-envelope-circle-check"></i>
+                </div>
+                <div>
+                  <p class="font-bold">Confirmation par email</p>
+                  <p class="text-sm text-blue-100">Vous recevez une preuve d’inscription</p>
+                </div>
               </div>
+
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
+                  <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                  <p class="font-bold">Suivi par l’équipe</p>
+                  <p class="text-sm text-blue-100">L’admin vous contactera si nécessaire</p>
+                </div>
+              </div>
+
             </div>
-
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-white/10
-                          border border-white/20
-                          flex items-center justify-center">
-                <i class="fa-solid fa-users"></i>
-              </div>
-
-              <div>
-                <p class="font-bold">Communauté active</p>
-                <p class="text-sm text-blue-100">
-                  Échanges et accompagnement
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-white/10
-                          border border-white/20
-                          flex items-center justify-center">
-                <i class="fa-solid fa-certificate"></i>
-              </div>
-
-              <div>
-                <p class="font-bold">Certificat</p>
-                <p class="text-sm text-blue-100">
-                  Validation de participation
-                </p>
-              </div>
-            </div>
-
           </div>
+
+          <div class="mt-10 p-4 rounded-2xl bg-white/10 border border-white/20">
+            <p class="text-sm text-blue-100">
+              <i class="fa-solid fa-circle-info mr-2"></i>
+              Vérifiez bien votre email et votre numéro WhatsApp avant de confirmer.
+            </p>
+          </div>
+
         </div>
       </div>
 
-      <!-- PARTIE DROITE -->
-      <div class="lg:col-span-3 p-8 md:p-12 bg-white/70 backdrop-blur-xl">
+      <!-- DROITE --><div class="lg:col-span-3 p-8 md:p-12 bg-white/80 backdrop-blur-xl">
 
         {% if inscription_reussie %}
 
-        <!-- SUCCESS --><div class="min-h-[450px] flex flex-col justify-center items-center text-center">
+        <!-- SUCCESS -->
+        <div class="min-h-[480px] flex flex-col justify-center items-center text-center">
 
-          <div class="w-28 h-28 rounded-full
-                      bg-gradient-to-br from-blue-900 to-cyan-600
-                      flex items-center justify-center
-                      shadow-2xl mb-8">
-
+          <div class="w-28 h-28 rounded-full bg-gradient-to-br from-blue-900 to-cyan-600
+                      flex items-center justify-center shadow-2xl mb-8">
             <i class="fa-solid fa-check text-white text-5xl"></i>
           </div>
 
@@ -132,34 +116,63 @@
             Inscription réussie
           </h2>
 
-          <p class="text-slate-600 max-w-lg leading-relaxed text-lg">
-            Merci pour votre inscription à la formation
-            <span class="font-bold text-blue-900">
-              "{{ formation.nom }}"
-            </span>.
-            Vous recevrez bientôt toutes les informations nécessaires.
+          <p class="text-slate-600 max-w-xl leading-relaxed text-lg mb-8">
+            Votre inscription à la formation
+            <span class="font-bold text-blue-900">"{{ formation.nom }}"</span>
+            a bien été enregistrée. Un email de confirmation vous a été envoyé.
           </p>
+
+          <div class="grid sm:grid-cols-2 gap-4 w-full max-w-xl">
+
+            <a href="{% url 'formation' %}"
+               class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl
+                      bg-blue-900 text-white font-bold shadow-lg
+                      hover:bg-blue-800 transition">
+              <i class="fa-solid fa-arrow-left"></i>
+              Voir les formations
+            </a>
+
+            <a href="mailto:admin@moderntechnologyofbuilding.com"
+               class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl
+                      bg-slate-100 text-blue-900 font-bold border border-slate-200
+                      hover:bg-slate-200 transition">
+              <i class="fa-solid fa-envelope"></i>
+              Contacter l’admin
+            </a>
+
+          </div>
 
         </div>
 
         {% else %}
 
         <!-- TITRE -->
-        <div class="mb-10">
-
-          <p class="uppercase tracking-[0.25em]
-                    text-sm font-bold text-blue-700 mb-3">
-            Formulaire
+        <div class="mb-8">
+          <p class="uppercase tracking-[0.25em] text-sm font-bold text-blue-700 mb-3">
+            Formulaire d’inscription
           </p>
 
-          <h2 class="text-4xl font-black text-slate-900 leading-tight">
+          <h2 class="text-4xl font-black text-slate-900 leading-tight mb-3">
             Finalisez votre inscription
           </h2>
 
+          <p class=" text-slate-700">
+            Les champs ci-dessous sont nécessaires pour confirmer votre demande.
+          </p>
         </div>
 
+        {% if form.non_field_errors %}
+          <div class="mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-sm">
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %}
+
         <!-- FORM -->
-        <form method="post" class="space-y-6">
+        <form method="post"
+              action="{% url 'formation_inscription' formation.slug %}"
+              class="space-y-6"
+              id="inscriptionForm">
+
           {% csrf_token %}
 
           <div class="grid md:grid-cols-2 gap-6">
@@ -171,15 +184,11 @@
               </label>
 
               <div class="relative">
-                <i class="fa-solid fa-user absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-
                 {{ form.nom }}
               </div>
 
               {% if form.nom.errors %}
-              <p class="text-red-600 text-sm mt-2">
-                {{ form.nom.errors }}
-              </p>
+                <p class="text-red-600 text-sm mt-2">{{ form.nom.errors.0 }}</p>
               {% endif %}
             </div>
 
@@ -190,15 +199,11 @@
               </label>
 
               <div class="relative">
-                <i class="fa-solid fa-id-card absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-
                 {{ form.prenom }}
               </div>
 
               {% if form.prenom.errors %}
-              <p class="text-red-600 text-sm mt-2">
-                {{ form.prenom.errors }}
-              </p>
+                <p class="text-red-600 text-sm mt-2">{{ form.prenom.errors.0 }}</p>
               {% endif %}
             </div>
 
@@ -211,15 +216,11 @@
             </label>
 
             <div class="relative">
-              <i class="fa-solid fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-
               {{ form.email }}
             </div>
 
             {% if form.email.errors %}
-            <p class="text-red-600 text-sm mt-2">
-              {{ form.email.errors }}
-            </p>
+              <p class="text-red-600 text-sm mt-2">{{ form.email.errors.0 }}</p>
             {% endif %}
           </div>
 
@@ -230,33 +231,44 @@
             </label>
 
             <div class="relative">
-              <i class="fa-solid fa-phone absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-
               {{ form.telephone }}
             </div>
 
             {% if form.telephone.errors %}
-            <p class="text-red-600 text-sm mt-2">
-              {{ form.telephone.errors }}
-            </p>
+              <p class="text-red-600 text-sm mt-2">{{ form.telephone.errors.0 }}</p>
             {% endif %}
+
+            <p class="text-xs text-slate-700 mt-2">
+              Exemple : +243 990 000 000
+            </p>
+          </div>
+
+          <!-- Info -->
+          <div class="p-4 rounded-2xl bg-blue-50 border border-blue-100 text-blue-900 text-sm leading-relaxed">
+            <i class="fa-solid fa-shield-halved mr-2"></i>
+            Vos informations servent uniquement au suivi de votre inscription.
           </div>
 
           <!-- BTN -->
           <button type="submit"
-                  class="group relative w-full overflow-hidden
-                         rounded-2xl py-4 px-6
+                  id="submitBtn"
+                  class="group relative w-full overflow-hidden rounded-2xl py-4 px-6
                          bg-gradient-to-r from-blue-900 to-cyan-700
-                         text-white font-bold text-lg
-                         shadow-2xl hover:scale-[1.01]
-                         transition-all duration-300"><span class="relative z-10 flex items-center justify-center gap-3">
+                         text-white font-bold text-lg shadow-2xl
+                         hover:scale-[1.01] active:scale-[0.99]
+                         transition-all duration-300">
+
+            <span id="btnText" class="relative z-10 flex items-center justify-center gap-3">
               Confirmer mon inscription
               <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
             </span>
 
-            <div class="absolute inset-0 bg-white/10 opacity-0
-                        group-hover:opacity-100 transition"></div>
+            <span id="btnLoading" class="hidden relative z-10 items-center justify-center gap-3">
+              <i class="fa-solid fa-spinner fa-spin"></i>
+              Envoi en cours...
+            </span>
 
+            <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition"></div>
           </button>
 
         </form>
@@ -266,5 +278,22 @@
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById("inscriptionForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const btnText = document.getElementById("btnText");
+  const btnLoading = document.getElementById("btnLoading");
+
+  if (form) {
+    form.addEventListener("submit", function () {
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-70", "cursor-not-allowed");
+      btnText.classList.add("hidden");
+      btnLoading.classList.remove("hidden");
+      btnLoading.classList.add("flex");
+    });
+  }
+</script>
 
 {% endblock inscription %}
