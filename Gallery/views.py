@@ -3,7 +3,7 @@ from .models import Edition
 
 
 def gallery_view(request):
-    editions = Edition.objects.prefetch_related("imagesedition_set").order_by("-annee")
+    editions = Edition.objects.prefetch_related("images")
 
     return render(request, "Gallery/gallery-list.html", {
         "editions": editions

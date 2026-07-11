@@ -13,6 +13,9 @@ class Projet(models.Model):
     def get_absolute_url(self):
         return reverse('details-projet', args=[self.id])
 
+    class Meta:
+        ordering = ["-date_creation"]
+
 
 class PhotoProjet(models.Model):
     projet = models.ForeignKey(Projet, on_delete=models.CASCADE, related_name="photos")

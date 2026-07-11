@@ -10,3 +10,6 @@ class PhotoArticleInline(admin.TabularInline):
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     inlines = [PhotoArticleInline]
+    list_display = ("nom", "prix", "reduction", "prix_final")
+    search_fields = ("nom", "description")
+    ordering = ("nom",)

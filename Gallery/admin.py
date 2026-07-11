@@ -4,7 +4,7 @@ from .models import Edition, ImagesEdition
 
 class ImagesEditionInline(admin.TabularInline):
     model = ImagesEdition
-    extra = 3
+    extra = 1
 
 
 @admin.register(Edition)
@@ -20,3 +20,4 @@ class ImagesEditionAdmin(admin.ModelAdmin):
     list_display = ("edition", "image")
     list_filter = ("edition",)
     search_fields = ("edition__annee",)
+    list_select_related = ("edition",)

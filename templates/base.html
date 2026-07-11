@@ -4,9 +4,15 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Modern Technology of Build</title>
-    <meta name="description" content="">
+    <title>{% block title %}Modern Technology of Building{% endblock title %}</title>
+    <meta name="description" content="{% block meta_description %}Modern Technology of Building accompagne vos projets de construction, conception architecturale, formation et solutions techniques modernes.{% endblock meta_description %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1e3a8a">
+    <meta property="og:title" content="{% block og_title %}Modern Technology of Building{% endblock og_title %}">
+    <meta property="og:description" content="{% block og_description %}Architecture, formation, boutique, workspace et services techniques pour vos projets modernes.{% endblock og_description %}">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <!-- Font Awesome CDN -->
     <link
@@ -15,33 +21,35 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     >
-
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     {% tailwind_css %}
+    {% block extra_css %}{% endblock extra_css %}
   </head>
 
   <body class="relative bg-gray-400">
+    <a href="#contenu-principal" class="skip-link">Aller au contenu principal</a>
 
     <!-- HEADER -->
-<header class="fixed top-0 left-0 w-full z-50">
+<header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-[background-color,box-shadow] duration-200">
   <div class="max-w-7xl mx-auto px-6 pt-6">
 
     <!-- BARRE PRINCIPALE -->
-    <div class="h-[85px] flex items-center justify-between
+    <div id="navbar-shell" class="h-[85px] flex items-center justify-between
                 bg-white/25 backdrop-blur-2xl
                 border border-white/30
                 rounded-[2rem] shadow-2xl
                 px-6">
 
       <!-- LOGO -->
-      <a href="{% url 'accueil' %}" class="flex items-center gap-3 shrink-0">
+      <a href="{% url 'accueil' %}" class="flex items-center gap-3 shrink-0 rounded-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70" aria-label="Modern Technology of Building - Accueil">
         <img src="{% static 'accueil/images/logo.png' %}"
+             width="96"
+             height="96"
              class="w-24 object-contain"
-             alt="Logo">
+             alt="Modern Technology of Building">
       </a>
 
       <!-- NAV DESKTOP -->
-      <nav class="hidden xl:flex items-center gap-5 font-medium text-blue-900">
+      <nav class="hidden xl:flex items-center gap-5 font-medium text-blue-900" aria-label="Navigation principale">
 
         <!-- GROUPE PRINCIPAL -->
         <div class="flex items-center gap-2 rounded-full
@@ -52,7 +60,7 @@
              class="px-5 py-2.5 rounded-full
                     text-white font-bold text-sm
                     hover:bg-yellow-400 hover:text-blue-900
-                    transition-all duration-300">
+                    transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Accueil
           </a>
 
@@ -60,7 +68,7 @@
              class="px-5 py-2.5 rounded-full
                     text-white font-bold text-sm
                     hover:bg-yellow-400 hover:text-blue-900
-                    transition-all duration-300">
+                    transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Services
           </a>
 
@@ -68,7 +76,7 @@
              class="px-5 py-2.5 rounded-full
                     text-white font-bold text-sm
                     hover:bg-yellow-400 hover:text-blue-900
-                    transition-all duration-300">
+                    transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Formation
           </a>
 
@@ -80,7 +88,7 @@
         <!-- GROUPE SECONDAIRE -->
         <div class="flex items-center gap-7 text-[15px]">
 
-          <a href="{% url 'boutique' %}" class="relative group font-semibold">
+          <a href="{% url 'boutique' %}" class="relative group rounded-lg font-semibold focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Boutique
 
             <span class="absolute -bottom-1 left-0 w-full h-[2px]
@@ -91,7 +99,7 @@
             </span>
           </a>
 
-          <a href="{% url 'projets-list' %}" class="relative group font-semibold">
+          <a href="{% url 'projets-list' %}" class="relative group rounded-lg font-semibold focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Réalisations
 
             <span class="absolute -bottom-1 left-0 w-full h-[2px]
@@ -102,7 +110,7 @@
             </span>
           </a>
 
-          <a href="{% url 'gallery-list' %}" class="relative group font-semibold">
+          <a href="{% url 'gallery-list' %}" class="relative group rounded-lg font-semibold focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Galerie
 
             <span class="absolute -bottom-1 left-0 w-full h-[2px]
@@ -113,7 +121,7 @@
             </span>
           </a>
 
-          <a href="{% url 'workspace' %}" class="relative group font-semibold">
+          <a href="{% url 'workspace' %}" class="relative group rounded-lg font-semibold focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Workspace
 
             <span class="absolute -bottom-1 left-0 w-full h-[2px]
@@ -130,18 +138,24 @@
 
       <!-- BOUTON MOBILE -->
       <button id="mobile-menu-btn"
-              class="xl:hidden text-blue-900 text-2xl">
-        <i id="btn_icone" class="fas fa-bars"></i>
+              type="button"
+              class="xl:hidden min-h-11 min-w-11 rounded-xl text-blue-900 text-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70"
+              aria-label="Ouvrir le menu"
+              aria-controls="mobile-menu"
+              aria-expanded="false">
+        <i id="btn_icone" class="fas fa-bars" aria-hidden="true"></i>
       </button>
 
     </div>
 
     <!-- MENU MOBILE -->
     <nav id="mobile-menu"
-         class="hidden xl:hidden mt-4
+         class="mobile-menu xl:hidden mt-4
                 bg-white/30 backdrop-blur-2xl
-                border border-white/30rounded-[2rem] shadow-2xl
-                p-6 text-blue-900">
+                border border-white/30 rounded-[2rem] shadow-2xl
+                p-6 text-blue-900"
+         aria-label="Navigation mobile"
+         aria-hidden="true">
 
       <!-- Sections principales -->
       <div class="mb-6">
@@ -157,7 +171,7 @@
              class="block rounded-2xl bg-blue-900 text-white
                     px-5 py-4 font-bold
                     hover:bg-yellow-400 hover:text-blue-900
-                    transition">
+                    transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Accueil
           </a>
 
@@ -165,7 +179,7 @@
              class="block rounded-2xl bg-blue-900 text-white
                     px-5 py-4 font-bold
                     hover:bg-yellow-400 hover:text-blue-900
-                    transition">
+                    transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Services
           </a>
 
@@ -173,7 +187,7 @@
              class="block rounded-2xl bg-blue-900 text-white
                     px-5 py-4 font-bold
                     hover:bg-yellow-400 hover:text-blue-900
-                    transition">
+                    transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Formation
           </a>
 
@@ -193,25 +207,25 @@
 
           <a href="{% url 'boutique' %}"
              class="block rounded-xl px-4 py-3
-                    hover:bg-blue-900 hover:text-white transition">
+                    hover:bg-blue-900 hover:text-white transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Boutique
           </a>
 
           <a href="{% url 'projets-list' %}"
              class="block rounded-xl px-4 py-3
-                    hover:bg-blue-900 hover:text-white transition">
+                    hover:bg-blue-900 hover:text-white transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Réalisations
           </a>
 
           <a href="{% url 'gallery-list' %}"
              class="block rounded-xl px-4 py-3
-                    hover:bg-blue-900 hover:text-white transition">
+                    hover:bg-blue-900 hover:text-white transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Galerie
           </a>
 
           <a href="{% url 'workspace' %}"
              class="block rounded-xl px-4 py-3
-                    hover:bg-blue-900 hover:text-white transition">
+                    hover:bg-blue-900 hover:text-white transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400/70">
             Espace de travail
           </a>
 
@@ -225,7 +239,7 @@
 </header>
 
     <!-- CONTENU PRINCIPAL -->
-    <main>
+    <main id="contenu-principal" tabindex="-1">
 
       {% block accueil %}
       {% endblock accueil %}
@@ -291,11 +305,11 @@
           <div>
             <h4 class="font-bold text-lg mb-4">Navigation</h4>
             <ul class="space-y-2 text-blue-100">
-              <li><a href="{% url 'accueil' %}" class="hover:text-yellow-400">Accueil</a></li>
-              <li><a href="{% url 'boutique' %}" class="hover:text-yellow-400">Boutique</a></li>
-              <li><a href="{% url 'projets-list' %}" class="hover:text-yellow-400">Réalisations</a></li>
-              <li><a href="{% url 'formation' %}" class="hover:text-yellow-400">Formation</a></li>
-              <li><a href="{% url 'workspace' %}" class="hover:text-yellow-400">Espace de travail</a></li>
+              <li><a href="{% url 'accueil' %}" class="inline-flex rounded-lg hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">Accueil</a></li>
+              <li><a href="{% url 'boutique' %}" class="inline-flex rounded-lg hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">Boutique</a></li>
+              <li><a href="{% url 'projets-list' %}" class="inline-flex rounded-lg hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">Réalisations</a></li>
+              <li><a href="{% url 'formation' %}" class="inline-flex rounded-lg hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">Formation</a></li>
+              <li><a href="{% url 'workspace' %}" class="inline-flex rounded-lg hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">Espace de travail</a></li>
             </ul>
           </div>
           <!-- SOCIAL -->
@@ -305,22 +319,26 @@
 
               <!-- MTB -->
               <div class="flex gap-4 text-xl">
-                <a href="https://www.facebook.com/share/16xARVMjJh/?mibextid=wwXIfr" class="hover:text-yellow-400">
-                  <i class="fa-brands fa-facebook"></i>
+                <a href="https://www.facebook.com/share/16xARVMjJh/?mibextid=wwXIfr" class="rounded-lg hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400" aria-label="Modern Technology of Building sur Facebook">
+                  <i class="fa-brands fa-facebook" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.instagram.com/modern_technologi_of_building?igsh=cWducXJzaG9sdmph&utm_source=qr" class="hover:text-yellow-400">
-                  <i class="fa-brands fa-instagram"></i>
+                <a href="https://www.instagram.com/modern_technologi_of_building?igsh=cWducXJzaG9sdmph&utm_source=qr" class="rounded-lg hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400" aria-label="Modern Technology of Building sur Instagram">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                 </a>
-                <a href="https://wa.me/243972159400" class="hover:text-yellow-400">
-                  <i class="fa-brands fa-whatsapp"></i>
+                <a href="https://wa.me/243972159400" class="rounded-lg hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400" aria-label="Contacter Modern Technology of Building sur WhatsApp">
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
                 </a>
-                  <a href="https://www.linkedin.com/company/modern-technology-of-building/" class="hover:text-yellow-400">
-                  <i class="fa-brands fa-linkedin"></i>
+                  <a href="https://www.linkedin.com/company/modern-technology-of-building/" class="rounded-lg hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400" aria-label="Modern Technology of Building sur LinkedIn">
+                  <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
                 </a>
               </div>
               <!-- GENIUS DEVELOPERS -->
               <div class="flex flex-col mt-4 items-start">
                 <img src="{% static 'accueil/images/gendev.png' %}" 
+                    width="64"
+                    height="64"
+                    loading="lazy"
+                    decoding="async"
                     alt="Genius Developers Logo" 
                     class="w-16 h-16 mb-2">
 
@@ -330,38 +348,44 @@
                 <!-- Lien vers le site -->
                 <a href="https://www.geniusdevelopers.tech" 
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="mt-3 inline-flex items-center gap-2 px-4 py-2 
                           bg-white/10 border border-white/20 rounded-full
                           hover:bg-yellow-400 hover:text-black
-                          transition-all duration-300 text-sm font-medium shadow-md">
+                          transition-all duration-300 text-sm font-medium shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">
 
-                  <i class="fa-solid fa-globe"></i>
+                  <i class="fa-solid fa-globe" aria-hidden="true"></i>
                   Visit geniusdevelopers.tech
-                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
                 </a>
 
                 <div class="flex gap-4 mt-4 text-xl">
                   <a href="https://www.instagram.com/geniusdeveloppers?igsh=MWtiYTRjMWk0NTk2dQ==" 
                     target="_blank" 
-                    class="hover:text-yellow-400 transition">
-                    <i class="fa-brands fa-instagram"></i>
+                    rel="noopener noreferrer"
+                    aria-label="Genius Developers sur Instagram"
+                    class="rounded-lg hover:text-yellow-400 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                   </a>
 
                   <a href="mailto:geniusdevelopers11@gmail.com" 
-                    target="_blank" 
-                    class="hover:text-yellow-400 transition">
-                    <i class="fa-solid fa-envelope"></i>
+                    aria-label="Envoyer un email à Genius Developers"
+                    class="rounded-lg hover:text-yellow-400 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                   </a>
 
                   <a href="https://wa.me/243982639465?src=qr" 
                     target="_blank" 
-                    class="hover:text-yellow-400 transition">
-                    <i class="fa-brands fa-whatsapp"></i>
+                    rel="noopener noreferrer"
+                    aria-label="Contacter Genius Developers sur WhatsApp"
+                    class="rounded-lg hover:text-yellow-400 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
                   </a>
 
                   <a href="tel:+243982639465" 
-                    class="hover:text-yellow-400 transition">
-                    <i class="fa-solid fa-phone"></i>
+                    aria-label="Appeler Genius Developers"
+                    class="rounded-lg hover:text-yellow-400 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">
+                    <i class="fa-solid fa-phone" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -373,35 +397,13 @@
 
         <!-- COPYRIGHT -->
         <div class="border-t border-white/20 text-center py-4 text-sm text-blue-100">
-          © 2025 Modern Technology of Building — Tous droits réservés
+          © 2026 Modern Technology of Building — Tous droits réservés
         </div>
       </div>
     </footer>
 
-    <!-- JS MENU MOBILE -->
-    <script>
-      const btn = document.getElementById('mobile-menu-btn');
-      const menu = document.getElementById('mobile-menu');
-      const btn_icone = document.getElementById('btn_icone');
-
-      btn.addEventListener('click', () => {
-        if (menu.classList.contains('hidden')) {
-          menu.classList.remove('hidden');
-          menu.classList.add('grid');
-        } else {
-          menu.classList.remove('grid');
-          menu.classList.add('hidden');
-        }
-
-        if (btn_icone.classList.contains('fa-bars')) {
-          btn_icone.classList.remove('fa-bars');
-          btn_icone.classList.add('fa-x');
-        } else {
-          btn_icone.classList.remove('fa-x');
-          btn_icone.classList.add('fa-bars');
-        }
-      });
-    </script>
+    <script src="{% static 'js/site.js' %}" defer></script>
+    {% block extra_js %}{% endblock extra_js %}
 
   </body>
 </html>
