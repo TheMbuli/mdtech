@@ -229,7 +229,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-USE_CLOUDINARY = env_bool("USE_CLOUDINARY", False)
+USE_CLOUDINARY = env_bool("USE_CLOUDINARY", not DEBUG)
 CLOUDINARY_FOLDER = os.getenv("CLOUDINARY_FOLDER", "mdtech").strip().strip("/") or "mdtech"
 CLOUDINARY_CONFIG = cloudinary_config() if USE_CLOUDINARY else {}
 
