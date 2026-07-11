@@ -9,8 +9,13 @@ class Service(models.Model):
     def __str__(self):
         return self.nom
 
+    class Meta:
+        ordering = ["nom"]
+
 
 class PhotoService(models.Model):
-
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="images")
     image = models.ImageField(upload_to="services")
+
+    def __str__(self):
+        return f"Photo du service {self.service.nom}"

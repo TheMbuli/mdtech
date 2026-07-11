@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %}{{ article.nom }} | Boutique | Modern Technology of Building{% endblock title %}
+{% block meta_description %}Découvrez {{ article.nom }} dans la boutique Modern Technology of Building : description, prix et commande via WhatsApp.{% endblock meta_description %}
+{% block og_title %}{{ article.nom }} | Boutique{% endblock og_title %}
+{% block og_description %}Article disponible dans la boutique Modern Technology of Building avec commande rapide via WhatsApp.{% endblock og_description %}
+
 {% block details_article %}
 <section class="relative max-w-7xl mx-auto px-4 pt-36 pb-24 overflow-hidden">
 
@@ -16,8 +21,8 @@
               text-blue-900 font-bold
               px-5 py-3 rounded-full
               shadow-lg hover:bg-yellow-400
-              transition-all duration-300">
-      <i class="fa-solid fa-arrow-left"></i>
+              transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
       Retour à la boutique
     </a>
 
@@ -27,7 +32,7 @@
       <!-- Galerie images -->
       <div class="space-y-5">
 
-        {% with article.photoarticle_set.first as first_photo %}
+        {% with article.photos.first as first_photo %}
           {% if first_photo %}
           <div class="group relative overflow-hidden rounded-[2rem]
                       bg-white/30 backdrop-blur-xl border border-white/40
@@ -35,8 +40,10 @@
 
             <img src="{{ first_photo.image.url }}"
                  alt="{{ article.nom }}"
+                 loading="lazy"
+                 decoding="async"
                  class="w-full h-[420px] object-cover
-                        transition-transform duration-700
+                        transition-transform duration-500
                         group-hover:scale-105">
 
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
@@ -59,15 +66,17 @@
 
         <!-- Miniatures -->
         <div class="grid grid-cols-3 gap-4">
-          {% for photo in article.photoarticle_set.all %}
+          {% for photo in article.photos.all %}
           <div class="group overflow-hidden rounded-2xl
                       bg-white/30 backdrop-blur-xl border border-white/40
                       shadow-lg">
             <img src="{{ photo.image.url }}"
                  alt="{{ article.nom }}"
+                 loading="lazy"
+                 decoding="async"
                  class="w-full h-28 object-cover
-                        transition-transform duration-500
-                        group-hover:scale-110">
+                        transition-transform duration-300
+                        group-hover:scale-105">
           </div>
           {% endfor %}
         </div>
@@ -106,9 +115,10 @@
                 {{ article.prix }} $
               </span>
               <span class="text-4xl font-black text-red-600">
-                {{ article.prix }} $
+                {{ article.prix_final }} $
               </span>
-            {% else %}<span class="text-4xl font-black text-blue-900">
+            {% else %}
+              <span class="text-4xl font-black text-blue-900">
                 {{ article.prix }} $
               </span>
             {% endif %}
@@ -117,14 +127,15 @@
           <!-- Actions -->
           <div class="mt-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-            <a href="https://wa.me/243812345678?text=Bonjour,%20je%20souhaite%20commander%20l'article%20{{ article.nom }}%20:%20{{ request.build_absolute_uri }}"
+            <a href="https://wa.me/243812345678?text=Bonjour,%20je%20souhaite%20commander%20l'article%20{{ article.nom|urlencode }}%20:%20{{ request.build_absolute_uri|urlencode }}"
                target="_blank"
+               rel="noopener noreferrer"
                class="flex items-center justify-center gap-2
                       rounded-full bg-blue-900 px-6 py-4
                       font-bold text-white shadow-lg
                       hover:bg-yellow-400 hover:text-blue-900
-                      transition-all duration-300">
-              <i class="fa-brands fa-whatsapp"></i>
+                      transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
               Commander
             </a>
 

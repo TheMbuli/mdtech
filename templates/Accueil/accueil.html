@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Accueil | Modern Technology of Building{% endblock title %}
+{% block meta_description %}Modern Technology of Building accompagne vos projets en architecture, BIM, visualisation 3D, formations professionnelles, boutique et espace de travail à Goma.{% endblock meta_description %}
+{% block og_title %}Modern Technology of Building | Architecture, BIM et formations{% endblock og_title %}
+{% block og_description %}Découvrez nos services, nos outils, nos projets récents et nos solutions pour apprendre, concevoir et construire avec méthode.{% endblock og_description %}
+
 {% block accueil %}
 
 <div class="relative overflow-hidden">
 
 <!-- HERO -->
 <section
-    class="relative min-h-screen flex items-center overflow-hidden px-6 md:px-20"
+    class="relative min-h-[92svh] flex items-center overflow-hidden px-6 md:px-20"
     style="background-image: url('{% static 'accueil/images/landing.jpg' %}');
            background-size: cover;
            background-position: center;
@@ -42,17 +47,17 @@
                 <a href="#activites"
                    class="inline-flex items-center justify-center gap-3 rounded-full
                           bg-yellow-400 px-7 py-4 font-bold text-blue-900
-                          hover:bg-white transition-all duration-300 shadow-lg">
+                          hover:bg-white transition-all duration-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
                     Découvrir nos services
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
 
                 <a href="#contacter"
                    class="inline-flex items-center justify-center gap-3 rounded-full
                           bg-white/15 backdrop-blur-xl border border-white/25
                           px-7 py-4 font-bold text-white
-                          hover:bg-white/25 transition-all duration-300">
-                    <i class="fas fa-paper-plane text-yellow-400"></i>
+                          hover:bg-white/25 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+                    <i class="fas fa-paper-plane text-yellow-400" aria-hidden="true"></i>
                     Nous contacter
                 </a>
             </div>
@@ -82,7 +87,7 @@
 </section>
 
 <!-- OUTILS -->
-<section class="relative max-w-7xl mx-auto px-4 py-24">
+<section id="outils" class="relative max-w-7xl mx-auto px-4 py-24">
 
     <div class="absolute top-10 right-0 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl"></div>
@@ -107,50 +112,49 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            {% comment %} Outil 1 {% endcomment %}
-            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
-                <img src="{% static 'accueil/images/AI.png' %}" class="w-16 h-16 object-contain mb-5">
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+                <img src="{% static 'accueil/images/AI.png' %}" width="64" height="64" loading="lazy" decoding="async" alt="Adobe Illustrator" class="w-16 h-16 object-contain mb-5">
                 <h3 class="text-xl font-black text-blue-900 mb-2">Adobe Illustrator</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">Création graphique, logos, illustrations et supports visuels professionnels.</p>
             </div>
 
-            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
-                <img src="{% static 'accueil/images/Archicad.png' %}" class="w-16 h-16 object-contain mb-5">
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+                <img src="{% static 'accueil/images/Archicad.png' %}" width="64" height="64" loading="lazy" decoding="async" alt="Archicad" class="w-16 h-16 object-contain mb-5">
                 <h3 class="text-xl font-black text-blue-900 mb-2">Archicad</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">Conception architecturale BIM et modélisation intelligente du bâtiment.</p>
             </div>
 
-            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
-                <img src="{% static 'accueil/images/Autocad.png' %}" class="w-16 h-16 object-contain mb-5">
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+                <img src="{% static 'accueil/images/Autocad.png' %}" width="64" height="64" loading="lazy" decoding="async" alt="AutoCAD" class="w-16 h-16 object-contain mb-5">
                 <h3 class="text-xl font-black text-blue-900 mb-2">AutoCAD</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">Plans techniques, dessins 2D, conception et documentation professionnelle.</p>
             </div>
 
-            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
-                <img src="{% static 'accueil/images/Lumion.png' %}" class="w-16 h-16 object-contain mb-5">
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+                <img src="{% static 'accueil/images/Lumion.png' %}" width="64" height="64" loading="lazy" decoding="async" alt="Lumion" class="w-16 h-16 object-contain mb-5">
                 <h3 class="text-xl font-black text-blue-900 mb-2">Lumion</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">Rendus 3D réalistes, animations et visualisations architecturales.</p>
             </div>
 
-            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
-                <img src="{% static 'accueil/images/Photoshop.png' %}" class="w-16 h-16 object-contain mb-5">
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+                <img src="{% static 'accueil/images/Photoshop.png' %}" width="64" height="64" loading="lazy" decoding="async" alt="Adobe Photoshop" class="w-16 h-16 object-contain mb-5">
                 <h3 class="text-xl font-black text-blue-900 mb-2">Photoshop</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">Retouche, montage, présentation graphique et communication visuelle.</p>
             </div>
 
-            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
-                <img src="{% static 'accueil/images/Revit.png' %}" class="w-16 h-16 object-contain mb-5">
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+                <img src="{% static 'accueil/images/Revit.png' %}" width="64" height="64" loading="lazy" decoding="async" alt="Revit" class="w-16 h-16 object-contain mb-5">
                 <h3 class="text-xl font-black text-blue-900 mb-2">Revit</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">Modélisation BIM avancée pour bâtiments, plans, coupes et coordination.</p></div>
 
-            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
-                <img src="{% static 'accueil/images/Sketchup.png' %}" class="w-16 h-16 object-contain mb-5">
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+                <img src="{% static 'accueil/images/Sketchup.png' %}" width="64" height="64" loading="lazy" decoding="async" alt="SketchUp" class="w-16 h-16 object-contain mb-5">
                 <h3 class="text-xl font-black text-blue-900 mb-2">SketchUp</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">Modélisation 3D rapide, intuitive et adaptée aux concepts architecturaux.</p>
             </div>
 
-            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
-                <img src="{% static 'accueil/images/V-ray.png' %}" class="w-16 h-16 object-contain mb-5">
+            <div class="group rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-6 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+                <img src="{% static 'accueil/images/V-ray.png' %}" width="64" height="64" loading="lazy" decoding="async" alt="V-Ray" class="w-16 h-16 object-contain mb-5">
                 <h3 class="text-xl font-black text-blue-900 mb-2">V-Ray</h3>
                 <p class="text-sm text-gray-700 leading-relaxed">Moteur de rendu réaliste pour images architecturales haut de gamme.</p>
             </div>
@@ -180,9 +184,9 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-8 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-8 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
             <div class="w-14 h-14 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center text-2xl mb-6">
-                <i class="fa-solid fa-users"></i>
+                <i class="fa-solid fa-users" aria-hidden="true"></i>
             </div>
             <h3 class="text-2xl font-black text-blue-900 mb-3">Communauté active</h3>
             <p class="text-gray-700 leading-relaxed">
@@ -190,9 +194,9 @@
             </p>
         </div>
 
-        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-8 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-8 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
             <div class="w-14 h-14 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center text-2xl mb-6">
-                <i class="fa-solid fa-award"></i>
+                <i class="fa-solid fa-award" aria-hidden="true"></i>
             </div>
             <h3 class="text-2xl font-black text-blue-900 mb-3">Certification</h3>
             <p class="text-gray-700 leading-relaxed">
@@ -200,9 +204,9 @@
             </p>
         </div>
 
-        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-8 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-8 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
             <div class="w-14 h-14 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center text-2xl mb-6">
-                <i class="fa-solid fa-briefcase"></i>
+                <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
             </div>
             <h3 class="text-2xl font-black text-blue-900 mb-3">Opportunités</h3>
             <p class="text-gray-700 leading-relaxed">
@@ -214,13 +218,14 @@
 </section>
 
 <!-- PROJETS RÉCENTS -->
-<section class="relative max-w-7xl mx-auto px-4 pb-24">
+<section id="projets-recents" class="relative max-w-7xl mx-auto px-4 pb-24">
 
     <div class="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
         <div>
             <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-500">
                 Portfolio
-            </p><h2 class="relative inline-block text-4xl md:text-5xl font-black text-blue-900">
+            </p>
+            <h2 class="relative inline-block text-4xl md:text-5xl font-black text-blue-900">
                 Nos projets récents
                 <span class="absolute -bottom-3 left-0 w-24 h-[5px] bg-yellow-400 rounded-full"></span>
             </h2>
@@ -229,9 +234,9 @@
         <a href="{% url 'projets-list' %}"
            class="inline-flex items-center justify-center gap-3 rounded-full
                   bg-blue-900 px-6 py-3 font-bold text-white
-                  hover:bg-yellow-400 hover:text-blue-900 transition">
+                  hover:bg-yellow-400 hover:text-blue-900 transition focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
             Voir tous les projets
-            <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
         </a>
     </div>
 
@@ -240,19 +245,23 @@
         {% for projet in projets_recents %}
         <article class="group relative overflow-hidden rounded-[2rem]
                        bg-white/30 backdrop-blur-xl border border-white/40
-                       shadow-xl hover:shadow-2xl hover:-translate-y-2
-                       transition-all duration-500">
+                       shadow-xl hover:shadow-2xl hover:-translate-y-1
+                       transition-all duration-300">
 
             <div class="relative h-[420px] overflow-hidden">
-                {% if projet.photos.first %}
-                <img src="{{ projet.photos.first.image.url }}"
+                {% with photo=projet.photos.first %}
+                {% if photo %}
+                <img src="{{ photo.image.url }}"
                      alt="{{ projet.titre }}"
-                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                     loading="lazy"
+                     decoding="async"
+                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 {% else %}
                 <div class="w-full h-full bg-yellow-400/70 flex items-center justify-center">
                     <span class="font-bold text-blue-900">Pas d'image</span>
                 </div>
                 {% endif %}
+                {% endwith %}
 
                 <div class="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/20 to-transparent"></div>
 
@@ -271,9 +280,9 @@
                     </p>
 
                     <a href="{{ projet.get_absolute_url }}"
-                       class="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-2 font-bold text-blue-900 hover:bg-white transition">
+                       class="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-2 font-bold text-blue-900 hover:bg-white transition focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
                         Voir plus
-                        <i class="fa-solid fa-arrow-right"></i>
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
@@ -305,26 +314,28 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-7 shadow-xl hover:-translate-y-2 transition-all duration-500">
-            <i class="fas fa-pencil-ruler text-4xl text-blue-900 mb-5"></i>
+        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-7 shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-pencil-ruler text-4xl text-blue-900 mb-5" aria-hidden="true"></i>
             <h3 class="text-xl font-black text-blue-900 mb-3">Conception & DAO</h3>
             <p class="text-sm text-gray-700">Des idées modernes, techniques et adaptées à vos projets.</p>
-        </div><div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-7 shadow-xl hover:-translate-y-2 transition-all duration-500">
-            <i class="fas fa-building text-4xl text-blue-900 mb-5"></i>
+        </div>
+
+        <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-7 shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-building text-4xl text-blue-900 mb-5" aria-hidden="true"></i>
             <h3 class="text-xl font-black text-blue-900 mb-3">Espace de travail</h3>
             <p class="text-sm text-gray-700">Un environnement moderne pour apprendre, créer et collaborer.</p>
         </div>
 
         <a href="{% url 'formation' %}"
-           class="rounded-[2rem] bg-blue-900 p-7 shadow-xl hover:-translate-y-2 transition-all duration-500 group">
-            <i class="fas fa-graduation-cap text-4xl text-yellow-400 mb-5"></i>
+           class="rounded-[2rem] bg-blue-900 p-7 shadow-xl hover:-translate-y-1 transition-all duration-300 group focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+            <i class="fas fa-graduation-cap text-4xl text-yellow-400 mb-5" aria-hidden="true"></i>
             <h3 class="text-xl font-black text-white mb-3">Formations</h3>
             <p class="text-sm text-blue-100">Découvrez notre catalogue de formations pratiques.</p>
         </a>
 
         <a href="{% url 'boutique' %}"
-           class="rounded-[2rem] bg-yellow-400 p-7 shadow-xl hover:-translate-y-2 transition-all duration-500 group">
-            <i class="fas fa-store text-4xl text-blue-900 mb-5"></i>
+           class="rounded-[2rem] bg-yellow-400 p-7 shadow-xl hover:-translate-y-1 transition-all duration-300 group focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+            <i class="fas fa-store text-4xl text-blue-900 mb-5" aria-hidden="true"></i>
             <h3 class="text-xl font-black text-blue-900 mb-3">Boutique</h3>
             <p class="text-sm text-blue-900/80">Explorez les articles disponibles dans notre boutique.</p>
         </a>
@@ -360,26 +371,26 @@
                     {% csrf_token %}
 
                     <div>
-                        <label class="block mb-2 text-sm font-bold text-white">
+                        <label for="contact-email" class="block mb-2 text-sm font-bold text-white">
                             Adresse mail
                         </label>
-                        <input type="email" name="email" placeholder="Votre email"
+                        <input id="contact-email" type="email" name="email" placeholder="Votre email" autocomplete="email" required
                                class="w-full px-5 py-4 rounded-2xl
                                       bg-white/90 border border-white/40
                                       focus:outline-none focus:ring-2 focus:ring-yellow-400">
                     </div>
 
                     <div>
-                        <label class="block mb-2 text-sm font-bold text-white">
+                        <label for="contact-message" class="block mb-2 text-sm font-bold text-white">
                             Message
                         </label>
-                        <textarea name="message" rows="5" placeholder="Votre message"
+                        <textarea id="contact-message" name="message" rows="5" placeholder="Votre message" required
                                   class="w-full px-5 py-4 rounded-2xl
                                          bg-white/90 border border-white/40
                                          focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
                     </div>
 
-                    <button class="w-full py-4 rounded-full
+                    <button type="submit" class="w-full py-4 rounded-full
                                    bg-yellow-400 text-blue-900 font-black
                                    hover:bg-white transition-all duration-300">
                         Envoyer le message
@@ -395,14 +406,5 @@
 </section>
 
 </div>
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 800,
-    easing: 'ease-out-cubic',
-    once: true
-  });
-</script>
 
 {% endblock accueil %}

@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Inscription {{ formation.nom }} | Modern Technology of Building{% endblock title %}
+{% block meta_description %}Inscrivez-vous à la formation {{ formation.nom }} avec Modern Technology of Building et recevez une confirmation par email.{% endblock meta_description %}
+{% block og_title %}Inscription {{ formation.nom }} | Modern Technology of Building{% endblock og_title %}
+{% block og_description %}Formulaire d'inscription rapide pour réserver votre place à la formation {{ formation.nom }}.{% endblock og_description %}
+
 {% block inscription %}
 
 <section class="relative py-32 overflow-hidden">
@@ -20,8 +25,8 @@
               border border-white/60
               text-blue-900 px-5 py-3 rounded-2xl
               shadow-md hover:bg-blue-900 hover:text-white
-              transition-all duration-300 font-semibold">
-      <i class="fa-solid fa-arrow-left"></i>
+              transition-all duration-300 font-semibold focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
       Retour aux formations
     </a>
 
@@ -42,7 +47,7 @@
           <div>
             <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full
                          bg-white/10 border border-white/20 text-sm font-semibold mb-8">
-              <i class="fa-solid fa-graduation-cap"></i>
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
               Formation premium
             </span>
 
@@ -59,7 +64,7 @@
 
               <div class="flex items-center gap-4">
                 <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
-                  <i class="fa-solid fa-clock"></i>
+                  <i class="fa-solid fa-clock" aria-hidden="true"></i>
                 </div>
                 <div>
                   <p class="font-bold">Inscription rapide</p>
@@ -69,7 +74,7 @@
 
               <div class="flex items-center gap-4">
                 <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
-                  <i class="fa-solid fa-envelope-circle-check"></i>
+                  <i class="fa-solid fa-envelope-circle-check" aria-hidden="true"></i>
                 </div>
                 <div>
                   <p class="font-bold">Confirmation par email</p>
@@ -79,7 +84,7 @@
 
               <div class="flex items-center gap-4">
                 <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
-                  <i class="fa-solid fa-headset"></i>
+                  <i class="fa-solid fa-headset" aria-hidden="true"></i>
                 </div>
                 <div>
                   <p class="font-bold">Suivi par l’équipe</p>
@@ -92,7 +97,7 @@
 
           <div class="mt-10 p-4 rounded-2xl bg-white/10 border border-white/20">
             <p class="text-sm text-blue-100">
-              <i class="fa-solid fa-circle-info mr-2"></i>
+              <i class="fa-solid fa-circle-info mr-2" aria-hidden="true"></i>
               Vérifiez bien votre email et votre numéro WhatsApp avant de confirmer.
             </p>
           </div>
@@ -100,7 +105,8 @@
         </div>
       </div>
 
-      <!-- DROITE --><div class="lg:col-span-3 p-8 md:p-12 bg-white/80 backdrop-blur-xl">
+      <!-- DROITE -->
+      <div class="lg:col-span-3 p-8 md:p-12 bg-white/80 backdrop-blur-xl">
 
         {% if inscription_reussie %}
 
@@ -109,7 +115,7 @@
 
           <div class="w-28 h-28 rounded-full bg-gradient-to-br from-blue-900 to-cyan-600
                       flex items-center justify-center shadow-2xl mb-8">
-            <i class="fa-solid fa-check text-white text-5xl"></i>
+            <i class="fa-solid fa-check text-white text-5xl" aria-hidden="true"></i>
           </div>
 
           <h2 class="text-4xl font-black text-blue-900 mb-4">
@@ -127,16 +133,16 @@
             <a href="{% url 'formation' %}"
                class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl
                       bg-blue-900 text-white font-bold shadow-lg
-                      hover:bg-blue-800 transition">
-              <i class="fa-solid fa-arrow-left"></i>
+                      hover:bg-blue-800 transition focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
               Voir les formations
             </a>
 
             <a href="mailto:admin@moderntechnologyofbuilding.com"
                class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl
                       bg-slate-100 text-blue-900 font-bold border border-slate-200
-                      hover:bg-slate-200 transition">
-              <i class="fa-solid fa-envelope"></i>
+                      hover:bg-slate-200 transition focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
               Contacter l’admin
             </a>
 
@@ -179,7 +185,7 @@
 
             <!-- NOM -->
             <div>
-              <label class="block mb-2 text-sm font-bold text-slate-700">
+              <label for="{{ form.nom.id_for_label }}" class="block mb-2 text-sm font-bold text-slate-700">
                 {{ form.nom.label }}
               </label>
 
@@ -194,7 +200,7 @@
 
             <!-- PRENOM -->
             <div>
-              <label class="block mb-2 text-sm font-bold text-slate-700">
+              <label for="{{ form.prenom.id_for_label }}" class="block mb-2 text-sm font-bold text-slate-700">
                 {{ form.prenom.label }}
               </label>
 
@@ -211,7 +217,7 @@
 
           <!-- EMAIL -->
           <div>
-            <label class="block mb-2 text-sm font-bold text-slate-700">
+            <label for="{{ form.email.id_for_label }}" class="block mb-2 text-sm font-bold text-slate-700">
               {{ form.email.label }}
             </label>
 
@@ -226,7 +232,7 @@
 
           <!-- TELEPHONE -->
           <div>
-            <label class="block mb-2 text-sm font-bold text-slate-700">
+            <label for="{{ form.telephone.id_for_label }}" class="block mb-2 text-sm font-bold text-slate-700">
               {{ form.telephone.label }}
             </label>
 
@@ -245,7 +251,7 @@
 
           <!-- Info -->
           <div class="p-4 rounded-2xl bg-blue-50 border border-blue-100 text-blue-900 text-sm leading-relaxed">
-            <i class="fa-solid fa-shield-halved mr-2"></i>
+            <i class="fa-solid fa-shield-halved mr-2" aria-hidden="true"></i>
             Vos informations servent uniquement au suivi de votre inscription.
           </div>
 
@@ -256,15 +262,15 @@
                          bg-gradient-to-r from-blue-900 to-cyan-700
                          text-white font-bold text-lg shadow-2xl
                          hover:scale-[1.01] active:scale-[0.99]
-                         transition-all duration-300">
+                         transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
 
             <span id="btnText" class="relative z-10 flex items-center justify-center gap-3">
               Confirmer mon inscription
-              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition" aria-hidden="true"></i>
             </span>
 
             <span id="btnLoading" class="hidden relative z-10 items-center justify-center gap-3">
-              <i class="fa-solid fa-spinner fa-spin"></i>
+              <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
               Envoi en cours...
             </span>
 
@@ -279,13 +285,18 @@
   </div>
 </section>
 
-<script>
-  const form = document.getElementById("inscriptionForm");
-  const submitBtn = document.getElementById("submitBtn");
-  const btnText = document.getElementById("btnText");
-  const btnLoading = document.getElementById("btnLoading");
+{% endblock inscription %}
 
-  if (form) {
+{% block extra_js %}
+<script>
+  (() => {
+    const form = document.getElementById("inscriptionForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const btnText = document.getElementById("btnText");
+    const btnLoading = document.getElementById("btnLoading");
+
+    if (!form || !submitBtn || !btnText || !btnLoading) return;
+
     form.addEventListener("submit", function () {
       submitBtn.disabled = true;
       submitBtn.classList.add("opacity-70", "cursor-not-allowed");
@@ -293,7 +304,6 @@
       btnLoading.classList.remove("hidden");
       btnLoading.classList.add("flex");
     });
-  }
+  })();
 </script>
-
-{% endblock inscription %}
+{% endblock extra_js %}

@@ -8,5 +8,10 @@ class PhotoProjetInline(admin.TabularInline):
 
 
 @admin.register(Projet)
-class ArticleAdmin(admin.ModelAdmin):
+class ProjetAdmin(admin.ModelAdmin):
     inlines = [PhotoProjetInline]
+    list_display = ("titre", "date_creation")
+    search_fields = ("titre", "description")
+    ordering = ("-date_creation",)
+    readonly_fields = ("date_creation",)
+    date_hierarchy = "date_creation"

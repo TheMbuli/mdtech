@@ -2,13 +2,18 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Services | Modern Technology of Building{% endblock title %}
+{% block meta_description %}Découvrez les services de Modern Technology of Building : conception architecturale, BIM, plans techniques, accompagnement et devis adaptés à votre projet.{% endblock meta_description %}
+{% block og_title %}Services | Modern Technology of Building{% endblock og_title %}
+{% block og_description %}Des prestations claires pour accompagner vos projets de construction, d'architecture et de modélisation BIM.{% endblock og_description %}
+
 {% block services %}
 
 <div class="relative overflow-hidden">
 
 <!-- HERO -->
 <section
-    class="relative min-h-screen flex items-center overflow-hidden px-6 md:px-20"
+    class="relative min-h-[92svh] flex items-center overflow-hidden px-6 md:px-20"
     style="background-image: url('{% static 'services/images/landing_services.jpg' %}');
            background-size: cover;
            background-position: center;
@@ -90,8 +95,9 @@
 
             <div class="grid sm:grid-cols-3 gap-4 mb-8">
 
-                <div class="rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-5 shadow-lg"><div class="w-10 h-10 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-ruler-combined"></i>
+                <div class="rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-5 shadow-lg">
+                    <div class="w-10 h-10 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-ruler-combined" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-black text-blue-900">Surface</h3>
                     <p class="text-sm text-gray-700 mt-1">Surface totale du projet</p>
@@ -99,7 +105,7 @@
 
                 <div class="rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-5 shadow-lg">
                     <div class="w-10 h-10 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-building"></i>
+                        <i class="fa-solid fa-building" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-black text-blue-900">Niveaux</h3>
                     <p class="text-sm text-gray-700 mt-1">Nombre d’étages</p>
@@ -107,7 +113,7 @@
 
                 <div class="rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 p-5 shadow-lg">
                     <div class="w-10 h-10 rounded-2xl bg-blue-900 text-yellow-400 flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-list-check"></i>
+                        <i class="fa-solid fa-list-check" aria-hidden="true"></i>
                     </div>
                     <h3 class="font-black text-blue-900">Service</h3>
                     <p class="text-sm text-gray-700 mt-1">Type de prestation</p>
@@ -134,7 +140,7 @@
             <div class="relative z-10">
 
                 <span class="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 text-xs font-black px-4 py-2 rounded-full mb-6">
-                    <i class="fa-solid fa-cube"></i>
+                    <i class="fa-solid fa-cube" aria-hidden="true"></i>
                     BIM / Architecture
                 </span>
 
@@ -149,29 +155,30 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
                     <div class="rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
-                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        <i class="fa-solid fa-check text-green-500 mr-2" aria-hidden="true"></i>
                         Plans 2D
                     </div>
 
                     <div class="rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
-                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        <i class="fa-solid fa-check text-green-500 mr-2" aria-hidden="true"></i>
                         Coupes & façades
                     </div>
 
                     <div class="rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
-                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        <i class="fa-solid fa-check text-green-500 mr-2" aria-hidden="true"></i>
                         Plan de masse
                     </div>
 
                     <div class="rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
-                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        <i class="fa-solid fa-check text-green-500 mr-2" aria-hidden="true"></i>
                         Fondations
                     </div>
 
                     <div class="sm:col-span-2 rounded-2xl bg-white/40 border border-white/40 p-4 font-semibold text-blue-900">
-                        <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                        <i class="fa-solid fa-check text-green-500 mr-2" aria-hidden="true"></i>
                         Perspectives architecturales
-                    </div></div>
+                    </div>
+                </div>
 
             </div>
 
@@ -207,8 +214,8 @@
         {% for service in services %}
         <article class="group relative overflow-hidden rounded-[2rem]
                        bg-white/35 backdrop-blur-xl border border-white/40
-                       shadow-xl hover:shadow-2xl hover:-translate-y-2
-                       transition-all duration-500">
+                       shadow-xl hover:shadow-2xl hover:-translate-y-1
+                       transition-all duration-300">
 
             <!-- IMAGE / CAROUSEL -->
             <div class="relative h-64 overflow-hidden">
@@ -220,7 +227,9 @@
                         <img
                             src="{{ image.image.url }}"
                             alt="{{ service.nom }}"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy"
+                            decoding="async"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         >
                     </div>
                     {% empty %}
@@ -272,14 +281,16 @@
                     </div>
                 </div>
 
-                <a href="https://wa.me/243972159400?text=Bonjour,%20je%20souhaite%20demander%20le%20devis%20de%{{ service.nom }}%20:%20{{ request.build_absolute_uri }}"
+                <a href="https://wa.me/243972159400?text=Bonjour,%20je%20souhaite%20demander%20le%20devis%20de%20{{ service.nom|urlencode }}%20:%20{{ request.build_absolute_uri|urlencode }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    class="group/link flex items-center justify-center gap-3
                           rounded-full bg-blue-900 px-5 py-3
                           font-bold text-white
                           shadow-lg transition-all duration-300
-                          hover:bg-yellow-400 hover:text-blue-900">
+                          hover:bg-yellow-400 hover:text-blue-900 focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
                     Demander un devis
-                    <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover/link:translate-x-1"></i>
+                    <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover/link:translate-x-1" aria-hidden="true"></i>
                 </a>
 
             </div>
@@ -299,6 +310,9 @@
 
 </div>
 
+{% endblock services %}
+
+{% block extra_css %}
 <style>
 .service-slide {
     position: absolute;
@@ -311,9 +325,13 @@
     opacity: 1;
 }
 </style>
+{% endblock extra_css %}
 
+{% block extra_js %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     document.querySelectorAll(".service-carousel").forEach(function (carousel) {
         const slides = carousel.querySelectorAll(".service-slide");
         let index = 0;
@@ -328,5 +346,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
-
-{% endblock %}
+{% endblock extra_js %}

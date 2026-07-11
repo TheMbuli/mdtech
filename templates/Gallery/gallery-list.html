@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %}Galerie | Modern Technology of Building{% endblock title %}
+{% block meta_description %}Parcourez la galerie Modern Technology of Building par édition et découvrez les images des activités, projets et moments marquants.{% endblock meta_description %}
+{% block og_title %}Galerie | Modern Technology of Building{% endblock og_title %}
+{% block og_description %}Images classées par édition pour suivre les activités et réalisations de Modern Technology of Building.{% endblock og_description %}
+
 {% block gallery %}
 <section class="max-w-7xl mx-auto pt-32 pb-24 px-4">
 
@@ -19,13 +24,14 @@
 
                 {% for edition in editions %}
                 <a href="#edition-{{ edition.annee }}"
-                   class="group relative shrink-0 flex flex-col items-center">
+                   class="group relative shrink-0 flex flex-col items-center focus:outline-none focus:ring-4 focus:ring-yellow-400/60 rounded-2xl"
+                   aria-label="Voir l'édition {{ edition.annee }}">
 
                     <!-- Point timeline -->
                     <div class="relative z-10 w-5 h-5 rounded-full
                                 bg-yellow-400 border-4 border-blue-900
                                 shadow-lg
-                                group-hover:scale-125 transition duration-300">
+                                group-hover:scale-105 transition duration-300">
                     </div>
 
                     <!-- Année -->
@@ -95,7 +101,7 @@
             <!-- Grid images -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                {% for image_edition in edition.imagesedition_set.all %}
+                {% for image_edition in edition.images.all %}
                 <div class="group relative overflow-hidden rounded-3xl
                             bg-white/20 backdrop-blur-xl
                             border border-white/30
@@ -104,15 +110,17 @@
 
                     <!-- Image -->
                     <div class="overflow-hidden">
-                        <img src="{{ image_edition.image.url }}"
-                             alt="Image édition {{ edition.annee }}"
-                             class="w-full h-72 object-cover
-                                    group-hover:scale-110
-                                    transition duration-700">
+                            <img src="{{ image_edition.image.url }}"
+                                 alt="Image édition {{ edition.annee }}"
+                                 loading="lazy"
+                                 decoding="async"
+                                 class="w-full h-72 object-cover
+                                    group-hover:scale-105
+                                    transition duration-500">
                     </div>
 
                     <!-- Overlay -->
-                    <div class="absolute inset-0bg-gradient-to-t
+                    <div class="absolute inset-0 bg-gradient-to-t
                                 from-black/70 via-black/10 to-transparent">
                     </div>
 
@@ -182,4 +190,4 @@
     </div>
 
 </section>
-{% endblock %}
+{% endblock gallery %}

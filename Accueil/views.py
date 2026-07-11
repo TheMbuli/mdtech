@@ -6,5 +6,5 @@ class Accueil(View):
     template = "Accueil/accueil.html"
 
     def get(self, request):
-        projets_recents = Projet.objects.order_by('-date_creation')[:3]  # par ex. 3 projets récents
+        projets_recents = Projet.objects.prefetch_related("photos")[:3]
         return render(request, self.template, {'projets_recents': projets_recents})

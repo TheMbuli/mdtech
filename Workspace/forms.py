@@ -1,8 +1,10 @@
 from django import forms
+from django.utils import timezone
+
 from .models import ReservationWorkspace
 
-class ReservationWorkspaceForm(forms.ModelForm):
 
+class ReservationWorkspaceForm(forms.ModelForm):
     class Meta:
         model = ReservationWorkspace
         fields = [
@@ -26,26 +28,19 @@ class ReservationWorkspaceForm(forms.ModelForm):
             }),
             "date": forms.DateInput(attrs={
                 "type": "date",
+                "min": timezone.localdate().isoformat(),
                 "class": "w-full px-3 py-2 bg-white text-blue-900 border border-blue-300"
             }),
             "heure_debut": forms.TimeInput(attrs={
                 "type": "time",
+                "min": ReservationWorkspace.HEURE_OUVERTURE.strftime("%H:%M"),
+                "max": ReservationWorkspace.HEURE_FERMETURE.strftime("%H:%M"),
                 "class": "w-full px-3 py-2 bg-white text-blue-900 border border-blue-300"
             }),
             "heure_fin": forms.TimeInput(attrs={
                 "type": "time",
+                "min": ReservationWorkspace.HEURE_OUVERTURE.strftime("%H:%M"),
+                "max": ReservationWorkspace.HEURE_FERMETURE.strftime("%H:%M"),
                 "class": "w-full px-3 py-2 bg-white text-blue-900 border border-blue-300"
             }),
         }
-
-    def clean(self):
-        cleaned_data = super().clean()
-        debut = cleaned_data.get("heure_debut")
-        fin = cleaned_data.get("heure_fin")
-
-        if debut and fin and fin <= debut:
-            raise forms.ValidationError(
-                "L'heure de fin doit être supérieure à l'heure de début."
-            )
-
-        return cleaned_data

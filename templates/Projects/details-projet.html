@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %}{{ projet.titre }} | Réalisation | Modern Technology of Building{% endblock title %}
+{% block meta_description %}Découvrez le projet {{ projet.titre }} réalisé par Modern Technology of Building, avec description et galerie photos.{% endblock meta_description %}
+{% block og_title %}{{ projet.titre }} | Réalisation{% endblock og_title %}
+{% block og_description %}Projet Modern Technology of Building avec galerie photos et détails de réalisation.{% endblock og_description %}
+
 {% block details-projet %}
 <section class="relative max-w-7xl mx-auto px-4 pt-36 pb-24 overflow-hidden">
 
@@ -15,8 +20,8 @@
               bg-white/30 backdrop-blur-xl border border-white/40
               text-blue-900 px-5 py-3 rounded-full
               hover:bg-blue-900 hover:text-white
-              transition-all duration-300 font-bold shadow-lg">
-      <i class="fa-solid fa-arrow-left"></i>
+              transition-all duration-300 font-bold shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
       Retour aux projets
     </a>
 
@@ -30,6 +35,8 @@
       <div class="relative h-[420px] overflow-hidden">
         <img src="{{ projet.affiche.url }}"
              alt="{{ projet.titre }}"
+             loading="lazy"
+             decoding="async"
              class="w-full h-full object-cover">
 
         <div class="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/30 to-transparent"></div>
@@ -90,8 +97,10 @@
         <div class="overflow-hidden">
           <img src="{{ photo.image.url }}"
                alt="{{ photo.description|default:projet.titre }}"
+               loading="lazy"
+               decoding="async"
                class="w-full object-cover
-                      transition-transform duration-700
+                      transition-transform duration-500
                       group-hover:scale-105">
         </div>
 
@@ -116,4 +125,4 @@
 
   </div>
 </section>
-{% endblock %}
+{% endblock details-projet %}

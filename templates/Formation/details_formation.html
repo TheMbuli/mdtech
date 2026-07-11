@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+
+{% block title %}{{ formation.nom }} | Formation | Modern Technology of Building{% endblock title %}
+{% block meta_description %}Découvrez la formation {{ formation.nom }} proposée par Modern Technology of Building : objectifs, durée, tarifs et inscription.{% endblock meta_description %}
+{% block og_title %}{{ formation.nom }} | Formation{% endblock og_title %}
+{% block og_description %}Formation pratique Modern Technology of Building avec objectifs, durée et tarifs détaillés.{% endblock og_description %}
+
 {% block details_formation %}
 
 <div class="max-w-7xl mx-auto px-4 mt-12 md:mt-16 lg:mt-20 mb-16" style="padding-top: 150px;">
@@ -8,8 +14,8 @@
             bg-white/20 backdrop-blur-md border border-white/30
             text-blue-900 px-5 py-3 rounded-2xl
             hover:bg-blue-900 hover:text-white
-            transition-all duration-300 font-bold shadow-md">
-    <i class="fa-solid fa-arrow-left"></i>
+            transition-all duration-300 font-bold shadow-md focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
+    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
     Retour aux formations
   </a>
 
@@ -23,7 +29,9 @@
         {% if formation.affiche %}
           <img src="{{ formation.affiche.url }}"
                alt="{{ formation.nom }}"
-               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+               loading="lazy"
+               decoding="async"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
         {% else %}
           <div class="w-full h-full flex items-center justify-center bg-white/10">
             <span class="text-blue-900 font-medium">Pas d'image</span>
@@ -44,6 +52,11 @@
         {% if formation.logo %}
         <div class="absolute bottom-5 left-5 bg-white rounded-2xl p-3 shadow-lg">
           <img src="{{ formation.logo.url }}"
+               alt="Logo {{ formation.nom }}"
+               width="56"
+               height="56"
+               loading="lazy"
+               decoding="async"
                class="h-14 w-14 object-contain">
         </div>
         {% endif %}
@@ -107,10 +120,10 @@
 
           <a href="{% url 'formation_inscription' formation.slug %}"
              class="flex-1 flex items-center justify-center gap-2
-                    bg-blue-900 text-white px-6 py-4 rounded-2xlhover:bg-blue-800 transition-all duration-300
-                    font-bold shadow-md">
+                    bg-blue-900 text-white px-6 py-4 rounded-2xl hover:bg-blue-800 transition-all duration-300
+                    font-bold shadow-md focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
             S'inscrire maintenant
-            <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
 
         </div>
