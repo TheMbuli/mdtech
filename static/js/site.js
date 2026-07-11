@@ -19,6 +19,7 @@
     if (!menu || !menuButton || !menuIcon) return;
     menu.classList.remove("is-open");
     menu.setAttribute("aria-hidden", "true");
+    menu.hidden = true;
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.setAttribute("aria-label", "Ouvrir le menu");
     menuIcon.classList.replace("fa-x", "fa-bars");
@@ -28,6 +29,7 @@
 
   const openMenu = () => {
     if (!menu || !menuButton || !menuIcon) return;
+    menu.hidden = false;
     menu.classList.add("is-open");
     menu.setAttribute("aria-hidden", "false");
     menuButton.setAttribute("aria-expanded", "true");
@@ -64,4 +66,5 @@
   }, { passive: true });
 
   updateHeader();
+  closeMenu();
 })();
