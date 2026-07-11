@@ -10,24 +10,117 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+from urllib.parse import unquote, urlparse
+
+from django.core.exceptions import ImproperlyConfigured
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join('templates')
+load_dotenv(BASE_DIR / ".env")
+
+
+def env_bool(name, default=False):
+    """Return a boolean environment value using explicit truthy strings."""
+    return os.getenv(name, str(default)).strip().lower() in {"1", "true", "yes", "on"}
+
+
+def env_list(name, default=""):
+    """Return a comma-separated environment value as a clean list."""
+    return [value.strip() for value in os.getenv(name, default).split(",") if value.strip()]
+
+
+def _cloudinary_url_from_env():
+    """Return a Cloudinary URL from supported env names without exposing it."""
+    for name in ("CLOUDINARY_URL", "CLOUDINARY_PRODUCT_ENVIRONMENT", "CLOUDINARY_KEY_NAME"):
+        value = os.getenv(name, "").strip()
+        if value.startswith("cloudinary://"):
+            return value
+    return ""
+
+
+def cloudinary_config():
+    """Build non-secret Cloudinary settings or fail clearly when enabled."""
+    cloudinary_url = _cloudinary_url_from_env()
+    if cloudinary_url:
+        parsed = urlparse(cloudinary_url)
+        if parsed.scheme != "cloudinary" or not parsed.username or not parsed.password or not parsed.hostname:
+            raise ImproperlyConfigured(
+                "USE_CLOUDINARY=True mais CLOUDINARY_URL est invalide. "
+                "Utilisez cloudinary://API_KEY:API_SECRET@CLOUD_NAME."
+            )
+        return {
+            "cloud_name": parsed.hostname,
+            "api_key": unquote(parsed.username),
+            "api_secret": unquote(parsed.password),
+            "secure": True,
+        }
+
+    cloud_name = (
+        os.getenv("CLOUDINARY_CLOUD_NAME", "").strip()
+        or os.getenv("CLOUDINARY_PRODUCT_ENVIRONMENT", "").strip()
+    )
+    api_key = os.getenv("CLOUDINARY_API_KEY", "").strip()
+    api_secret = (
+        os.getenv("CLOUDINARY_API_SECRET", "").strip()
+        or os.getenv("CLOUDINARY_API_KEY_SECRET", "").strip()
+    )
+    if cloud_name and api_key and api_secret:
+        return {
+            "cloud_name": cloud_name,
+            "api_key": api_key,
+            "api_secret": api_secret,
+            "secure": True,
+        }
+
+    raise ImproperlyConfigured(
+        "USE_CLOUDINARY=True mais la configuration Cloudinary est incomplète. "
+        "Définissez CLOUDINARY_URL ou CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY et CLOUDINARY_API_SECRET."
+    )
+
+
+def database_config():
+    """Build a Django database configuration from DATABASE_URL."""
+    database_url = os.getenv("DATABASE_URL", "sqlite:///db.sqlite3")
+    parsed = urlparse(database_url)
+
+    if parsed.scheme == "sqlite":
+        database_name = unquote(parsed.path.lstrip("/")) or "db.sqlite3"
+        if database_name == ":memory:":
+            name = database_name
+        else:
+            name = Path(database_name)
+            if not name.is_absolute():
+                name = BASE_DIR / name
+        return {"ENGINE": "django.db.backends.sqlite3", "NAME": name}
+
+    if parsed.scheme in {"postgres", "postgresql"}:
+        return {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": unquote(parsed.path.lstrip("/")),
+            "USER": unquote(parsed.username or ""),
+            "PASSWORD": unquote(parsed.password or ""),
+            "HOST": parsed.hostname or "",
+            "PORT": parsed.port or 5432,
+            "CONN_MAX_AGE": 60,
+        }
+
+    raise ValueError("DATABASE_URL doit utiliser le schéma sqlite, postgres ou postgresql.")
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-p3n%z#xg(@v1x+6s1@5euaqb^%!6d1^yq@ra+_*%64r7--*uhe'
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env_bool("DJANGO_DEBUG", True)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = env_list("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1")
+CSRF_TRUSTED_ORIGINS = env_list("DJANGO_CSRF_TRUSTED_ORIGINS")
 
 
 # Application definition
@@ -59,13 +152,13 @@ TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mdtech.urls'
@@ -73,7 +166,7 @@ ROOT_URLCONF = 'mdtech.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / TEMPLATES_DIR],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,12 +184,7 @@ WSGI_APPLICATION = 'mdtech.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {'default': database_config()}
 
 
 # Password validation
@@ -121,9 +209,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Lubumbashi'
 
 USE_I18N = True
 
@@ -141,9 +229,29 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+USE_CLOUDINARY = env_bool("USE_CLOUDINARY", False)
+CLOUDINARY_FOLDER = os.getenv("CLOUDINARY_FOLDER", "mdtech").strip().strip("/") or "mdtech"
+CLOUDINARY_CONFIG = cloudinary_config() if USE_CLOUDINARY else {}
+
+STORAGES = {
+    "default": {
+        "BACKEND": (
+            "mdtech.storage_backends.CloudinaryMediaStorage"
+            if USE_CLOUDINARY
+            else "django.core.files.storage.FileSystemStorage"
+        ),
+    },
+    "staticfiles": {
+        "BACKEND": (
+            "django.contrib.staticfiles.storage.StaticFilesStorage"
+            if DEBUG
+            else "whitenoise.storage.CompressedManifestStaticFilesStorage"
+        ),
+    },
+}
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -152,8 +260,48 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'mumberedestiin@gmail.com'
-EMAIL_HOST_PASSWORD = 'dqpmaibwflzvvzlc'
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-ADMIN_EMAIL = 'mumberedestiin@gmail.com'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER or "webmaster@localhost"
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", EMAIL_HOST_USER)
+
+# Ces options restent désactivées en développement et doivent être activées
+# uniquement lorsque le domaine est effectivement servi en HTTPS.
+SECURE_SSL_REDIRECT = env_bool("DJANGO_SECURE_SSL_REDIRECT", not DEBUG)
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+SECURE_HSTS_SECONDS = int(os.getenv("DJANGO_SECURE_HSTS_SECONDS", "0" if DEBUG else "31536000"))
+SECURE_HSTS_INCLUDE_SUBDOMAINS = SECURE_HSTS_SECONDS > 0
+SECURE_HSTS_PRELOAD = SECURE_HSTS_SECONDS > 0
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = "DENY"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "standard": {
+            "format": "{levelname} {asctime} {name}: {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "standard",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "INFO" if DEBUG else "WARNING",
+            "propagate": False,
+        },
+        "mdtech": {
+            "handlers": ["console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}
