@@ -121,6 +121,7 @@
           </p>
         </div>
 
+        {% if reservations_ouvertes %}
         <button type="button"
                 id="reservationToggle"
                 class="mt-8 inline-flex items-center justify-center gap-3
@@ -130,6 +131,12 @@
           <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
           Réserver un espace
         </button>
+        {% else %}
+        <div class="mt-8 inline-flex items-center justify-center gap-3 rounded-full bg-yellow-400 px-6 py-4 font-black text-black">
+          <i class="fa-solid fa-pause" aria-hidden="true"></i>
+          Réservations suspendues
+        </div>
+        {% endif %}
 
       </div>
 
@@ -158,6 +165,25 @@
                   hover:bg-yellow-400 hover:text-blue-900 transition focus:outline-none focus:ring-4 focus:ring-yellow-400/60">
           Faire une autre réservation
         </a>
+      </div>
+    </div>
+
+    {% elif not reservations_ouvertes %}
+
+    <div class="rounded-[2rem] bg-white/35 backdrop-blur-xl border border-white/40 p-10 shadow-xl">
+      <div class="text-center py-10">
+        <div class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center mb-6">
+          <i class="fa-solid fa-pause text-3xl" aria-hidden="true"></i>
+        </div>
+        <p class="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-black">
+          Réservations suspendues
+        </p>
+        <h2 class="text-3xl font-black text-blue-900 mb-3">
+          Les réservations sont temporairement fermées
+        </h2>
+        <p class="text-blue-900/70">
+          Il n’est actuellement plus possible de réserver l’espace. Revenez prochainement ou contactez l’administration.
+        </p>
       </div>
     </div>
 

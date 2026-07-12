@@ -1,6 +1,17 @@
 from django.contrib import admin
 
-from .models import ReservationWorkspace
+from .models import ConfigurationWorkspace, ReservationWorkspace
+
+
+@admin.register(ConfigurationWorkspace)
+class ConfigurationWorkspaceAdmin(admin.ModelAdmin):
+    list_display = ("__str__", "reservations_ouvertes")
+
+    def has_add_permission(self, request):
+        return not ConfigurationWorkspace.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 @admin.register(ReservationWorkspace)

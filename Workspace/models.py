@@ -7,6 +7,25 @@ from django.db.models import F, Q
 from django.utils import timezone
 
 
+class ConfigurationWorkspace(models.Model):
+    reservations_ouvertes = models.BooleanField(
+        default=True,
+        verbose_name="Réservations ouvertes",
+        help_text="Décochez cette option pour suspendre les nouvelles réservations.",
+    )
+
+    class Meta:
+        verbose_name = "Configuration des réservations"
+        verbose_name_plural = "Configuration des réservations"
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return "Réservations de l’espace"
+
+
 class ReservationWorkspace(models.Model):
     PRIX_PAR_HEURE = Decimal("0.50")
     HEURE_OUVERTURE = time(8, 0)

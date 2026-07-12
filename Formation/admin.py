@@ -5,7 +5,16 @@ from .models import Formation, Inscription
 
 @admin.register(Formation)
 class FormationAdmin(admin.ModelAdmin):
-    list_display = ("nom", "duree", "prix_pro", "prix_etudiant", "updated_at")
+    list_display = (
+        "nom",
+        "inscriptions_ouvertes",
+        "duree",
+        "prix_pro",
+        "prix_etudiant",
+        "updated_at",
+    )
+    list_editable = ("inscriptions_ouvertes",)
+    list_filter = ("inscriptions_ouvertes",)
     search_fields = ("nom", "description", "objectifs")
     ordering = ("nom",)
     prepopulated_fields = {"slug": ("nom",)}

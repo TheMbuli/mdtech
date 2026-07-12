@@ -37,7 +37,9 @@ def inscription_view(request, slug):
     formation = get_object_or_404(Formation, slug=slug)
     inscription_reussie = False
 
-    if request.method == "POST":
+    if request.method == "POST" and not formation.inscriptions_ouvertes:
+        form = InscriptionForm()
+    elif request.method == "POST":
         form = InscriptionForm(request.POST)
         form.instance.formation = formation
 

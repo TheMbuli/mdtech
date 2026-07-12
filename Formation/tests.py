@@ -102,6 +102,25 @@ class InscriptionViewTests(TestCase):
         self.assertEqual(Inscription.objects.count(), 1)
         self.assertContains(response, "déjà inscrit")
 
+    def test_formation_suspendue_masque_le_formulaire(self):
+        self.formation.inscriptions_ouvertes = False
+        self.formation.save(update_fields=["inscriptions_ouvertes"])
+
+        response = self.client.get(self.url)
+
+        self.assertContains(response, "Inscriptions suspendues")
+        self.assertNotContains(response, 'id="inscriptionForm"')
+
+    def test_formation_suspendue_refuse_aussi_une_soumission_directe(self):
+        self.formation.inscriptions_ouvertes = False
+        self.formation.save(update_fields=["inscriptions_ouvertes"])
+
+        response = self.client.post(self.url, self.data)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Inscription.objects.count(), 0)
+        self.assertContains(response, "Inscriptions suspendues")
+
     @override_settings(
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",
         EMAIL_HOST_USER="site@example.com",

@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView
 
 from .forms import ReservationWorkspaceForm
-from .models import ReservationWorkspace
+from .models import ConfigurationWorkspace, ReservationWorkspace
 
 logger = logging.getLogger("mdtech")
 
@@ -15,6 +15,16 @@ class WorkspaceReservationView(FormView):
     template_name = "Workspace/workspace.html"
     form_class = ReservationWorkspaceForm
     success_url = reverse_lazy("workspace")
+
+    def reservations_ouvertes(self):
+        return ConfigurationWorkspace.objects.filter(pk=1).values_list(
+            "reservations_ouvertes", flat=True
+        ).first() is not False
+
+    def post(self, request, *args, **kwargs):
+        if not self.reservations_ouvertes():
+            return self.render_to_response(self.get_context_data())
+        return super().post(request, *args, **kwargs)
 
     def form_valid(self, form):
         reservation = form.save()
@@ -56,4 +66,5 @@ class WorkspaceReservationView(FormView):
         context["reservation_reussie"] = self.request.session.pop(
             "reservation_reussie", False
         )
+        context["reservations_ouvertes"] = self.reservations_ouvertes()
         return context

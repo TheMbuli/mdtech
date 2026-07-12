@@ -150,6 +150,30 @@
 
         </div>
 
+        {% elif not formation.inscriptions_ouvertes %}
+
+        <div class="min-h-[480px] flex flex-col justify-center items-center text-center">
+          <div class="w-24 h-24 rounded-full bg-amber-100 text-black flex items-center justify-center mb-7">
+            <i class="fa-solid fa-pause text-4xl" aria-hidden="true"></i>
+          </div>
+          <p class="uppercase tracking-[0.25em] text-sm font-bold text-black mb-3">
+            Inscriptions suspendues
+          </p>
+          <h2 class="text-4xl font-black text-slate-900 mb-4">
+            Les inscriptions sont temporairement fermées
+          </h2>
+          <p class="text-slate-600 max-w-xl leading-relaxed text-lg mb-8">
+            Il n’est actuellement plus possible de s’inscrire à la formation
+            <span class="font-bold text-blue-900">« {{ formation.nom }} »</span>.
+            Revenez prochainement ou contactez l’administration.
+          </p>
+          <a href="{% url 'formation' %}"
+             class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-blue-900 text-white font-bold shadow-lg hover:bg-blue-800 transition">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            Voir les formations
+          </a>
+        </div>
+
         {% else %}
 
         <!-- TITRE -->

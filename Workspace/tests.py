@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.utils import timezone
 
 from .forms import ReservationWorkspaceForm
-from .models import ReservationWorkspace
+from .models import ConfigurationWorkspace, ReservationWorkspace
 
 
 class ReservationWorkspaceModelTests(TestCase):
@@ -110,6 +110,16 @@ class WorkspaceReservationViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(ReservationWorkspace.objects.count(), 1)
         self.assertContains(response, "déjà réservée")
+
+    def test_reservations_suspendues_masquent_et_bloquent_le_formulaire(self):
+        ConfigurationWorkspace.objects.create(reservations_ouvertes=False)
+
+        response = self.client.post(self.url, self.data)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(ReservationWorkspace.objects.count(), 0)
+        self.assertContains(response, "Réservations suspendues")
+        self.assertNotContains(response, "Réserver maintenant")
 
     @override_settings(
         EMAIL_BACKEND="django.core.mail.backends.locmem.EmailBackend",

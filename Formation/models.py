@@ -40,6 +40,11 @@ class Formation(models.Model):
     affiche = models.ImageField(upload_to='formation_images', blank=True, null=True)
     objectifs = models.TextField(max_length=500)
     logo = models.ImageField(upload_to="logo")
+    inscriptions_ouvertes = models.BooleanField(
+        default=True,
+        verbose_name="Inscriptions ouvertes",
+        help_text="Décochez cette option pour suspendre les nouvelles inscriptions.",
+    )
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
